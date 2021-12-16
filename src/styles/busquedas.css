@@ -1,0 +1,39 @@
+
+.row{
+    margin-top: 5%;
+    margin-left: 6%;
+}
+
+
+  .peliculas_list {
+      display: flex;
+  }
+
+  .content_film{
+    text-decoration: none;
+    color:white;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+
+  }
+  .content_film:hover{
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    
+}
+  .descripcion{
+        margin-top: 10px;
+    }
+
+    .btn_mas {
+        margin-top: 10px;
+        width:80px;
+        height: 40px;
+        background-color: red;
+        color: white;
+        border-radius: 10%;
+        margin: 0 auto;
+        display: block;
+    }

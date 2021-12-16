@@ -1,0 +1,22 @@
+.peliculas{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-template-rows: auto;
+  border: 1px solid #ccc;
+    
+}
+
+.titulo{
+  grid-column: 1/5;
+  grid-row: 1;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(192, 75, 75);
+  background-color: rgb(14, 14, 14);
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+

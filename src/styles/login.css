@@ -1,0 +1,301 @@
+/*assign full width inputs*/
+
+.input-form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/*set a style for the buttons*/
+.boton-form {
+  background-color: red;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* set a hover effect for the button*/
+.boton-form:hover {
+  opacity: 0.8;
+}
+
+/*set extra style for the cancel button*/
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/*centre the display image inside the container*/
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+/*set image properties*/
+img.avatar {
+  width: 10%;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+/*set padding to the container*/
+.container {
+  padding: 16px;
+}
+
+/*set the forgot password text*/
+
+/*set the Modal background*/
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 60px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+
+}
+
+/*style the model content box*/
+.modal-content {
+  background-color: #fefefe;
+  margin: 9% auto 15% auto;
+  border: 1px solid #888;
+  width: 40%;
+  color: #000;
+  text-decoration: none;
+}
+
+/*style the close button*/
+#close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  cursor: pointer;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+#close2 {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  cursor: pointer;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+
+
+/* add zoom animation*/
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+
+.modal2{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-top: 60px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+
+  
+}
+
+.btn{
+  cursor: pointer;
+  border-radius: 20%;
+  border: 1px solid;
+  padding: 10px;
+  font-weight: bold;
+
+}
+
+.foto{
+  margin-bottom: 5%;
+}
+
+.allmodal{
+  
+}
+
+#btn_registro2{
+  background-color:red;
+}
+
+#btn_login{
+  background-color:red;
+}
+
+.animations{
+  -webkit-animation-name: animatezoom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatezoom;
+  animation-duration: 1s;
+}
+
+
+.animations2{
+  -webkit-animation-name: animateSlide;
+  -webkit-animation-duration: 0.8s;
+  animation-name: animateSlide;
+  animation-duration: 0.8s;
+}
+.animations3{
+  -webkit-animation-name: animateSlide2;
+  -webkit-animation-duration: 0.8s;
+  animation-name: animateSlide2;
+  animation-duration: 0.8s;
+  
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+
+
+
+@-webkit-keyframes animateSlide {
+  0% {
+    margin-left: 0%;
+    opacity: 0.5;
+
+  }
+  100% {
+    margin-left: 100px;
+    opacity: 0;
+
+  }
+}
+
+@keyframes animateSlide {
+  0% {
+    transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+    -webkit-perspective: 1000;
+    
+    }
+    
+    50% {
+      transform: perspective(1000) rotateX(0deg) rotateY(-90deg);
+      -webkit-transform: perspective(1000) rotateX(0deg) rotateY(-90deg);
+      
+      
+    } 
+
+    100% {
+      transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      
+      
+    } 
+}
+
+
+@-webkit-keyframes animateSlide2 {
+  0% {
+    transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+    -webkit-perspective: 1000;
+    
+    }
+    
+    50% {
+      transform: perspective(1000) rotateX(0deg) rotateY(90deg);
+      -webkit-transform: perspective(1000) rotateX(0deg) rotateY(90deg);
+      
+      
+    } 
+
+    100% {
+      transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      
+      
+    } 
+    
+}
+
+@keyframes animateSlide2 {
+  
+    0% {
+      transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+      -webkit-perspective: 1000;
+      
+      }
+      
+      50% {
+        transform: perspective(1000) rotateX(0deg) rotateY(90deg);
+        -webkit-transform: perspective(1000) rotateX(0deg) rotateY(90deg);
+        
+        
+      } 
+
+      100% {
+        transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(1000) rotateX(0deg) rotateY(0deg);
+        
+        
+      } 
+      
+     
+
+
+  }
+ 
+
+
+
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+}

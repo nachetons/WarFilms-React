@@ -1,0 +1,28 @@
+{
+  "name": "warfilms",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "font-awesome": "^4.7.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vite-plugin-html": "^2.1.1"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.7.2"
+  }
+}

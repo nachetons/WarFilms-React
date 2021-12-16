@@ -1,0 +1,35 @@
+.contenedor-pelicula {
+    display: flex;
+    margin-top: 5%;
+
+    
+}
+
+#foto{
+    margin-left: 5% ;
+
+
+}
+.content_film{
+    margin-left: 5%;
+
+}
+
+
+
+  #mytrailer{
+    
+    width: 52%;
+    height: 52%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 3%;
+    margin-bottom: 7%;
+    z-index: -1;
+    background-color: black;
+    opacity: 0.8;
+    z-index: 1;
+  }
+  
+  
