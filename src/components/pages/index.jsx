@@ -2,11 +2,13 @@
 import logo from '../../images/1.jpg'
 import '../../styles/main.css'
 import '../../styles/navs.css'
+import '../../styles/login.css'
+
 import '../../styles/carrusel.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'
 
-
+import Login from  '../fragments/login.jsx'
 import Navs from '../fragments/navs.jsx'
 import Carrusel from '../fragments/carruseles.jsx'
 
@@ -17,6 +19,7 @@ export default function IndexPage(){
     
     
     <Navs />
+    <Login />
     
     
     <div className="container">
