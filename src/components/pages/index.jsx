@@ -2,13 +2,14 @@
 import logo from '../../images/1.jpg'
 import '../../styles/main.css'
 import '../../styles/navs.css'
+import '../../styles/footer.css'
 import '../../styles/carrusel.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'
 
-
 import Navs from '../fragments/navs.jsx'
 import Carrusel from '../fragments/carruseles.jsx'
+import Footer from '../fragments/footer';
 
 export default function IndexPage(){
  
@@ -36,7 +37,7 @@ export default function IndexPage(){
     </div>
     
     <Carrusel />
-    
+    <Footer />
     </>
 
 
