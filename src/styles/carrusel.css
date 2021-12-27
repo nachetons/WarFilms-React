@@ -93,18 +93,18 @@
   }
 }
 
-.slider {
+.slider1 {
   width: 100%;
-  animation: slider 20s infinite backwards ease-in-out;
+  animation: slider1 20s infinite backwards ease-in-out;
 
 }
 
-.slider:hover {
+.slider1:hover {
   animation-play-state: paused;
   -webkit-animation-play-state: paused;
 }
 
-@keyframes slider {
+@keyframes slider1 {
   0% {
     margin-left: 0%;
   }
@@ -143,7 +143,7 @@
 
 .slider2 {
   width: 100%;
-  animation: slider 20s infinite alternate ease-in;
+  animation: slider2 20s infinite alternate ease-in;
 }
 
 .slider2:hover {
@@ -191,7 +191,7 @@
 
 .slider3 {
   width: 100%;
-  animation: slider 20s infinite alternate ease-out;
+  animation: slider3 20s infinite alternate ease-out;
 }
 
 .slider3:hover {
