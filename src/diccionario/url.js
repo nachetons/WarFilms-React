@@ -1,5 +1,6 @@
 //Nuestra key
-const API_KEY = 'api_key=cfe422613b250f702980a3bbf9e90716';
+<script type='text/javascript' src='config.js'></script>
+var API_KEY = config.API_KEYS;
 
 //Dominio base
 const URL_BASE = 'https://api.themoviedb.org/3/';
