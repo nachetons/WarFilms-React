@@ -1,6 +1,4 @@
-import Img from '../../images/1.jpg'
-import ItemCarrusel from './itemCarrusel';
-
+import Carrusel from "./carrusel"; 
 //La línea sagrada
 
 
@@ -85,41 +83,14 @@ export default function carruseles(){
   return (
 <>
 <div className="container">
-
-  <h1>Mas populares</h1>
-  <div className="freetowatch-cards">
-    <div className="slider1" id="carruseles1" data-pause="false"> 
-      {movieList.map(movie=>{
-        return (<ItemCarrusel key={movie.id} movieInfo={movie} index={1}/>)
-        })
-      }
-    </div>
-  </div>
+  <Carrusel sliderNumber={1} movieList={movieList} title={"Las más populares"}/>
   <br />
   <br />
 
-
-  <h1>Estrenos</h1>
-  <div className="freetowatch-cards">
-    <div className="slider2" id="carruseles2" data-pause="false">
-      {movieList.map(movie=>{
-         return (<ItemCarrusel key={movie.id} movieInfo={movie} index={2}/>);
-        })
-      }
-    </div>
-  </div>
+  <Carrusel sliderNumber={2} movieList={movieList} title={"Las nuevas"}/>
   <br />
   <br />
-
-
-  <h1>Mejor valoradas</h1>
-  <div className="freetowatch-cards">
-    <div className="slider3" id="carruseles3" data-pause="false"></div>
-      {movieList.map(movie=>{
-         return (<ItemCarrusel key={movie.id} movieInfo={movie} index={3}/>);
-       })
-      }
-    </div>
+  <Carrusel sliderNumber={3} movieList={movieList} title={"Las más valoradas"}/>
 </div>
 
 </>
