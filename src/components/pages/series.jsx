@@ -18,7 +18,7 @@ const series = () => {
   return (
     <>
     
-    
+    <Navs />
     <Login />
     
     

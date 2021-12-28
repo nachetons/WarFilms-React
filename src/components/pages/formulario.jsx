@@ -18,7 +18,7 @@ const formulario = () =>{
   return (
     <>
     
-    
+    <Navs />
     <Login />
     
     

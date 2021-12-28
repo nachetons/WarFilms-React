@@ -1,6 +1,11 @@
 import { useState } from 'react'
 //import logo from './logo.svg'
-import Index from './components/pages/index.jsx'
+import Index from './components/pages/index'
+import Peliculas from './components/pages/peliculas'
+import Series from './components/pages/series'
+import Formulario from './components/pages/formulario'
+import {BrowserRouter, Link, Route, Switch, Router} from 'react-router-dom'
+
 import './App.css'
 
 
@@ -13,10 +18,33 @@ function App() {
     
     
 
-    <Index />
-    
-    
-    
+
+
+
+    <BrowserRouter>
+
+    <Switch>
+
+    <Route path='/peliculas'>
+        <Peliculas />
+      </Route>
+
+      <Route path='/series'>
+        <Series />
+      </Route>
+
+      <Route path='/formulario'>
+        <Formulario />
+      </Route>
+
+      <Route path='/'>
+        <Index />
+      </Route>
+
+
+      </Switch>
+      </BrowserRouter>
+
     </>
     
    /* <div className="App">

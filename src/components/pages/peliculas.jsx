@@ -18,7 +18,7 @@ const peliculas = () => {
   return (
     <>
     
-    
+    <Navs />
     <Login />
     
     
