@@ -5,6 +5,8 @@ import '../../styles/navs.css'
 import '../../styles/footer.css'
 import '../../styles/carrusel.css'
 import '../../styles/login.css'
+import '../../styles/categorias.css'
+
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'
@@ -26,23 +28,94 @@ const categorias = () => {
     <Navs />
     <Login />
     
-    
-    <div className="container">
-      <div className="background">
+    <h3 id="titulos" className="titulo">{categoria}</h3>
 
-      </div>
-    </div>
+    <div className="row" id="contenedor_main">
 
-    <div id="contenedor">
-      <div id="pelis_header">
-      <div className="mySlides fade">
-        <img id="foto" src={logo}/>
-        <div className="text_title">{categoria}</div>
-        <div className="text">1</div>
-      </div>
+      <div className="peliculas" id="list_pelis">
+
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        <a href="#">
+          <div className="poster">
+            <img src={logo} alt="Imagen portada"/>
+          </div>
+        </a>
+        </div>
     </div>
-    </div>
-    
     <Footer />
     </>
 
@@ -76,7 +149,7 @@ export default categorias
         
        var i;
 
-       var slides = document.getElementsByClassName("mySlides");
+       var slides = document.getElementsByclassNameName("mySlides");
 
        for (i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";
