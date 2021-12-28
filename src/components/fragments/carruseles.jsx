@@ -1,98 +1,55 @@
-import Carrusel from "./carrusel"; 
-//La línea sagrada
+import Carrusel from "./carrusel";
 
-
-
-
-
-const movieList=[
-  {
-    id:1,
-    title:"Venom",
-    rating:"83%",
-    sinopsis:"Venom venom venom venom",
-    dateRealase:"Sep 28,2018"
-  },
-  {
-    id:2,
-    title:"Pelicula nº2",
-    rating:"20%",
-    sinopsis:"Sauludo nº2",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:3,
-    title:"Pelicula nº3",
-    rating:"30%",
-    sinopsis:"Sauludo nº3",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:4,
-    title:"Pelicula nº4",
-    rating:"40%",
-    sinopsis:"Sauludo nº4",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:5,
-    title:"Pelicula nº5",
-    rating:"50%",
-    sinopsis:"Sauludo nº5",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:6,
-    title:"Pelicula nº6",
-    rating:"60%",
-    sinopsis:"Sauludo nº6",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:7,
-    title:"Pelicula nº7",
-    rating:"70%",
-    sinopsis:"Sauludo nº7",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:8,
-    title:"Pelicula nº8",
-    rating:"80%",
-    sinopsis:"Sauludo nº8",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:9,
-    title:"Pelicula nº9",
-    rating:"90%",
-    sinopsis:"Sauludo nº9",
-    dateRealase:"Ene 21,2000"
-  },
-  {
-    id:10,
-    title:"Pelicula nº10",
-    rating:"100%",
-    sinopsis:"Sauludo nº10",
-    dateRealase:"Ene 21,2000"
-  }
-];
+import {useState,useEffect} from "react";
+//La línea sagradan NO TOCAR >:[
 
 
 export default function carruseles(){
+  const [movieList,setMovieList]=useState([]);
+  const [isLoading,setIsloading]=useState(false);
+  const getMoviesFromJson=()=>
+    fetch('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&include_adult=false&include_video=false&page=1&api_key=cfe422613b250f702980a3bbf9e90716')
+    .then(response=>response.json())
+    .then(responseConverted=>responseConverted.results);
+
+  function getMovieList(){
+    setIsloading(true);
+    getMoviesFromJson().then(result=>{
+      setMovieList(result);
+      setIsloading(false);
+    })
+  }
+  //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se 
+  //ejecuta la primera vez
+  useEffect(getMovieList,[]);
   return (
 <>
-<div className="container">
-  <Carrusel sliderNumber={1} movieList={movieList} title={"Las más populares"}/>
-  <br />
-  <br />
+  <div className="container">
+      {
+          isLoading ?
+          //Cuando está cargando...
+          <>
+          <h3>Cargando...</h3>
+          </>
 
-  <Carrusel sliderNumber={2} movieList={movieList} title={"Las nuevas"}/>
-  <br />
-  <br />
-  <Carrusel sliderNumber={3} movieList={movieList} title={"Las más valoradas"}/>
-</div>
+          :
 
+          //Cuando está cargado
+          <>
+          <div className="container">
+              <Carrusel sliderNumber={1} movieList={movieList} title={"Las más populares"}/>
+              <br />
+              <br />
+
+              <Carrusel sliderNumber={2} movieList={movieList} title={"Las nuevas"}/>
+              <br />
+              <br />
+
+              <Carrusel sliderNumber={3} movieList={movieList} title={"Las más valoradas"}/>
+            </div>
+          </>
+      }
+  </div>
 </>
 );
 }
