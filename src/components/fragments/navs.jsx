@@ -1,21 +1,28 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 //import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+//import Index from '../pages/index'
+import Peliculas from '../pages/peliculas'
+import Series from '../pages/series'
+import Formulario from '../pages/formulario'
 
 
-export default function navs(){
+const navs = () => {
 return (
 <>
-
+<BrowserRouter>
   <nav>
       <ul className="logo-ul">
         <li className="toggle" id="btn_movil"><i className="fas fa-bars"></i></li>
-        <li className="logo"></li>
-        <li className="menu_options categorias"><a href="#">Categorias</a></li>
-        <li className="menu_options"><a href="./peliculas.html">Peliculas</a></li>
-        <li className="menu_options"><a href="./series.html">Series</a></li>
-        <li className="menu_options"><a href="./formulario.html">Contacto</a></li>
+        <Link to='/' className="logo"></Link>
+        <li className="menu_options categorias">Categorias</li>
+        <Link to='/peliculas' className="menu_options">Peliculas</Link>
+        <Link to='/series' className="menu_options">Series</Link>
+        <Link to='/formulario' className="menu_options">Contacto</Link>
       </ul>
+
+
+      
 
 
     <ul className="icons-ul">
@@ -27,7 +34,25 @@ return (
       <li><a href="#"><i className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
     </ul>
   </nav>
-  
+
+
+
+  <Switch>
+      
+
+      <Route path='/peliculas'>
+        <Peliculas />
+      </Route>
+
+      <Route path='/series'>
+        <Series />
+      </Route>
+
+      <Route path='/formulario'>
+        <Formulario />
+      </Route>
+      </Switch>
+  </BrowserRouter>
   <div className="menu__side" id="menu_side">
 
 
@@ -118,6 +143,7 @@ return (
 </>
 );
 }
+export default navs;
 
  
 

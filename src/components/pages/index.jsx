@@ -14,7 +14,7 @@ import Navs from '../fragments/navs.jsx'
 import Carrusel from '../fragments/carruseles.jsx'
 import Footer from '../fragments/footer';
 
-export default function IndexPage(){
+const IndexPage = () =>{
  
   return (
     <>
@@ -53,6 +53,8 @@ export default function IndexPage(){
 
 
 }
+
+export default IndexPage;
 
 
 
