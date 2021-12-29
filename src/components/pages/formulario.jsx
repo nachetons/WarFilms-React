@@ -62,7 +62,7 @@ const formulario = () =>{
                         <label htmlFor="asunto">Asunto del mensaje</label>
                     </div>
                     <div className="col-75">
-                        <select id="asunto" id="asunto">Asunto del mensaje
+                        <select id="asunto">Asunto del mensaje
                             <option>Quejas y reclamaciones</option>
                             <option>Sugerencia</option>
                             <option>Otro</option>

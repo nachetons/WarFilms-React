@@ -4,7 +4,7 @@ import Index from './components/pages/index'
 import Peliculas from './components/pages/peliculas'
 import Series from './components/pages/series'
 import Formulario from './components/pages/formulario'
-import Categorias from './components/pages/categorias'
+import Categorias from './components/pages/categorias/categorias'
 
 import {BrowserRouter, Link, Route, Switch, Router} from 'react-router-dom'
 
