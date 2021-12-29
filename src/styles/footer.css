@@ -14,7 +14,7 @@
 }
 
 .footer .maindiv .footerlogo {
-  background: url(../src/images/static/footerlogo.svg) center center no-repeat;
+  background: url(../images/static/footerlogo.svg) center center no-repeat;
   height: 70px;
   width: 100px;
 }

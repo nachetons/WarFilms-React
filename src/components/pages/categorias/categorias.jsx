@@ -17,6 +17,7 @@ import Footer from '../../fragments/footer';
 import ItemCategoria from './itemCategoria';
 import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom'
 
 
 const categorias = () => {
@@ -74,10 +75,11 @@ const categorias = () => {
       }
       
       setMovieList(xs);
-      //console.log(result);
       setIsloading(false);
     })
   }
+
+
 
 
   
@@ -103,10 +105,12 @@ const categorias = () => {
       {isLoading ?
       <p>Cargando...</p>
       :
-    
-        movieList.map(movie=>
-          <ItemCategoria key={movie.id} movieInfo={movie} />
+
+    movieList.map(movie=>
+      
+      <Link key={movie.id} to={'/pelicula/'+movie.original_title+'/'+movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie}/></div></Link>
         )
+      
       }
     
         </div>
