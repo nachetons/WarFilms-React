@@ -69,6 +69,7 @@ const pelicula = () => {
 
             settrailerMovieList(result);
             setIsloading2(false);
+            console.log(URL_TRAILER);
 
 
         })
@@ -121,7 +122,6 @@ const pelicula = () => {
 
                     <div key={movie.id} className="container" id="listas_pelis">
                         <div className="contenedor-pelicula">
-
                             <img id="foto" src={URL_IMG + movie.poster_path} style={{width: '35%'}} />
                             <div className="content_film" id={movie.id}>
                                 <h3 className="titulo">{movie.original_title}</h3>
@@ -145,9 +145,9 @@ const pelicula = () => {
 
                 :
 
-                setTimeout(() => {
                     trailerMovieList.map(trailer => {
-                        trailer.type == "Trailer" && trailer.site == "YouTube" && trailers || trailer.name.includes("Trailer") && trailer.site == "YouTube" && trailers ?
+                        trailer.type == "Trailer" && trailer.site == "YouTube"||
+                        trailer.name.includes("Trailer") && trailer.site == "YouTube" ?
                             document.getElementById("mytrailer").innerHTML =
 
                             `<iframe 
@@ -191,7 +191,6 @@ const pelicula = () => {
 
                     )
 
-                }, 10)
 
 
 
