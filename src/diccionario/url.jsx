@@ -1,6 +1,8 @@
 //Nuestra key
-<script type='text/javascript' src='config.js'></script>
-var API_KEY = config.API_KEYS;
+import {API_KEYS} from '../../config.js';
+
+
+const API_KEY = API_KEYS;
 
 //Dominio base
 const URL_BASE = 'https://api.themoviedb.org/3/';
@@ -11,15 +13,18 @@ const API_URL_POP = URL_BASE + 'discover/movie?sort_by=popularity.desc&include_a
 //Las mas votadas con mas de 300 votos
 const API_URL_RATED = URL_BASE + 'discover/movie?sort_by=vote_average.desc&vote_count.gte=300&page=1&' + API_KEY;
 
-//Lo mas nuevo en los ultimos 3 meses
-const API_URL_NEW = URL_BASE + 'discover/movie?sort_by=popularity.desc&primary_release_date.lte=' + last3months + '&include_adult=false&include_video=false&page=1&' + API_KEY;
-
 //Metodo para obtener la fecha de 3 meses antes
 let date = new Date();
 let day = `0${date.getDate()}`.slice(-2);
 let month = `0${date.getMonth() - 2}`.slice(-2);
 let year = date.getFullYear();
 const last3months = year + "-" + month + "-" + day;
+
+
+//Lo mas nuevo en los ultimos 3 meses
+const API_URL_NEW = URL_BASE + 'discover/movie?sort_by=popularity.desc&primary_release_date.lte=' + last3months + '&include_adult=false&include_video=false&page=1&' + API_KEY;
+
+
 
 
 
@@ -33,7 +38,11 @@ const SEARCH_URL_TV = URL_BASE + 'search/tv?query=';
 const URL_IMG = "https://image.tmdb.org/t/p/w500";
 
 //Mostrar todos los videos de una serie por id
-URL_BASE + 'tv/' + busqueda + "?" + API_KEY + "&append_to_response=videos"
+//URL_BASE + 'tv/' + busqueda + "?" + API_KEY + "&append_to_response=videos"
+
+
+//Busqueda por categoria
+const API_URL_CATEGORY = URL_BASE + 'discover/movie?sort_by=popularity.desc&vote_count.gte=2000&'+API_KEY+'&with_genres='
 
 //Array con el id de todos los generos de las peliculas
 const arrayMovies = {
@@ -56,4 +65,5 @@ const arrayMovies = {
     "Action & Adventure":10759,
     "Western":37
   };
-  
+
+  export {API_KEY,URL_BASE,API_URL_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};

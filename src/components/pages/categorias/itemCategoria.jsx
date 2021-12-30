@@ -1,7 +1,6 @@
 import logo from '../../../images/1.jpg'
+import { URL_IMG } from '../../../diccionario/url';
 
-
-const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 
 
 export default function ItemCategoria({movieInfo}){
