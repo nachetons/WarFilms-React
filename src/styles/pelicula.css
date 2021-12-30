@@ -1,35 +1,59 @@
 .contenedor-pelicula {
     display: flex;
     margin-top: 5%;
-
-    
 }
 
 #foto{
     margin-left: 5% ;
+    margin-top: 3%;
 
 
 }
 .content_film{
-    margin-left: 5%;
+margin-left: 5%;
+display: flex;
+flex-direction: column;
+}
+
+.titulo{
+  margin-top: 8%;
+  margin-bottom: 2%;
+}
+
+
+
+.youtube-wrapper{
+  width:100%;
+  margin-top: 12%;
 
 }
 
 
 
-  #mytrailer{
+
+.trailer{
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0px;
+}
+
+
+
+  iframe{
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
     
-    width: 52%;
-    height: 52%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-right: 3%;
-    margin-bottom: 7%;
-    z-index: -1;
-    background-color: black;
-    opacity: 0.8;
-    z-index: 1;
+   
+   
   }
+
+  #text{
+    display: none;
+  }
+
   
   

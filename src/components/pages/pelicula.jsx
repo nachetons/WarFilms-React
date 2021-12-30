@@ -1,6 +1,6 @@
 
 import logo from '../../images/1.jpg'
-import {API_KEY,URL_BASE,SEARCH_URL_MOVIE,URL_IMG} from '../../diccionario/url.jsx'
+import { API_KEY, URL_BASE, SEARCH_URL_MOVIE, URL_IMG } from '../../diccionario/url.jsx'
 
 
 import '../../styles/main.css'
@@ -9,6 +9,7 @@ import '../../styles/footer.css'
 import '../../styles/carrusel.css'
 import '../../styles/login.css'
 import '../../styles/pelicula.css'
+import '../../styles/mediaquerys.css'
 
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -25,7 +26,7 @@ const pelicula = () => {
     const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + "&" + API_KEY;
-    const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos";    
+    const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos";
     const trailers = document.getElementById("mytrailer")
 
     //LLAMADA A LA PELICULA
@@ -68,7 +69,6 @@ const pelicula = () => {
 
             settrailerMovieList(result);
             setIsloading2(false);
-            console.log(URL_TRAILER);
 
 
         })
@@ -100,11 +100,16 @@ const pelicula = () => {
 
                         <img id="foto" src={logo} style={{ width: '35%' }} />
                         <div className="content_film" id={1}>
-                            <h3 className="titulo">Venom</h3>
-                            <p className="titulo-secundario">Sinopsis:</p>
-                            <p className="descripcion">un hombre mutante</p>
-                            <p><strong id="mytrailer"></strong></p>
+                            <div className="text_Film">
+                                <h3 className="titulo">Venom</h3>
+                                <p className="descripcion">un hombre mutante</p>
+                            </div>
 
+                            <div className="youtube-wrapper">
+                                <div className="trailer">
+                                    <strong id="mytrailer"></strong>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -117,13 +122,15 @@ const pelicula = () => {
                     <div key={movie.id} className="container" id="listas_pelis">
                         <div className="contenedor-pelicula">
 
-                            <img id="foto" src={URL_IMG + movie.poster_path} style={{ width: '35%' }} />
+                            <img id="foto" src={URL_IMG + movie.poster_path} style={{width: '35%'}} />
                             <div className="content_film" id={movie.id}>
                                 <h3 className="titulo">{movie.original_title}</h3>
-                                <p className="titulo-secundario">Sinopsis:</p>
                                 <p className="descripcion">{movie.overview}</p>
-                                <p><strong id="mytrailer"></strong></p>
-
+                                <div className="youtube-wrapper">
+                                    <div className="trailer">
+                                        <strong id="mytrailer"></strong>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,16 +141,16 @@ const pelicula = () => {
 
 
             {isLoading2 ?
-                <p>Cargando...</p>
+                <p>Cargando..</p>
 
                 :
 
                 setTimeout(() => {
-                trailerMovieList.map(trailer => {
-                    trailer.type == "Trailer" && trailer.site == "YouTube" && trailers || trailer.name.includes("Trailer") && trailer.site == "YouTube" && trailers ?
-                    document.getElementById("mytrailer").innerHTML = 
-                    
-                    `<iframe 
+                    trailerMovieList.map(trailer => {
+                        trailer.type == "Trailer" && trailer.site == "YouTube" && trailers || trailer.name.includes("Trailer") && trailer.site == "YouTube" && trailers ?
+                            document.getElementById("mytrailer").innerHTML =
+
+                            `<iframe 
                     width="100%" 
                     height="100%" 
                     src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
@@ -159,10 +166,10 @@ const pelicula = () => {
                     
                     </iframe>`
 
-                    :
+                            :
 
-                    document.getElementById("mytrailer").innerHTML = 
-                    `<iframe 
+                            document.getElementById("mytrailer").innerHTML =
+                            `<iframe 
                     width="100%" 
                     height="100%" 
                     src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
@@ -179,10 +186,10 @@ const pelicula = () => {
                     </iframe>`
 
 
-                }
+                    }
 
 
-                )
+                    )
 
                 }, 10)
 

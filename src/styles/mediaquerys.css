@@ -160,6 +160,8 @@
       font-size: 30px;
       transform: translate(-50%, -50%);
     }
+
+   
     
     #contenedor {
       border-color: rgb(255, 51, 0);
@@ -262,6 +264,51 @@
       font-size: 30px;
       transform: translate(-50%, -50%);
     }
+
+    #foto{
+      
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 40%;
+        padding-top: 10%;
+    
+    
+    
+    }
+    .titulo{
+      position: absolute;
+      right: 0;
+      padding-right: 20%;
+
+    
+    }
+    .descripcion{
+
+      position: absolute;
+      top: 20%;
+      right: 0;
+      width: 55%;
+      font-size: 20px;
+      color: rgb(255, 255, 255);
+    }
+
+    .youtube-wrapper{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+    }
+    .trailer{
+      width: 100%;
+    }
+    footer{
+      display: none;
+    }
+
+    body {
+      height: 100vh;
+    }
     
     #contenedor {
       border-color: rgb(255, 51, 0);
@@ -288,6 +335,7 @@
   
   
   @media (max-width: 600px) {
+
     .input-search{
 display: none;  }
   .boton-search{
@@ -316,6 +364,44 @@ display: none;
   font-size: 30px;
   transform: translate(-50%, -50%);
 }
+.titulo{
+  position:relative;
+  padding-right: 0%;
+}
+
+.descripcion{
+  position:relative;
+  width: 100%;
+}
+
+#foto{
+      
+  position: relative;
+  top: 0;
+  left: 30%;
+  height: 40%;
+  padding-top: 8%;
+
+
+
+}
+
+.contenedor-pelicula{
+  flex-direction: column;
+}
+
+.youtube-wrapper{
+position: relative;
+left: 0;
+bottom: 0;
+
+}
+.trailer{
+width: 100%;
+}
+
+
+
 
 #contenedor {
   border-color: rgb(255, 51, 0);
