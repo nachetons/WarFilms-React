@@ -1,16 +1,15 @@
 import Carrusel from "./carrusel";
+import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "../../../diccionario/url";
+
 
 import {useState,useEffect} from "react";
 //La línea sagradan NO TOCAR >:[
 
-  let date = new Date();
-  let day = `0${date.getDate()}`.slice(-2);
-  let month = `0${date.getMonth() - 2}`.slice(-2);
-  let year = date.getFullYear();
-  const last3months = year + "-" + month + "-" + day;
-  const MOSTPOPULAR="https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&include_adult=false&include_video=false&page=1&api_key=cfe422613b250f702980a3bbf9e90716";
 export default function carruseles(){
   const [mostPopularMovieList,setMostPopularMovieList]=useState([]);
+  const [mostRatedMovieList,setMostRatedMovieList]=useState([]);
+  const [mostNewMovieList,setMostNewMovieList]=useState([]);
+
   const [isLoading,setIsloading]=useState(false);
   
   const getMoviesFromAPIBy=(toFetch)=>
@@ -20,14 +19,39 @@ export default function carruseles(){
   
   function getMostPopularMovieList(){
     setIsloading(true);
-    getMoviesFromAPIBy(MOSTPOPULAR).then(result=>{
+    getMoviesFromAPIBy(API_URL_POP).then(result=>{
       setMostPopularMovieList(result);
       setIsloading(false);
     })
   }
-  //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se 
-  //ejecuta la primera vez
-  useEffect(getMostPopularMovieList,[]);
+  
+  
+  function getMostRatedMovieList(){
+    setIsloading(true);
+    getMoviesFromAPIBy(API_URL_RATED).then(result=>{
+      setMostRatedMovieList(result);
+      setIsloading(false);
+    })
+  }
+
+
+  function getMostNewMovieList(){
+    setIsloading(true);
+    getMoviesFromAPIBy(API_URL_NEW).then(result=>{
+      setMostNewMovieList(result);
+      setIsloading(false);
+      console.log(API_URL_NEW);
+    })
+  }
+
+  useEffect(() => {
+
+    getMostPopularMovieList();
+    getMostRatedMovieList();
+    getMostNewMovieList();
+    
+
+}, []);
   return (
 <>
   <div className="container">
@@ -47,11 +71,11 @@ export default function carruseles(){
               <br />
               <br />
 
-              <Carrusel sliderNumber={2} movieList={mostPopularMovieList} title={"Las nuevas"}/>
+              <Carrusel sliderNumber={2} movieList={mostRatedMovieList} title={"Las más valoradas"}/>
               <br />
               <br />
 
-              <Carrusel sliderNumber={3} movieList={mostPopularMovieList} title={"Las más valoradas"}/>
+              <Carrusel sliderNumber={3} movieList={mostNewMovieList} title={"Las nuevas"}/>
             </div>
           </>
       }

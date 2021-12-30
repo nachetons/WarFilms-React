@@ -144,7 +144,7 @@ const pelicula = () => {
                 <p>Cargando..</p>
 
                 :
-
+                    setTimeout(() => {
                     trailerMovieList.map(trailer => {
                         trailer.type == "Trailer" && trailer.site == "YouTube"||
                         trailer.name.includes("Trailer") && trailer.site == "YouTube" ?
@@ -192,7 +192,7 @@ const pelicula = () => {
                     )
 
 
-
+                    }, 10)
 
 
             }

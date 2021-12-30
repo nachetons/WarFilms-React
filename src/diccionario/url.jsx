@@ -22,7 +22,7 @@ const last3months = year + "-" + month + "-" + day;
 
 
 //Lo mas nuevo en los ultimos 3 meses
-const API_URL_NEW = URL_BASE + 'discover/movie?sort_by=popularity.desc&primary_release_date.lte=' + last3months + '&include_adult=false&include_video=false&page=1&' + API_KEY;
+const API_URL_NEW = URL_BASE + 'discover/movie?primary_release_date.gte=' + last3months + '&include_adult=false&include_video=false&page=1&' + API_KEY;
 
 
 
