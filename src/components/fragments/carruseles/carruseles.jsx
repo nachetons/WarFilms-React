@@ -20,7 +20,7 @@ export default function carruseles(){
   function getMostPopularMovieList(){
     setIsloading(true);
     getMoviesFromAPIBy(API_URL_POP).then(result=>{
-      setMostPopularMovieList(result);
+      setMostPopularMovieList(takeItems(result));
       setIsloading(false);
     })
   }
@@ -29,7 +29,8 @@ export default function carruseles(){
   function getMostRatedMovieList(){
     setIsloading(true);
     getMoviesFromAPIBy(API_URL_RATED).then(result=>{
-      setMostRatedMovieList(result);
+      setMostRatedMovieList(takeItems(result));
+    
       setIsloading(false);
     })
   }
@@ -38,10 +39,34 @@ export default function carruseles(){
   function getMostNewMovieList(){
     setIsloading(true);
     getMoviesFromAPIBy(API_URL_NEW).then(result=>{
-      setMostNewMovieList(result);
+      setMostNewMovieList(takeItems(result));
       setIsloading(false);
       console.log(API_URL_NEW);
     })
+  }
+
+
+
+  function takeItems(list){
+    let xs=[];
+   
+    if (list.length<10){
+      console.log(xs);
+      return xs;
+      }else{
+        for (let i=0;i<10;i++){
+          xs.push(list[i]);
+          
+        }
+        console.log(xs);
+        return xs;
+      }
+    
+      
+    
+
+
+
   }
 
   useEffect(() => {
