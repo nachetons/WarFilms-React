@@ -68,6 +68,7 @@ const pelicula = () => {
 
             settrailerMovieList(result);
             setIsloading2(false);
+            console.log(URL_TRAILER);
 
 
         })
@@ -137,26 +138,59 @@ const pelicula = () => {
 
                 :
 
-
+                setTimeout(() => {
                 trailerMovieList.map(trailer => {
-                    trailer.type == "Trailer" && trailer.site == "YouTube" && trailers ?
-                    document.getElementById("mytrailer").innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/${trailer.key}" title="YouTube video player" frameborder="0" allow="accelerometer;
-                    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                    trailer.type == "Trailer" && trailer.site == "YouTube" && trailers || trailer.name.includes("Trailer") && trailer.site == "YouTube" && trailers ?
+                    document.getElementById("mytrailer").innerHTML = 
+                    
+                    `<iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer;
+                    autoplay; 
+                    clipboard-write; 
+                    encrypted-media; 
+                    gyroscope; 
+                    picture-in-picture" 
+                    allowfullscreen>
+                    
+                    </iframe>`
 
                     :
 
-                    document.getElementById("mytrailer").innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" title="YouTube video player" frameborder="0" allow="accelerometer;
-                    autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                    document.getElementById("mytrailer").innerHTML = 
+                    `<iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer;
+                    autoplay; 
+                    clipboard-write; 
+                    encrypted-media; 
+                    gyroscope; 
+                    picture-in-picture" 
+                    allowfullscreen>
+                    
+                    </iframe>`
 
 
                 }
+
+
                 )
+
+                }, 10)
 
 
 
 
             }
-        
+
             <Footer />
 
 
