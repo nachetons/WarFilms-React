@@ -59,11 +59,12 @@ const arrayMovies = {
     "Horror":27,
     "Music":10402,
     "Mystery":9,
-    "Romance":10751,
+    "Romance":10749,
     "Thriller":53,
     "War":10752,
     "Action & Adventure":10759,
-    "Western":37
+    "Western":37,
+    "Science Fiction": 878
   };
 
   export {API_KEY,URL_BASE,API_URL_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};

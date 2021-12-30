@@ -15,8 +15,8 @@ import '../../styles/mediaquerys.css'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'
 
-import Login from '../fragments/login.jsx'
-import Navs from '../fragments/navs.jsx'
+import Login from '../fragments/login'
+import Navs from '../fragments/navs/navs'
 import Footer from '../fragments/footer';
 
 import { useParams } from 'react-router-dom';

@@ -12,8 +12,8 @@ import '../../../styles/mediaquerys.css'
 
 
 
-import Login from '../../fragments/login.jsx'
-import Navs from '../../fragments/navs.jsx'
+import Login from '../../fragments/login'
+import Navs from '../../fragments/navs/navs'
 import Footer from '../../fragments/footer';
 import ItemCategoria from './itemCategoria';
 
