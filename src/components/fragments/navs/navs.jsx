@@ -1,11 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 //import { faCheckSquare, faCoffee } from '@fortawesome/fontawesome-free-solid'
+//La línea sagrada nº4
+import { useState,useEffect } from 'react'
 import Index from '../../pages/index'
 import Peliculas from '../../pages/peliculas'
 import Series from '../../pages/series'
 import Formulario from '../../pages/formulario'
 import itemNavs from './itemNavs'
+import NavsSearch from './navsSearch.jsx';
 
 
 const navs = () => {
@@ -29,7 +32,6 @@ const navs = () => {
     "Action & Adventure":10759,
     "Western":37
   };
-
   const iconos = ["fas fa-bomb", "fas fa-running", "fab fa-d-and-d", "fas fa-grin-squint",
     "fas fa-user-secret","fas fa-theater-masks", "fas fa-dragon", "fas fa-baby",
     "fas fa-dizzy","fas fa-book","fas fa-hand-holding-heart","fas fa-rocket","fas fa-mask", "fas fa-fighter-jet",
@@ -39,6 +41,7 @@ const navs = () => {
   "Crime", "Drama", "Fantasy", "Family", 
   "Horror", "History","Romance","Science Fiction","Thriller", "War",
   "Western"];
+  const [searchValue,setSearchValue]=useState("");
 return (
 <>
   <nav>
@@ -50,19 +53,9 @@ return (
         <li className="menu_options"><Link to='/series'>Series</Link></li>
         <li className="menu_options"><Link to='/formulario'>Contacto</Link></li>
       </ul>
+      <NavsSearch searchValue={searchValue} changeSearchValueFunction={setSearchValue}/>
+      {console.log(searchValue)}
 
-
-      
-
-
-    <ul className="icons-ul">
-      <form className="log" id="myForm" action="./busquedas.html">
-        <input type="search" className="input-search" id="mySearch" placeholder="Search movies" name="search" autoComplete="off" />
-        <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
-        <div id="textoPredict" className="textoPredict"></div>
-      </form>
-      <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
-    </ul>
   </nav>
 
   <div className="menu__side" id="menu_side">
