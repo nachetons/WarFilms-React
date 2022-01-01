@@ -11,10 +11,12 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
 
     useEffect(()=>{
         if(searchValue.length>1){
+            setIsLoading(true);
             fetch(SEARCH_URL_MOVIE+searchValue+'&'+API_KEY)
             .then((res)=>res.json())
             .then(data=>{
                 setMovieList(takeItems(data.results));
+                setIsLoading(false);
             })
         };
     },[searchValue]);
@@ -80,18 +82,19 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         />
 
         <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
-        <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
             {
                 searchValue.length>1?
                 isLoading?
-
-                <ul>Cargando...</ul>:movieList.map(movie=><li className="lista_predict" key={movie.id}>{movie.title}</li>)
-                
+                null
+                :
+                <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
+                  {movieList.map(movie=><li className="lista_predict" key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li>)}
+                </div>          
                 :
 
                 null
             }
-        </div>
+      
         </form>
         <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
     </ul>
