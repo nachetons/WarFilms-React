@@ -1,4 +1,5 @@
 
+
 import logo from '../../images/1.jpg'
 import { API_KEY, URL_BASE, SEARCH_URL_MOVIE, URL_IMG } from '../../diccionario/url.jsx'
 

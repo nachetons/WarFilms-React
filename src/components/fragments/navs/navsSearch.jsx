@@ -1,5 +1,6 @@
 import { useState, useEffect} from "react";
 import {    SEARCH_URL_MOVIE,   API_KEY    } from "../../../diccionario/url";
+import {Link,Redirect} from 'react-router-dom'
 
 
 //Linea sagrada nº4
@@ -11,10 +12,12 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
 
     useEffect(()=>{
         if(searchValue.length>1){
+            setIsLoading(true);
             fetch(SEARCH_URL_MOVIE+searchValue+'&'+API_KEY)
             .then((res)=>res.json())
             .then(data=>{
                 setMovieList(takeItems(data.results));
+                setIsLoading(false);
             })
         };
     },[searchValue]);
@@ -26,6 +29,16 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     }
 
 
+
+
+      function showList(searchValue){
+        window.location.href = "./busquedas.html?search=" + searchValue;
+  
+  
+  
+      console.log(e.target.textContent);
+  
+      };
     function removeDuplicates(array) {
         array.splice(0, array.length, ...(new Set(array)))
       };
@@ -65,7 +78,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
 
     return (
     <ul className="icons-ul">
-        <form className="log" id="myForm">
+        <form className="log" id="myForm" onSubmit={}>
         {/*Al cambiar el "type" a texto se rompe el buscador en dos, hay que arreglar eso posteriormente.*/}
         <input  type="text"
                 className="input-search" 
@@ -80,18 +93,19 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         />
 
         <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
-        <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
             {
                 searchValue.length>1?
                 isLoading?
-
-                <ul>Cargando...</ul>:movieList.map(movie=><li className="lista_predict" key={movie.id}>{movie.title}</li>)
-                
+                null
+                :
+                <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
+                  {movieList.map(movie=><li className="lista_predict" key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li>)}
+                </div>          
                 :
 
                 null
             }
-        </div>
+      
         </form>
         <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
     </ul>

@@ -6,6 +6,7 @@ import Series from './components/pages/series'
 import Formulario from './components/pages/formulario'
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
+import Busqueda from './components/pages/busquedas/busquedas'
 
 import {BrowserRouter, Link, Route, Switch, Router} from 'react-router-dom'
 
@@ -48,6 +49,10 @@ function App() {
         <Pelicula />
       </Route>
 
+      <Route path='/busquedas/:title'>
+        <Busqueda />
+      </Route>
+      
       <Route path='/'>
         <Index />
       </Route>
