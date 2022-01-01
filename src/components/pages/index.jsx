@@ -5,6 +5,8 @@ import '../../styles/navs.css'
 import '../../styles/footer.css'
 import '../../styles/carrusel.css'
 import '../../styles/login.css'
+import '../../styles/busquedas.css';
+
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'

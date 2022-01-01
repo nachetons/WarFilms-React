@@ -61,14 +61,15 @@ ul li {
   }
   
   .input-search {
+    float: left;
     border: 2px solid grey;
     color: white;
     transition: box-shadow linear 1s;
-    padding: 10px;
+    padding: 8px;
+
     font-size: 17px;
     border-right: none;
     float: left;
-    width: 20vw;
     background: transparent;
   }
   .input-search:focus {
@@ -76,14 +77,16 @@ ul li {
     border-color: rgb(255, 51, 0);
     box-shadow: 0 0 10px rgb(255, 51, 0);
   }
-  .icons-ul{
-    margin-left: 200px;
-  }
+  .log{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center; 
+   }
   
   .boton-search {
-    float: left;
+    float: right;
     width: 10rem;
-    padding: 10px;
+    padding: 11px;
     background: transparent;
     color: white;
     font-size: 17px;
@@ -92,12 +95,14 @@ ul li {
     cursor: pointer;
   }
 
+
+
   #textoPredict{
     background-color:white;
     color:black;
     font-size:16px;
     border:1px solid black;
-    width: 481px;
+    width: 18rem;
     /*display:none;*/
     position:absolute;
     top:76%;
@@ -122,6 +127,7 @@ ul li {
     clear: both;
     display: table;
   }
+
   
   /* Menu lateral izquierdo */
   

@@ -6,13 +6,15 @@ import {    SEARCH_URL_MOVIE,   API_KEY    } from "../../../diccionario/url";
 export default function NavSearch({searchValue,changeSearchValueFunction}){
     const [isLoading,setIsLoading]=useState(false);
     const [movieList,setMovieList]=useState([]);
+    const textoPre = document.getElementById('textoPredict');
+    const titulos = [];
 
     useEffect(()=>{
         if(searchValue.length>1){
             fetch(SEARCH_URL_MOVIE+searchValue+'&'+API_KEY)
             .then((res)=>res.json())
             .then(data=>{
-                setMovieList(data.results);
+                setMovieList(takeItems(data.results));
             })
         };
     },[searchValue]);
@@ -20,7 +22,46 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     
     const handleOnChange = (e) => {
         changeSearchValueFunction(e.target.value)
+        
     }
+
+
+    function removeDuplicates(array) {
+        array.splice(0, array.length, ...(new Set(array)))
+      };
+
+
+
+      function takeItems(list){
+        let xs=[];
+
+        if (list.length<10){
+          console.log(xs);
+          return xs;
+          }
+
+
+          
+          
+          else{
+
+            for (let i=0;i<10;i++){
+                
+              xs.push(list[i]);
+
+            }
+            console.log(xs);
+            return xs;
+          }
+        
+    
+      }
+
+      function clearPredict(){
+        textoPre.innerHTML = "";
+        textoPre.style.display = "none";
+  
+      }
 
     return (
     <ul className="icons-ul">
@@ -39,11 +80,12 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         />
 
         <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
-        <div id="textoPredict" className="textoPredict">     
+        <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
             {
                 searchValue.length>1?
                 isLoading?
-                <ul>Cargando...</ul>:movieList.map(movie=><ul key={movie.id}>{movie.original_title}</ul>)
+
+                <ul>Cargando...</ul>:movieList.map(movie=><li className="lista_predict" key={movie.id}>{movie.title}</li>)
                 
                 :
 
