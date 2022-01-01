@@ -76,11 +76,16 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
   
       }
 
+      function enviarDatos(){
+        <Link to={"/busquedas/"+"doraemon"}></Link>
+
+      }
+
     return (
     <ul className="icons-ul">
-        <form className="log" id="myForm" onSubmit={}>
+        <form className="log" id="myForm" >
         {/*Al cambiar el "type" a texto se rompe el buscador en dos, hay que arreglar eso posteriormente.*/}
-        <input  type="text"
+        <Link to={"/busquedas/"+searchValue}><input type="text"
                 className="input-search" 
                 id="mySearch" 
                 placeholder="Search movies" 
@@ -90,9 +95,9 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
                 }}
                 /*name="search"*/ 
                 autoComplete="off"
-        />
+        /></Link>
 
-        <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
+        <Link to={"/busquedas/"+searchValue}><button className="boton-search" type="submit"><i className="fas fa-search"></i></button></Link>
             {
                 searchValue.length>1?
                 isLoading?
