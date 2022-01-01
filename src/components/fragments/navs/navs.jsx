@@ -53,7 +53,9 @@ return (
         <li className="menu_options"><Link to='/series'>Series</Link></li>
         <li className="menu_options"><Link to='/formulario'>Contacto</Link></li>
       </ul>
-      <NavsSearch searchValue={searchValue} changeSearchValueFunction={setSearchValue}/>
+      <NavsSearch 
+      searchValue={searchValue} 
+      changeSearchValueFunction={setSearchValue}/>
       {console.log(searchValue)}
 
   </nav>
