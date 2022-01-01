@@ -12,7 +12,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
             fetch(SEARCH_URL_MOVIE+searchValue+'&'+API_KEY)
             .then((res)=>res.json())
             .then(data=>{
-                console.log(data.results);
+                setMovieList(data.results);
             })
         };
     },[searchValue]);
@@ -41,6 +41,13 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
         <div id="textoPredict" className="textoPredict">     
             {
+                searchValue.length>1?
+                isLoading?
+                <ul>Cargando...</ul>:movieList.map(movie=><ul key={movie.id}>{movie.original_title}</ul>)
+                
+                :
+
+                null
             }
         </div>
         </form>
