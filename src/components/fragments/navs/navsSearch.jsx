@@ -8,6 +8,8 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     const [isLoading,setIsLoading]=useState(false);
     const [movieList,setMovieList]=useState([]);
     const textoPre = document.getElementById('textoPredict');
+    const search = document.getElementById('textoPredict');
+
     const titulos = [];
 
     useEffect(()=>{
@@ -83,9 +85,11 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
 
     return (
     <ul className="icons-ul">
+        <Link to={"/busquedas/"+searchValue}>
+
         <form className="log" id="myForm" >
         {/*Al cambiar el "type" a texto se rompe el buscador en dos, hay que arreglar eso posteriormente.*/}
-        <Link to={"/busquedas/"+searchValue}><input type="text"
+        <input type="text"
                 className="input-search" 
                 id="mySearch" 
                 placeholder="Search movies" 
@@ -95,9 +99,9 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
                 }}
                 /*name="search"*/ 
                 autoComplete="off"
-        /></Link>
+        ></input>
 
-        <Link to={"/busquedas/"+searchValue}><button className="boton-search" type="submit"><i className="fas fa-search"></i></button></Link>
+       <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
             {
                 searchValue.length>1?
                 isLoading?
@@ -112,8 +116,11 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
             }
       
         </form>
+        </Link>
+
         <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
     </ul>
+
 
     );
 };

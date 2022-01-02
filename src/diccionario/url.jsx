@@ -14,15 +14,23 @@ const API_URL_POP = URL_BASE + 'discover/movie?sort_by=popularity.desc&include_a
 const API_URL_RATED = URL_BASE + 'discover/movie?sort_by=vote_average.desc&vote_count.gte=300&page=1&' + API_KEY;
 
 //Metodo para obtener la fecha de 3 meses antes
-let date = new Date();
-let day = `0${date.getDate()}`.slice(-2);
-let month = `0${date.getMonth() - 2}`.slice(-2);
-let year = date.getFullYear();
-const last3months = year + "-" + month + "-" + day;
+
+
+
+
+var d = new Date();
+d.setMonth(d.getMonth() - 3);
+const oldTime=d.toISOString().slice(0, 10);
+
+
+var n = new Date();
+const newTime=n.toISOString().slice(0, 10);
+
+//var dateChanged= lastmonths.replace("/", "-");
 
 
 //Lo mas nuevo en los ultimos 3 meses
-const API_URL_NEW = URL_BASE + 'discover/movie?primary_release_date.gte=' + last3months + '&include_adult=false&include_video=false&page=1&' + API_KEY;
+const API_URL_NEW = URL_BASE + 'discover/movie?primary_release_date.gte=' + oldTime + '&primary_release_date.lte=' + newTime + '&include_video=false&page=1&' + API_KEY;
 
 
 

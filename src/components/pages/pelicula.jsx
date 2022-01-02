@@ -85,7 +85,7 @@ const pelicula = () => {
             `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
+            src="https://www.youtube.com/embed/${trailer.key}" 
             title="YouTube video player" 
             frameborder="0" 
             allow=
@@ -104,7 +104,7 @@ const pelicula = () => {
             `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
+            src="https://www.youtube.com/embed/_s4qXyZOJSQ" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer;
