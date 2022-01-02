@@ -4,8 +4,8 @@ import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 //La línea sagrada nº4
 import { useState,useEffect } from 'react'
 import Index from '../../pages/index'
-import Peliculas from '../../pages/peliculas'
-import Series from '../../pages/series'
+import Peliculas from '../../pages/peliculas/peliculas'
+import Series from '../../pages/series/series'
 import Formulario from '../../pages/formulario'
 import itemNavs from './itemNavs'
 import NavsSearch from './navsSearch.jsx';
@@ -56,7 +56,6 @@ return (
       <NavsSearch 
       searchValue={searchValue} 
       changeSearchValueFunction={setSearchValue}/>
-      {console.log(searchValue)}
 
   </nav>
 

@@ -1,7 +1,7 @@
 
 
 import logo from '../../images/1.jpg'
-import { API_KEY, URL_BASE, SEARCH_URL_MOVIE, URL_IMG } from '../../diccionario/url.jsx'
+import { API_KEY, URL_BASE, SEARCH_URL_TV, URL_IMG } from '../../diccionario/url.jsx'
 
 
 import '../../styles/main.css'
@@ -23,11 +23,11 @@ import Footer from '../fragments/footer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const pelicula = () => {
+const serie = () => {
     const { title, id } = useParams();
 
-    const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + "&" + API_KEY;
-    const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
+    const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
+    const URL_TRAILER = URL_BASE + 'tv/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
     const trailers = document.getElementById("mytrailer")
 
     //LLAMADA A LA PELICULA
@@ -44,10 +44,8 @@ const pelicula = () => {
 
         setIsloading(true);
         getMoviesFromAPIBy(URL_BUSQUEDA).then(result => {
-
+            console.log(URL_BUSQUEDA);
             xs.push(result[0]);
-
-
             setMostPopularMovieList(xs);
             setIsloading(false);
         });
@@ -67,7 +65,7 @@ const pelicula = () => {
     function getTrailerMovieList() {
         setIsloading2(true);
         getTrailersFromAPIBy(URL_TRAILER).then(result => {
-
+            console.log(URL_TRAILER);
             settrailerMovieList(result);
             setIsloading2(false);
 
@@ -177,7 +175,7 @@ const pelicula = () => {
                         <div className="contenedor-pelicula">
                             <img id="foto" src={URL_IMG + movie.poster_path} style={{ width: '35%' }} />
                             <div className="content_film" id={movie.id}>
-                                <h3 className="titulo">{movie.original_title}</h3>
+                                <h3 className="titulo">{movie.name}</h3>
                                 <p className="descripcion">{movie.overview}</p>
                                 <div className="youtube-wrapper">
                                     <div className="trailer">
@@ -220,4 +218,4 @@ const pelicula = () => {
 }
 
 
-export default pelicula
+export default serie

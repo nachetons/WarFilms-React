@@ -1,6 +1,6 @@
 
 import logo from '../../../images/1.jpg'
-import {API_URL_CATEGORY,arrayMovies} from '../../../diccionario/url.jsx'
+import {API_URL_CATEGORY,arrayMovies,API_URL_POP} from '../../../diccionario/url.jsx'
 import '../../../styles/main.css'
 import '../../../styles/navs.css'
 import '../../../styles/footer.css'
@@ -15,7 +15,7 @@ import '../../../styles/mediaquerys.css'
 import Login from '../../fragments/login'
 import Navs from '../../fragments/navs/navs'
 import Footer from '../../fragments/footer';
-import ItemCategoria from './itemCategoria';
+import ItemPelicula from './itemPeliculas';
 
 
 
@@ -24,7 +24,7 @@ import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 
 
-const categorias = () => {
+const peliculas = () => {
  const {categoria} = useParams();
  const [movieList,setMovieList]=useState([]);
  const [isLoading,setIsloading]=useState(false);
@@ -42,7 +42,7 @@ const categorias = () => {
     const xs = [];
 
     setIsloading(true);
-    getMoviesFromAPIBy(URL_CATEGORY).then(result=>{
+    getMoviesFromAPIBy(API_URL_POP).then(result=>{
       if(result.length<19){
         result.map(item=>{
           xs.push(item);
@@ -76,7 +76,7 @@ const categorias = () => {
 
     <div className="row" id="contenedor_main">
 
-      <h3 id="titulos" className="titulo">{categoria}</h3>
+      <h3 id="titulos" className="titulo">Peliculas</h3>
 
       <div className="peliculas" id="list_pelis">
 
@@ -86,7 +86,7 @@ const categorias = () => {
 
     movieList.map(movie=>
       
-      <Link key={movie.id} to={'/pelicula/'+movie.original_title+'/'+movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie}/></div></Link>
+      <Link key={movie.id} to={'/pelicula/'+movie.original_title+'/'+movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie}/></div></Link>
         )
       
       }
@@ -107,6 +107,6 @@ const categorias = () => {
 }
 
 
-export default categorias;
+export default peliculas;
 
    

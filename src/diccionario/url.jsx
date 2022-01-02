@@ -13,11 +13,12 @@ const API_URL_POP = URL_BASE + 'discover/movie?sort_by=popularity.desc&include_a
 //Las mas votadas con mas de 300 votos
 const API_URL_RATED = URL_BASE + 'discover/movie?sort_by=vote_average.desc&vote_count.gte=300&page=1&' + API_KEY;
 
+//Series mas populares
+const API_URL_TV_POP = URL_BASE+ 'tv/popular?'+API_KEY+'&page=1';
+
+
+
 //Metodo para obtener la fecha de 3 meses antes
-
-
-
-
 var d = new Date();
 d.setMonth(d.getMonth() - 3);
 const oldTime=d.toISOString().slice(0, 10);
@@ -31,7 +32,6 @@ const newTime=n.toISOString().slice(0, 10);
 
 //Lo mas nuevo en los ultimos 3 meses
 const API_URL_NEW = URL_BASE + 'discover/movie?primary_release_date.gte=' + oldTime + '&primary_release_date.lte=' + newTime + '&include_video=false&page=1&' + API_KEY;
-
 
 
 
@@ -75,4 +75,4 @@ const arrayMovies = {
     "Science Fiction": 878
   };
 
-  export {API_KEY,URL_BASE,API_URL_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};
+  export {API_KEY,URL_BASE,API_URL_POP,API_URL_TV_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};

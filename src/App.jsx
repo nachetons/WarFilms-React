@@ -1,11 +1,13 @@
 import { useState } from 'react'
 //import logo from './logo.svg'
 import Index from './components/pages/index'
-import Peliculas from './components/pages/peliculas'
-import Series from './components/pages/series'
+import Peliculas from './components/pages/peliculas/peliculas'
+import Series from './components/pages/series/series'
 import Formulario from './components/pages/formulario'
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
+import Serie from './components/pages/serie'
+
 import Busqueda from './components/pages/busquedas/busquedas'
 
 import {BrowserRouter, Link, Route, Switch, Router} from 'react-router-dom'
@@ -47,6 +49,10 @@ function App() {
 
       <Route path='/pelicula/:title/:id'>
         <Pelicula />
+      </Route>
+
+      <Route path='/serie/:title/:id'>
+        <Serie />
       </Route>
 
       <Route path='/busquedas/:title'>
