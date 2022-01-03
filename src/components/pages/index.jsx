@@ -22,7 +22,6 @@ const IndexPage = () =>{
     
     
     <Navs />
-    <Login />
     
     
     <div className="container">

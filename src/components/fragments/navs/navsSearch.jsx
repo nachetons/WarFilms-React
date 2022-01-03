@@ -1,12 +1,15 @@
 import { useState, useEffect} from "react";
 import {    SEARCH_URL_MOVIE,   API_KEY    } from "../../../diccionario/url";
 import {Link,Redirect, useHistory} from 'react-router-dom'
+import Login from '../login'
 
 
 //Linea sagrada nº4
 export default function NavSearch({searchValue,changeSearchValueFunction}){
     const [isLoading,setIsLoading]=useState(false);
     const [movieList,setMovieList]=useState([]);
+    const [login,setLogin]=useState(false);
+
     const textoPre = document.getElementById('textoPredict');
     const search = document.getElementById('textoPredict');
     let history = useHistory();
@@ -35,11 +38,6 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     }
 
 
-    function removeDuplicates(array) {
-        array.splice(0, array.length, ...(new Set(array)))
-      };
-
-
 
       function takeItems(list){
         let xs=[];
@@ -66,11 +64,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     
       }
 
-      function clearPredict(){
-        textoPre.innerHTML = "";
-        textoPre.style.display = "none";
-  
-      }
+   
 
 
     return (
@@ -106,7 +100,16 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
       
         </form>
 
-        <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
+
+        <li><i style={{width:"auto"}} className="fas fa-user" onClick={()=>setLogin(lastState=>!lastState)}id="btn_login_nav" title="Portafolio"/></li>
+
+            {login?
+            <Login setLogin={setLogin} login={login}/>
+          :
+          null
+          
+          
+          }
     </ul>
 
 

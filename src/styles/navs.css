@@ -14,7 +14,9 @@ nav {
   top: 0;
   z-index: 2;
 }
-
+#id01{
+display:unset;
+}
 nav ul {
   display: flex;
   align-items: center;
@@ -97,6 +99,7 @@ nav ul .logo {
 
 
 
+
 #textoPredict{
   background-color:white;
   color:black;
@@ -145,6 +148,7 @@ nav ul .logo {
   cursor: pointer;
   position: absolute;
 }
+
 
 .menu__side {
   width: 5%;

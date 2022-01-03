@@ -7,6 +7,8 @@ import Formulario from './components/pages/formulario'
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
 import Serie from './components/pages/serie'
+import Login from './components/fragments/login'
+
 
 import Busqueda from './components/pages/busquedas/busquedas'
 
@@ -38,6 +40,12 @@ function App() {
       <Route path='/series'>
         <Series />
       </Route>
+
+
+      <Route path='/login'>
+        <Login />
+      </Route>
+
 
       <Route path='/formulario'>
         <Formulario />

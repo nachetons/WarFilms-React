@@ -1,7 +1,10 @@
-export default function login() {
+
+
+export default function login({setLogin}) {
   return (
     <>
-      <div className="all-modal">
+      <div className="background_login" onClick={()=>setLogin((lastState)=>!lastState)}></div>
+      <div className="all-modal" >
         <div id="id01" className="modal login">
           <form className="modal-content" id="form_content" action="#">
             <div className="imgcontainer">
