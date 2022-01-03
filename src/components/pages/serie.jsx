@@ -134,7 +134,7 @@ const serie = () => {
         getMostPopularMovieList();
         getTrailerMovieList();
 
-    }, []);
+    }, [title, id]);
 
 
 

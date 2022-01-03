@@ -136,7 +136,7 @@ const pelicula = () => {
         getMostPopularMovieList();
         getTrailerMovieList();
 
-    }, []);
+    }, [title, id]);
 
 
 

@@ -97,7 +97,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
                 null
                 :
                 <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
-                  {movieList.map(movie=><li className="lista_predict" key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li>)}
+                  {movieList.map(movie=><Link key={movie.id} to={"/pelicula/" + movie.title +"/"+ movie.id}><li className="lista_predict" key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li></Link>)}
                 </div>          
                 :
 

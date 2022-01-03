@@ -26,12 +26,12 @@ import {Link} from 'react-router-dom'
 
 const peliculas = () => {
  const {categoria} = useParams();
+
  const [movieList,setMovieList]=useState([]);
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
 
 
- const URL_CATEGORY = API_URL_CATEGORY+arrayMovies[categoria];
   
   const getMoviesFromAPIBy=(toFetch)=>
     fetch(toFetch)
