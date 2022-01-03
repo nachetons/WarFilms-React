@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react";
 import {    SEARCH_URL_MOVIE,   API_KEY    } from "../../../diccionario/url";
-import {Link,Redirect} from 'react-router-dom'
+import {Link,Redirect, useHistory} from 'react-router-dom'
 
 
 //Linea sagrada nº4
@@ -9,6 +9,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
     const [movieList,setMovieList]=useState([]);
     const textoPre = document.getElementById('textoPredict');
     const search = document.getElementById('textoPredict');
+    let history = useHistory();
 
     const titulos = [];
 
@@ -29,18 +30,11 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         changeSearchValueFunction(e.target.value)
         
     }
+    function handleClick() {
+      history.push("/busquedas/" + searchValue);
+    }
 
 
-
-
-      function showList(searchValue){
-        window.location.href = "./busquedas.html?search=" + searchValue;
-  
-  
-  
-      console.log(e.target.textContent);
-  
-      };
     function removeDuplicates(array) {
         array.splice(0, array.length, ...(new Set(array)))
       };
@@ -78,16 +72,11 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
   
       }
 
-      function enviarDatos(){
-        <Link to={"/busquedas/"+"doraemon"}></Link>
-
-      }
 
     return (
     <ul className="icons-ul">
-        <Link to={"/busquedas/"+searchValue}>
 
-        <form className="log" id="myForm" >
+        <form className="log" id="myForm" onSubmit={handleClick}>
         {/*Al cambiar el "type" a texto se rompe el buscador en dos, hay que arreglar eso posteriormente.*/}
         <input type="text"
                 className="input-search" 
@@ -116,7 +105,6 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
             }
       
         </form>
-        </Link>
 
         <li><a href="#"><i style={{width:"auto"}} className="fas fa-user" id="btn_login_nav" title="Portafolio"/></a></li>
     </ul>
