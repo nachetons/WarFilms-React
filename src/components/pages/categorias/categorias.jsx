@@ -21,15 +21,18 @@ import ItemCategoria from './itemCategoria';
 
 import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 
-const categorias = () => {
+const categorias = ({setIsAuth, isAuth}) => {
  const {categoria} = useParams();
  const [movieList,setMovieList]=useState([]);
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
 
+if(isAuth) {
+setIsAuth(localStorage.getItem('isAuth'));
+}
 
  const URL_CATEGORY = API_URL_CATEGORY+arrayMovies[categoria];
   
@@ -70,8 +73,7 @@ const categorias = () => {
     <>
     
 
-    <Navs />
-    <Login />
+    <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
 
     <div className="row" id="contenedor_main">

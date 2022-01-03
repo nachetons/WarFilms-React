@@ -11,7 +11,11 @@ import itemNavs from './itemNavs'
 import NavsSearch from './navsSearch.jsx';
 
 
-const navs = () => {
+const navs = ({setIsAuth,isAuth}) => {
+
+
+
+
   const arrayMovies = {
     "Action":28,
     "Adventure":12,
@@ -55,7 +59,9 @@ return (
       </ul>
       <NavsSearch 
       searchValue={searchValue} 
-      changeSearchValueFunction={setSearchValue}/>
+      changeSearchValueFunction={setSearchValue}
+      setIsAuth={setIsAuth}
+      isAuth={isAuth}/>
 
   </nav>
 

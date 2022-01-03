@@ -15,13 +15,17 @@ import Navs from '../fragments/navs/navs.jsx'
 import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
 
-const IndexPage = () =>{
- 
+import { useState } from 'react'
+
+const IndexPage = ({setIsAuth, isAuth}) =>{
+  if(isAuth) {
+    setIsAuth(localStorage.getItem('isAuth'));
+    }
   return (
     <>
     
     
-    <Navs />
+    <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
     
     <div className="container">

@@ -24,13 +24,15 @@ import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 
 
-const series = () => {
+const series = ({setIsAuth, isAuth}) => {
  const {categoria} = useParams();
  const [movieList,setMovieList]=useState([]);
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
 
-
+ if(isAuth) {
+  setIsAuth(localStorage.getItem('isAuth'));
+  }
   
   const getMoviesFromAPIBy=(toFetch)=>
     fetch(toFetch)
@@ -71,7 +73,6 @@ const series = () => {
     
 
     <Navs />
-    <Login />
     
 
     <div className="row" id="contenedor_main">

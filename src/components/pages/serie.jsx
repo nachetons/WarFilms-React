@@ -23,7 +23,7 @@ import Footer from '../fragments/footer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const serie = () => {
+const serie = ({setIsAuth, isAuth}) => {
     const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
@@ -136,14 +136,15 @@ const serie = () => {
 
     }, [title, id]);
 
-
+    if(isAuth) {
+        setIsAuth(localStorage.getItem('isAuth'));
+        }
 
     return (
 
         <>
 
-            <Navs />
-            <Login />
+            <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
 
             
             {isLoading ?

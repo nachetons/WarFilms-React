@@ -1,10 +1,35 @@
 
+import {auth, provider} from '../../../config'
+import { signInWithPopup} from 'firebase/auth'
 
-export default function login({setLogin}) {
+export default function login({setLogin,login, setIsAuth, isAuth}) {
+
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then(result => {
+    localStorage.setItem("isAuth", true)
+    setIsAuth(true)
+    
+    
+    })
+  }
+
+
+
+
   return (
     <>
-      <div className="background_login" onClick={()=>setLogin((lastState)=>!lastState)}></div>
+
+      
+      <div className="background_login" onClick={()=>setLogin(false)}></div>
+      {console.log("autentificacion: "+isAuth)}
+
+      {isAuth}?
+      <p>Auth ok</p>
+      :
       <div className="all-modal" >
+     
+     
         <div id="id01" className="modal login">
           <form className="modal-content" id="form_content" action="#">
             <div className="imgcontainer">
@@ -45,6 +70,7 @@ export default function login({setLogin}) {
 
             <div className="container"></div>
           </form>
+          <button className="login-with-google-btn" onClick={signInWithGoogle}>Sign in with Google</button>
         </div>
 
         <div id="id02" className="modal registro">

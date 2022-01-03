@@ -15,13 +15,14 @@ import Login from '../fragments/login'
 import Navs from '../fragments/navs/navs'
 import Footer from '../fragments/footer';
 
-const formulario = () =>{
- 
+const formulario = ({setIsAuth, isAuth}) =>{
+    if(isAuth) {
+        setIsAuth(localStorage.getItem('isAuth'));
+        }
   return (
     <>
     
-    <Navs />
-    <Login />
+    <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
     
     <div className="container" id="cajaPrincipal">

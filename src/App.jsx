@@ -19,6 +19,8 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isAuth, setIsAuth] = useState(false)
+
 
   return (
     <>
@@ -34,41 +36,41 @@ function App() {
     <Switch>
 
     <Route path='/peliculas'>
-        <Peliculas />
+        <Peliculas setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/series'>
-        <Series />
+        <Series setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
 
       <Route path='/login'>
-        <Login />
+        <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
 
       <Route path='/formulario'>
-        <Formulario />
+        <Formulario setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/categorias/:categoria'>
-        <Categorias />
+        <Categorias setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/pelicula/:title/:id'>
-        <Pelicula />
+        <Pelicula setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/serie/:title/:id'>
-        <Serie />
+        <Serie setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/busquedas/:title'>
-        <Busqueda />
+        <Busqueda setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
       
       <Route path='/'>
-        <Index />
+        <Index setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       

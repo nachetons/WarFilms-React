@@ -5,7 +5,7 @@ import Login from '../login'
 
 
 //Linea sagrada nº4
-export default function NavSearch({searchValue,changeSearchValueFunction}){
+export default function NavSearch({searchValue,changeSearchValueFunction, setIsAuth,isAuth}){
     const [isLoading,setIsLoading]=useState(false);
     const [movieList,setMovieList]=useState([]);
     const [login,setLogin]=useState(false);
@@ -26,7 +26,15 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
                 setIsLoading(false);
             })
         };
+
+
+
+        /*if (!isAuth){
+            history.push('/peliculas');
+        }*/
     },[searchValue]);
+
+
 
     
     const handleOnChange = (e) => {
@@ -104,7 +112,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction}){
         <li><i style={{width:"auto"}} className="fas fa-user" onClick={()=>setLogin(lastState=>!lastState)}id="btn_login_nav" title="Portafolio"/></li>
 
             {login?
-            <Login setLogin={setLogin} login={login}/>
+            <Login setLogin={setLogin} login={login} setIsAuth={setIsAuth} isAuth={isAuth}/>
           :
           null
           

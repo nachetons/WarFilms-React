@@ -23,13 +23,15 @@ import Footer from '../fragments/footer';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-const pelicula = () => {
+const pelicula = ({setIsAuth, isAuth}) => {
     const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + "&" + API_KEY;
     const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
     const trailers = document.getElementById("mytrailer")
-
+    if(isAuth) {
+        setIsAuth(localStorage.getItem('isAuth'));
+        }
     //LLAMADA A LA PELICULA
     const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
     const [isLoading, setIsloading] = useState(false);
@@ -144,8 +146,7 @@ const pelicula = () => {
 
         <>
 
-            <Navs />
-            <Login />
+            <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
 
             
             {isLoading ?

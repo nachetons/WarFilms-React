@@ -13,12 +13,13 @@ import { useParams } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 
-const busquedas = () => {
+const busquedas = ({setIsAuth, isAuth}) => {
     const {title} = useParams();
     const [movieList,setMovieList]=useState([]);
     const [isLoading,setIsloading]=useState(false);
     const URL_SEARCH = SEARCH_URL_MOVIE + title + "&" + API_KEY
-   
+    setIsAuth(localStorage.getItem('isAuth'));
+
      
      const getMoviesFromAPIBy=(toFetch)=>
        fetch(toFetch)
@@ -51,7 +52,7 @@ const busquedas = () => {
 return (
 <>
 
-<Navs />
+<Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
 <Login />
 
 <div className="container2">
