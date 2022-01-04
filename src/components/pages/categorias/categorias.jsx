@@ -30,9 +30,7 @@ const categorias = ({setIsAuth, isAuth}) => {
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
 
-if(isAuth) {
-setIsAuth(localStorage.getItem('isAuth'));
-}
+
 
  const URL_CATEGORY = API_URL_CATEGORY+arrayMovies[categoria];
   

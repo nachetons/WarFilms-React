@@ -136,9 +136,7 @@ const serie = ({setIsAuth, isAuth}) => {
 
     }, [title, id]);
 
-    if(isAuth) {
-        setIsAuth(localStorage.getItem('isAuth'));
-        }
+    
 
     return (
 

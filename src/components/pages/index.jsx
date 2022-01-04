@@ -18,9 +18,7 @@ import Footer from '../fragments/footer';
 import { useState } from 'react'
 
 const IndexPage = ({setIsAuth, isAuth}) =>{
-  if(isAuth) {
-    setIsAuth(localStorage.getItem('isAuth'));
-    }
+  
   return (
     <>
     

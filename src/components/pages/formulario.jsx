@@ -16,9 +16,7 @@ import Navs from '../fragments/navs/navs'
 import Footer from '../fragments/footer';
 
 const formulario = ({setIsAuth, isAuth}) =>{
-    if(isAuth) {
-        setIsAuth(localStorage.getItem('isAuth'));
-        }
+ 
   return (
     <>
     

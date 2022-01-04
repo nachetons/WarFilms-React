@@ -18,7 +18,6 @@ const busquedas = ({setIsAuth, isAuth}) => {
     const [movieList,setMovieList]=useState([]);
     const [isLoading,setIsloading]=useState(false);
     const URL_SEARCH = SEARCH_URL_MOVIE + title + "&" + API_KEY
-    setIsAuth(localStorage.getItem('isAuth'));
 
      
      const getMoviesFromAPIBy=(toFetch)=>

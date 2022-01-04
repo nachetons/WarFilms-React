@@ -30,9 +30,7 @@ const series = ({setIsAuth, isAuth}) => {
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
 
- if(isAuth) {
-  setIsAuth(localStorage.getItem('isAuth'));
-  }
+ 
   
   const getMoviesFromAPIBy=(toFetch)=>
     fetch(toFetch)

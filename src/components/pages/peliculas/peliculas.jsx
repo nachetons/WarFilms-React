@@ -30,9 +30,7 @@ const peliculas = ({setIsAuth, isAuth}) => {
  const [movieList,setMovieList]=useState([]);
  const [isLoading,setIsloading]=useState(false);
  const [categorias,setCategoria]=useState([categoria]);
- if(isAuth) {
-  setIsAuth(localStorage.getItem('isAuth'));
-  }
+
 
   
   const getMoviesFromAPIBy=(toFetch)=>
