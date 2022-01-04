@@ -52,7 +52,6 @@ return (
 <>
 
 <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
-<Login />
 
 <div className="container2">
       <div className="row" id="listas_pelis">
