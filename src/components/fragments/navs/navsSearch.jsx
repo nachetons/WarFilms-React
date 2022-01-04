@@ -109,7 +109,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
         </form>
 
 
-        <li><i style={{width:"auto"}} className="fas fa-user" onClick={()=>setLogin(lastState=>!lastState)}id="btn_login_nav" title="Portafolio"/></li>
+        <li><i style={{width:"auto"}} className="fas fa-user logo_inicio" onClick={()=>setLogin(lastState=>!lastState)}id="btn_login_nav" title="Portafolio"/></li>
 
             {login?
             <Login setLogin={setLogin} login={login} setIsAuth={setIsAuth} isAuth={isAuth}/>

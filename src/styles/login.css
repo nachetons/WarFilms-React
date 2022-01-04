@@ -1,35 +1,46 @@
 /*assign full width inputs*/
 
 .input-form {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+  border:none;
+  background: none;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+
 }
+.input-form:focus {
+  width: 280px;
+  border-color: #b63f3b;
+}
+
 
 /*set a style for the buttons*/
 .boton-form {
-  background-color: red;
+  border:none;
+  background: none;
+  font-size:60%;
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #b63f3b;
+  padding: 14px 40px;
+  outline: none;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+  border-radius: 24px;
+  transition: 0.25s;
 }
 
 /* set a hover effect for the button*/
 .boton-form:hover {
+  background: #b63f3b;
   opacity: 0.8;
-}
-
-/*set extra style for the cancel button*/
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
 }
 
 /*centre the display image inside the container*/
@@ -51,16 +62,32 @@ img.avatar {
   padding: 16px;
 }
 
-/*set the forgot password text*/
+.choose_lenguage{
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+.choose_lenguage:hover{
+  background-color: #b63f3b;
+}
+select{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: none;
+  
 
+}
 /*set the Modal background*/
 .modal {
+  
   display: none;
   position: absolute;
   z-index: 1;
-  left: 28%;
-  top: 180%;
+  top: 500%;
+  left: 50%;
+  width: 20%;
+  transform: translate(-50%, -50%);
   overflow: auto;
+  text-align: center;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.8);
   overflow: hidden;
@@ -83,6 +110,27 @@ img.avatar {
 .modal-content {
   
   text-decoration: none;
+}
+
+.boton_sesion_google{
+  text-decoration: none;
+  border: 2px solid white;
+  cursor: pointer;
+  height: 100%;
+  width: 3.7rem;
+  background-color: #b63f3b;
+  border-radius: 50%;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.boton_sesion_google .fab{
+font-size: 2.5rem;
+color: #fff;
+padding: 0.5rem;
+
+/*space bottom*/
+
 }
 
 /*style the close button*/
@@ -119,8 +167,11 @@ img.avatar {
   display: none;
   position: absolute;
   z-index: 1;
-  left: 28%;
-  top: 180%;
+  top: 500%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  text-align: center;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -136,7 +187,6 @@ img.avatar {
 .btn{
   cursor: pointer;
   border-radius: 20%;
-  border: 1px solid;
   padding: 10px;
   font-weight: bold;
 

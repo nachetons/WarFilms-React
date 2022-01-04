@@ -7,6 +7,7 @@ nav {
   color: white;
   display: flex;
   align-items: center;
+  text-align: center;
   justify-content: space-between;
   height: 9vh;
   width: 100%;
@@ -24,15 +25,22 @@ nav ul {
   font-size: 22px;
 }
 nav ul li {
-  margin: 30px;
+  margin: 3rem;
 }
 .menu_options {
   display: unset;
+  height: 4rem;
+  padding-top: 1rem;
+
+
 }
 nav ul li a {
   color: white;
   text-decoration: none;
+  
+  
 }
+
 
 nav ul .logo {
   background: url("../images/static/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg")
@@ -41,12 +49,13 @@ nav ul .logo {
   cursor: pointer;
   width: 195px;
   display: unset;
+  margin-left: 2rem;
+
 }
 
 
-.menu_options:hover {
-  background-color: #d62929;
-  color: white;
+nav ul li a:hover {
+  color: #d62929;
 }
 
 .toggle {
@@ -132,6 +141,10 @@ nav ul .logo {
 }
 
 
+.logo_inicio{
+  cursor:pointer;
+}
+
 /* Menu lateral izquierdo */
 
 .icon__menu {
@@ -197,6 +210,7 @@ nav ul .logo {
 
 .options__menu a:hover {
   color: red;
+  cursor: pointer;
 }
 
 .options__menu .option {

@@ -4,6 +4,7 @@
       width: 25%;
       height: 25%;
     }
+   
   
     .menu__side a {
       font-size: 140%;
@@ -95,9 +96,7 @@
       margin-left: 0%;
     }
     
-    .toggle {
-      display: block;
-    }
+    
     #contenedor{
       margin-top: 17%;
       height: 40vh;
@@ -176,11 +175,26 @@
       transform: translate(-50%, -50%);
       
     }
+
+    .peliculas{
+      grid-template-columns: repeat(3, 1fr);
+      margin-right: 5%;
+    }
+    .titulo{
+    margin-right: 5%;
+    }
+
+
+    .toggle {
+      display: block;
+    }
   }
   @media (max-width: 1100px) {
     nav ul .logo {
       display: none;
     }
+
+    
     .modal-content {
       width: 60%;
       margin-top: 20%;
@@ -258,7 +272,6 @@
     .text_title {
       position: absolute;
       top: 20%;
-      
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
       left: 65%;
       font-size: 30px;
@@ -276,13 +289,14 @@
     
     
     }
-    .titulo{
-      position: absolute;
-      right: 0;
-      padding-right: 20%;
-
-    
+    .peliculas{
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 15%;
     }
+    .titulo{
+      display:none;
+    }
+    
     .descripcion{
 
       position: absolute;

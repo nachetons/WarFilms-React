@@ -46,16 +46,19 @@ const navs = ({setIsAuth,isAuth}) => {
   "Horror", "History","Romance","Science Fiction","Thriller", "War",
   "Western"];
   const [searchValue,setSearchValue]=useState("");
+
+  if(isAuth===true){
 return (
 <>
   <nav>
       <ul className="logo-ul">
         <li className="toggle" id="btn_movil"><i className="fas fa-bars"></i></li>
         <Link to='/' className="logo"></Link>
-        <li className="menu_options categorias">Categorias</li>
         <li className="menu_options"><Link to='/peliculas'>Peliculas</Link></li>
         <li className="menu_options"><Link to='/series'>Series</Link></li>
         <li className="menu_options"><Link to='/formulario'>Contacto</Link></li>
+        <li className="menu_options"><Link to='/opciones'>Opciones</Link></li>
+        
       </ul>
       <NavsSearch 
       searchValue={searchValue} 
@@ -66,14 +69,9 @@ return (
   </nav>
 
   <div className="menu__side" id="menu_side">
-
-  
-
       <div className="options__menu">
 
-
       {category_name.map((categoria, index) => {
-                 
         return(
 
           //PREGUNTAR POR PASAR COMPONENTES A OTROS COMPONENTES
@@ -95,6 +93,53 @@ return (
 
 </>
 );
+    
+    }else{
+      return (
+        <>
+          <nav>
+              <ul className="logo-ul">
+                <li className="toggle" id="btn_movil"><i className="fas fa-bars"></i></li>
+                <Link to='/' className="logo"></Link>
+                <li className="menu_options"><Link to='/peliculas'>Peliculas</Link></li>
+                <li className="menu_options"><Link to='/series'>Series</Link></li>
+                <li className="menu_options"><Link to='/formulario'>Contacto</Link></li>
+                
+              </ul>
+              <NavsSearch 
+              searchValue={searchValue} 
+              changeSearchValueFunction={setSearchValue}
+              setIsAuth={setIsAuth}
+              isAuth={isAuth}/>
+        
+          </nav>
+        
+          <div className="menu__side" id="menu_side">
+              <div className="options__menu">
+        
+              {category_name.map((categoria, index) => {
+                return(
+        
+                  //PREGUNTAR POR PASAR COMPONENTES A OTROS COMPONENTES
+        <Link key={index} to={"/categorias/"+categoria}>
+                    <div className="option">
+                        <i className={iconos[index]+" fa-2x"} title={categoria}></i>
+                        <h4 className="text_category">{categoria}</h4>
+                    </div>
+                </Link>)
+              })}
+        
+        
+              </div>
+        
+        
+        
+        
+          </div>
+        
+        </>
+        );
+}
 }
 export default navs;
 

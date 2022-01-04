@@ -41,7 +41,6 @@ export default function carruseles(){
     getMoviesFromAPIBy(API_URL_NEW).then(result=>{
       setMostNewMovieList(takeItems(result));
       setIsloading(false);
-      console.log(API_URL_NEW);
     })
   }
 
@@ -58,7 +57,6 @@ export default function carruseles(){
           xs.push(list[i]);
           
         }
-        console.log(xs);
         return xs;
       }
     

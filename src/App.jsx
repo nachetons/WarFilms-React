@@ -4,10 +4,13 @@ import Index from './components/pages/index'
 import Peliculas from './components/pages/peliculas/peliculas'
 import Series from './components/pages/series/series'
 import Formulario from './components/pages/formulario'
+import Opciones from './components/pages/opciones'
+
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
 import Serie from './components/pages/serie'
 import Login from './components/fragments/login'
+
 
 
 import Busqueda from './components/pages/busquedas/busquedas'
@@ -43,15 +46,21 @@ function App() {
         <Series setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
+      <Route path='/formulario'>
+        <Formulario setIsAuth={setIsAuth} isAuth={isAuth}/>
+      </Route>
+
+      <Route path='/opciones'>
+        <Opciones setIsAuth={setIsAuth} isAuth={isAuth}/>
+      </Route>
 
       <Route path='/login'>
         <Login setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
+      
 
-      <Route path='/formulario'>
-        <Formulario setIsAuth={setIsAuth} isAuth={isAuth}/>
-      </Route>
+      
 
       <Route path='/categorias/:categoria'>
         <Categorias setIsAuth={setIsAuth} isAuth={isAuth}/>

@@ -70,7 +70,7 @@ const series = ({setIsAuth, isAuth}) => {
     <>
     
 
-    <Navs />
+    <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
 
     <div className="row" id="contenedor_main">
