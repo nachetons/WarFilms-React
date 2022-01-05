@@ -14,14 +14,16 @@ import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
 
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
 
-const opciones = ({setIsAuth, isAuth}) =>{
-    const redirectPage=useHistory();
+
+const marcadores = ({setIsAuth, isAuth}) =>{
+  const redirectPage=useHistory();
   if(isAuth===false){
-    redirectPage.push('/');
-    
-    }
+  redirectPage.push('/');
+  
+  }
+
   return (
     <>
     
@@ -37,24 +39,17 @@ const opciones = ({setIsAuth, isAuth}) =>{
               </div>
 
               <div className="container">
-              <label for="uname"><b>Cambiar nombre de usuario:</b></label>
-                <input
-                  className="input-form-preferences"
-                  type="text"
-                  placeholder="Enter Username"
-                  name="uname"
-                />
+              <label for="uname"><b>Peliculas favoritas: </b></label>
+                <ul>
+                  <li>Pelicula1</li>
+                  <li>Pelicula2</li>
+                  <li>Pelicula3</li>
+                  <li>Pelicula4</li>
+                  <li>Pelicula5</li>
+                </ul>
                 <br/>
-                <label>
-                  <b>Idioma de preferencia: </b>
-                </label>
-                <select  name="language-picker-select" defaultValue={'spanish'} id="language-picker-select" className="select-form-preferences">
-                  <option  lang="es" value="spanish">Spanish</option>
-                  <option  lang="de" value="deutsch">Deutsch</option>
-                  <option  lang="en" value="english">English</option>
-                  <option  lang="fr" value="francais">Français</option>
-                  <option  lang="it" value="italiano">Italiano</option>
-                </select>
+                
+
                 <button className="boton-form" type="submit">
                   Guardar cambios
                 </button>
@@ -79,7 +74,7 @@ const opciones = ({setIsAuth, isAuth}) =>{
 
 }
 
-export default opciones;
+export default marcadores;
 
 
    

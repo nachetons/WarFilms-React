@@ -57,6 +57,7 @@ return (
         <li className="menu_options"><Link to='/peliculas'>Peliculas</Link></li>
         <li className="menu_options"><Link to='/series'>Series</Link></li>
         <li className="menu_options"><Link to='/formulario'>Contacto</Link></li>
+        <li className="menu_options"><Link to='/marcadores'>Marcadores</Link></li>
         <li className="menu_options"><Link to='/opciones'>Opciones</Link></li>
         
       </ul>

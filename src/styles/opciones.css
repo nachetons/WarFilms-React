@@ -1,3 +1,19 @@
-body{
-  margin-left: 5%;
+.container {
+margin-left: 5%;
+
+
+}
+.select-form-preferences{
+/*display select*/
+
+  display:block;
+  margin: 20px auto;
+  text-align: center;
+  padding: 14px 10px;
+  width: 100%;
+  outline: none;
+  color: black;
+  transition: 0.25s;
+
+
 }

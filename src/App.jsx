@@ -4,7 +4,9 @@ import Index from './components/pages/index'
 import Peliculas from './components/pages/peliculas/peliculas'
 import Series from './components/pages/series/series'
 import Formulario from './components/pages/formulario'
+import Marcadores from './components/pages/marcadores'
 import Opciones from './components/pages/opciones'
+
 
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
@@ -48,6 +50,10 @@ function App() {
 
       <Route path='/formulario'>
         <Formulario setIsAuth={setIsAuth} isAuth={isAuth}/>
+      </Route>
+
+      <Route path='/marcadores'>
+        <Marcadores setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
 
       <Route path='/opciones'>
