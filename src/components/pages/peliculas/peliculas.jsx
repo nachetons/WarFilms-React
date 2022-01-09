@@ -66,7 +66,8 @@ const peliculas = ({ setIsAuth, isAuth }) => {
     const xs = [];
 
     setIsloading(true);
-    getMoviesFromAPIBy(API_URL_CATEGORY + categoria + "&vote_average.gte=" + valoracionMin + "&vote_average.lte=" + valoracionMax + "&include_adult").then(result => {
+    getMoviesFromAPIBy(API_URL_CATEGORY + arrayMovies[categoria] + "&vote_average.gte=" + valoracionMin + "&vote_average.lte=" + valoracionMax + "&include_adult").then(result => {
+      console.log(API_URL_CATEGORY + arrayMovies[categoria] + "&vote_average.gte=" + valoracionMin + "&vote_average.lte=" + valoracionMax + "&include_adult");
       if (result.length < 19) {
         result.map(item => {
           xs.push(item);
@@ -132,11 +133,11 @@ let votes_min = "4";
         <div className="selects-filter">
         <select onChange={(e)=>handleCategoryChange(e.target.value)}
               name="fullName" defaultValue={'action'} id="language-picker-select" className="select-form-category">
-          <option lang="es" value="action">Accion</option>
-          <option lang="de" value="adventure">Aventuras</option>
-          <option lang="en" value="animation">Animacion</option>
-          <option lang="fr" value="comedy">Comedia</option>
-          <option lang="it" value="crime">Crimen</option>
+          <option lang="es" value="Action">Accion</option>
+          <option lang="de" value="Adventure">Aventuras</option>
+          <option lang="en" value="Animation">Animacion</option>
+          <option lang="fr" value="Comedy">Comedia</option>
+          <option lang="it" value="Crime">Crimen</option>
         </select>
 
         <select onChange={(e)=>handleVoteMinChange(e.target.value)} defaultValue={'4'} id="language-picker-select" className="select-form-vote">
