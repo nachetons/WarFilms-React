@@ -39,7 +39,7 @@ const marcadores = ({setIsAuth, isAuth}) =>{
               </div>
 
               <div className="container">
-              <label for="uname"><b>Peliculas favoritas: </b></label>
+              <label htmlFor="uname"><b>Peliculas favoritas: </b></label>
                 <ul>
                   <li>Pelicula1</li>
                   <li>Pelicula2</li>

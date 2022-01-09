@@ -50,7 +50,7 @@ const URL_IMG = "https://image.tmdb.org/t/p/w500";
 
 
 //Busqueda por categoria
-const API_URL_CATEGORY = URL_BASE + 'discover/movie?sort_by=popularity.desc&vote_count.gte=2000&'+API_KEY+'&with_genres='
+const API_URL_CATEGORY = URL_BASE + 'discover/movie?sort_by=popularity.desc&vote_count.gte=100&'+API_KEY+'&with_genres='
 
 //Array con el id de todos los generos de las peliculas
 const arrayMovies = {
@@ -74,5 +74,8 @@ const arrayMovies = {
     "Western":37,
     "Science Fiction": 878
   };
+
+  //https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
+
 
   export {API_KEY,URL_BASE,API_URL_POP,API_URL_TV_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};

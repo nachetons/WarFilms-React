@@ -37,7 +37,7 @@ const opciones = ({setIsAuth, isAuth}) =>{
               </div>
 
               <div className="container">
-              <label for="uname"><b>Cambiar nombre de usuario:</b></label>
+              <label htmlFor="uname"><b>Cambiar nombre de usuario:</b></label>
                 <input
                   className="input-form-preferences"
                   type="text"

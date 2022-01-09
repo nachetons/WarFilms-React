@@ -55,5 +55,48 @@ flex-direction: column;
     display: none;
   }
 
-  
+
+
+  .selects-filter{
+    display:flex;
+    margin-top: -2%;
+    width: 100%;
+    margin-left: 66.6%;
+    margin-bottom: 1.1%;
+    position: relative;
+  }
+
+  .select-form-category{
+    /*display select*/
+      
+      display:block;
+      text-align: center;
+      padding: 14px 10px;
+      width: 10%;
+      outline: none;
+      color: #f1f1f1;
+      background-color: black;
+      transition: 0.25s;
+     
+
+    
+    
+    }
+  .select-form-vote{
+      display:block;
+      text-align: center;
+      padding: 14px 10px;
+      width: 10%;
+      outline: none;
+      color: #f1f1f1;
+      background-color: black;
+      transition: 0.25s;
+  }
+
+  .submit-filter{
+    color: #f1f1f1;
+    background-color: black;
+    font-size: small;
+    padding: 14px 10px;
+  }
   
