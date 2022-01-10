@@ -67,7 +67,7 @@ const pelicula = ({setIsAuth, isAuth}) => {
     function getTrailerMovieList() {
         setIsloading2(true);
         getTrailersFromAPIBy(URL_TRAILER).then(result => {
-
+            console.log(URL_TRAILER);
             settrailerMovieList(result);
             setIsloading2(false);
 
