@@ -75,7 +75,7 @@ const series = ({setIsAuth, isAuth}) => {
 
     <div className="row" id="contenedor_main">
 
-      <h3 id="titulos" className="titulo">Peliculas</h3>
+      <h3 id="titulos" className="titulo">Series</h3>
 
       <div className="peliculas" id="list_pelis">
 

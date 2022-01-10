@@ -14,8 +14,9 @@ import Login from '../fragments/login.jsx'
 import Navs from '../fragments/navs/navs.jsx'
 import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
-
 import { useState } from 'react'
+
+
 
 const IndexPage = ({setIsAuth, isAuth}) =>{
   

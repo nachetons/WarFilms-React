@@ -1,7 +1,9 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect,useRef} from "react";
 import {    SEARCH_URL_MOVIE,   API_KEY    } from "../../../diccionario/url";
 import {Link,Redirect, useHistory} from 'react-router-dom'
 import Login from '../login'
+
+import useOutsideClick from '../../../tools/useOutSideClick';
 
 
 //Linea sagrada nº4
@@ -9,6 +11,11 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
     const [isLoading,setIsLoading]=useState(false);
     const [movieList,setMovieList]=useState([]);
     const [login,setLogin]=useState(false);
+    const [show, setSate] = useState(false);
+    const ref = useRef();
+    useOutsideClick(ref, () => {
+      if (show) setSate(false);
+    });
 
     const textoPre = document.getElementById('textoPredict');
     const search = document.getElementById('textoPredict');
@@ -80,7 +87,8 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
 
         <form className="log" id="myForm" onSubmit={handleClick}>
         {/*Al cambiar el "type" a texto se rompe el buscador en dos, hay que arreglar eso posteriormente.*/}
-        <input type="text"
+        <input onClick={()=>setSate(!show)}
+               type="text"
                 className="input-search" 
                 id="mySearch" 
                 placeholder="Search movies" 
@@ -94,15 +102,14 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
 
        <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
             {
-                searchValue.length>1?
+                searchValue.length>1&&show?
                 isLoading?
                 null
                 :
-                <div id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
+                <div ref={ref} id="textoPredict" className="textoPredict" style={{display: "block", border:"thick solid red"}}>     
                   {movieList.map(movie=><Link key={movie.id} to={"/pelicula/" + movie.title +"/"+ movie.id}><li className="lista_predict" key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li></Link>)}
                 </div>          
                 :
-
                 null
             }
       
