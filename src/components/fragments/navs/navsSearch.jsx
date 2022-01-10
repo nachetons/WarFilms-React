@@ -22,6 +22,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
     let history = useHistory();
 
     const titulos = [];
+    const pruebas;
 
     useEffect(()=>{
         if(searchValue.length>1){
