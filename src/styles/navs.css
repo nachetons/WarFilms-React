@@ -120,12 +120,23 @@ nav ul li a:hover {
   top:76%;
 }
 
-#textoPredict li:hover{
+#textoPredict li{
   background-color:black;
+  margin: auto;
+  padding: 10px;;
   color:white;
   cursor:pointer;
+}
+
+
+#textoPredict li:hover{
+  background-color:grey;
+  color:white;
+  cursor:pointer;
+  transition: all 0.3s ease-in-out;
   
 }
+
 
 .movie{
   display: flex;

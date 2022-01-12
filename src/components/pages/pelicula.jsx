@@ -27,7 +27,7 @@ const pelicula = ({setIsAuth, isAuth}) => {
     const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + "&" + API_KEY;
-    const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
+    const URL_TRAILER = URL_BASE + 'movie/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES&us-US";
     const trailers = document.getElementById("mytrailer")
    
     //LLAMADA A LA PELICULA

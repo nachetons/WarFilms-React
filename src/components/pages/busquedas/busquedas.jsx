@@ -62,7 +62,7 @@ return (
 
     movieList.map(movie=>
       
-      <Link key={movie.id} to={'/pelicula/'+movie.original_title+'/'+movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie}/></div></Link>
+      <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/'+movie.original_title+'/'+movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie}/></div></Link>
         )
       
       }
