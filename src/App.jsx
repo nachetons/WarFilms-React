@@ -16,6 +16,8 @@ import Login from './components/fragments/login'
 
 
 import Busqueda from './components/pages/busquedas/busquedas'
+import Busqueda_Series from './components/pages/busquedas_series/busquedas_series'
+
 
 import {BrowserRouter, Link, Route, Switch, Router} from 'react-router-dom'
 
@@ -82,6 +84,10 @@ function App() {
 
       <Route path='/busquedas/:title'>
         <Busqueda setIsAuth={setIsAuth} isAuth={isAuth}/>
+      </Route>
+
+      <Route path='/busquedas_series/:title'>
+        <Busqueda_Series setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
       
       <Route path='/'>
