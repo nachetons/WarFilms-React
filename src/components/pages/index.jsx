@@ -1,7 +1,7 @@
 
-import logo from '../../images/1.jpg'
 import '../../styles/main.css'
 import '../../styles/navs.css'
+
 import '../../styles/footer.css'
 import '../../styles/carrusel.css'
 import '../../styles/login.css'
@@ -12,6 +12,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import Login from '../fragments/login.jsx'
 import Navs from '../fragments/navs/navs.jsx'
+import Header from '../fragments/header.jsx'
 import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
 import { useState } from 'react'
@@ -26,22 +27,8 @@ const IndexPage = ({setIsAuth, isAuth}) =>{
     
     <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
-    
-    <div className="container">
-      <div className="background">
 
-      </div>
-    </div>
-
-    <div id="contenedor">
-      <div id="pelis_header">
-      <div className="mySlides fade">
-        <img id="foto" src={logo}/>
-        <div className="text_title">Batman</div>
-        <div className="text">1</div>
-      </div>
-    </div>
-    </div>
+    <Header />
     
     <Carrusel />
     <Footer />

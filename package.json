@@ -4,7 +4,7 @@
   "scripts": {
     "start": "npm run open-browser && vite",
     "dev": "vite",
-    "open-browser":"start http://localhost:3000",
+    "open-browser": "start http://localhost:3000",
     "build": "vite build",
     "preview": "vite preview"
   },

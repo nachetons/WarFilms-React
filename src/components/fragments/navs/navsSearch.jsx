@@ -8,7 +8,7 @@ import useOutsideClick from '../../../tools/useOutSideClick';
 
 //Linea sagrada nº4
 export default function NavSearch({searchValue,changeSearchValueFunction, setIsAuth,isAuth}){
-    const [isLoading,setIsLoading]=useState(false);
+    const [isLoading,setIsLoading]=useState(true);
     const [movieList,setMovieList]=useState([]);
     const [login,setLogin]=useState(false);
     const [show, setSate] = useState(false);

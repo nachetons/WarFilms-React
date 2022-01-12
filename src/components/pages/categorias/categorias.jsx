@@ -27,7 +27,7 @@ import {Link, useHistory} from 'react-router-dom'
 const categorias = ({setIsAuth, isAuth}) => {
  const {categoria} = useParams();
  const [movieList,setMovieList]=useState([]);
- const [isLoading,setIsloading]=useState(false);
+ const [isLoading,setIsloading]=useState(true);
  const [categorias,setCategoria]=useState([categoria]);
 
 

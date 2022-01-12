@@ -27,7 +27,7 @@ import {Link} from 'react-router-dom'
 const series = ({setIsAuth, isAuth}) => {
  const {categoria} = useParams();
  const [movieList,setMovieList]=useState([]);
- const [isLoading,setIsloading]=useState(false);
+ const [isLoading,setIsloading]=useState(true);
  const [categorias,setCategoria]=useState([categoria]);
 
  

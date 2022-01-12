@@ -10,7 +10,7 @@ export default function carruseles(){
   const [mostRatedMovieList,setMostRatedMovieList]=useState([]);
   const [mostNewMovieList,setMostNewMovieList]=useState([]);
 
-  const [isLoading,setIsloading]=useState(false);
+  const [isLoading,setIsloading]=useState(true);
   
   const getMoviesFromAPIBy=(toFetch)=>
     fetch(toFetch)
