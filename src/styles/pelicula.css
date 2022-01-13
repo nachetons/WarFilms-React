@@ -9,6 +9,12 @@
 
 
 }
+.contenedor-actor{
+
+  position: relative;
+  text-align: center;
+  color: white;
+}
 .content_film{
 margin-left: 5%;
 display: flex;
