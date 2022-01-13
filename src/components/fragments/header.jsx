@@ -1,13 +1,19 @@
 import logo from '../../images/1.jpg'
 import {useState,useEffect} from 'react';
 import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "../../diccionario/url";
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 
 
 export default function Header(){
     const [headerMovies,setHeaderMovies]=useState([]);
     const [isLoading,setIsloading]=useState(true);
 
+    const handleDragStart = (e) => e.preventDefault();
 
+
+      
 /*  
    function getMoviesFromApi(URL){
        return(
@@ -62,8 +68,49 @@ useEffect(()=>{
             <p>CARGANDO....</p>
             
                 :
-            
-         headerMovies.map(movie =>{
+                /*<AliceCarousel
+        autoPlay
+        autoPlayStrategy="none"
+        autoPlayInterval={1000}
+        animationDuration={1000}
+        animationType="fadeout"
+        infinite
+        touchTracking={false}
+        disableDotsControls
+        disableButtonsControls
+        items={items}
+    />*/
+
+        <AliceCarousel 
+        autoPlay 
+        autoPlayInterval={2700} 
+        animationType="fadeout"
+        disableDotsControls
+        disableButtonsControls
+        infinite
+         className="slider_content">
+            {
+headerMovies.map(movie =>{
+
+    return (
+    <div id="pelis_header" key={movie.id}>
+    <div className="mySlides fade">
+    <img id="foto" src={URL_IMG+movie.poster_path}/>
+    <div className="text_title">{movie.title}</div>
+    <div className="text">{movie.vote_average}</div>
+ </div>
+</div>
+   ) 
+
+})
+
+
+
+
+            }
+        </AliceCarousel>
+       /*  headerMovies.map(movie =>{
+
             return (
             <div id="pelis_header" key={movie.id}>
             <div className="mySlides fade">
@@ -72,10 +119,11 @@ useEffect(()=>{
             <div className="text">{movie.vote_average}</div>
          </div>
     </div>
+    
            ) 
 
-        })
-                  
+        })*/
+      
                 
 
              
