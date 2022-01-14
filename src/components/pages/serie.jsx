@@ -11,7 +11,10 @@ import '../../styles/carrusel.css'
 import '../../styles/login.css'
 import '../../styles/pelicula.css'
 import '../../styles/mediaquerys.css'
+import 'react-alice-carousel/lib/alice-carousel.css';
 
+
+import AliceCarousel from 'react-alice-carousel';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../styles/mediaquerys.css'
@@ -29,8 +32,19 @@ const serie = ({setIsAuth, isAuth}) => {
     const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
     const URL_TRAILER = URL_BASE + 'tv/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
     const trailers = document.getElementById("mytrailer")
+    const URL_ACTORS =
+    URL_BASE + "tv/" + id + "?" + API_KEY + "&append_to_response=credits";
 
-    //LLAMADA A LA PELICULA
+
+
+
+    const responsive = {
+        0: { items: 1 },
+        568: { items: 2 },
+        1024: { items: 5 },
+    };
+
+    //LLAMADA A LA SERIE
     const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
     const [isLoading, setIsloading] = useState(false);
 
@@ -65,12 +79,31 @@ const serie = ({setIsAuth, isAuth}) => {
     function getTrailerMovieList() {
         setIsloading2(true);
         getTrailersFromAPIBy(URL_TRAILER).then(result => {
-            console.log(URL_TRAILER);
             settrailerMovieList(result);
             setIsloading2(false);
 
         })
     }
+
+
+     //LAMADA ACTORES DE LAS SERIES
+  const [actorMovieList, setActorMovieList] = useState([]);
+  const [isLoading3, setIsloading3] = useState(false);
+
+  const getActorsFromAPIBy = (toFetch) =>
+    fetch(toFetch)
+      .then((response) => response.json())
+      .then((responseConverted) => responseConverted.credits.cast);
+
+  function getActorMovieList() {
+    setIsloading3(true);
+    getActorsFromAPIBy(URL_ACTORS).then((result) => {
+      console.log(URL_ACTORS);
+
+      setActorMovieList(result);
+      setIsloading3(false);
+    });
+  }
 
 
     function displayTrailers(trailer){
@@ -133,6 +166,8 @@ const serie = ({setIsAuth, isAuth}) => {
 
         getMostPopularMovieList();
         getTrailerMovieList();
+        getActorMovieList();
+
 
     }, [title, id]);
 
@@ -199,6 +234,50 @@ const serie = ({setIsAuth, isAuth}) => {
 
 
             }
+
+
+{isLoading3 ? <p>Cargando..</p> 
+      
+      : 
+      <AliceCarousel 
+      autoPlay 
+      autoPlayInterval={1000} 
+      animationType="fadeout"
+      disableDotsControls
+      disableButtonsControls
+      infinite
+      responsive={responsive}
+      className="slider_content">
+          {
+actorMovieList.filter(actor=>actor.profile_path).map(actor => 
+ 
+    
+
+  <>
+    <div key={actor.id} className="contenedor-actor">
+    <img
+        id="foto"
+        src={URL_IMG + actor.profile_path}
+        style={{ width: "50%" }}
+      />
+        <h3 className="nombre_actor">{actor.name}</h3>
+      <p className="descripcion">{actor.character}</p>              
+
+    </div>
+    </>
+
+
+
+)
+
+
+
+
+
+
+          }
+      </AliceCarousel>
+      }
 
             <Footer />
 

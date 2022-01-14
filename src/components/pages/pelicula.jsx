@@ -50,7 +50,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   const responsive = {
     0: { items: 1 },
     568: { items: 2 },
-    1024: { items: 4 },
+    1024: { items: 5 },
 };
 
 
@@ -225,7 +225,7 @@ actorMovieList.filter(actor=>actor.profile_path).map(actor =>
     <img
         id="foto"
         src={URL_IMG + actor.profile_path}
-        style={{ width: "30%" }}
+        style={{ width: "50%" }}
       />
         <h3 className="nombre_actor">{actor.name}</h3>
       <p className="descripcion">{actor.character}</p>              
