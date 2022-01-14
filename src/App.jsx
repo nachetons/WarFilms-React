@@ -11,6 +11,8 @@ import Opciones from './components/pages/opciones'
 import Categorias from './components/pages/categorias/categorias'
 import Pelicula from './components/pages/pelicula'
 import Serie from './components/pages/serie'
+import Actor from './components/pages/actor'
+
 import Login from './components/fragments/login'
 
 
@@ -89,7 +91,9 @@ function App() {
       <Route path='/busquedas_series/:title'>
         <Busqueda_Series setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>
-      
+      <Route path='/actor/:id'>
+        <Actor setIsAuth={setIsAuth} isAuth={isAuth}/>
+      </Route>
       <Route path='/'>
         <Index setIsAuth={setIsAuth} isAuth={isAuth}/>
       </Route>

@@ -24,6 +24,7 @@ import Login from "../fragments/login";
 import Navs from "../fragments/navs/navs";
 import Footer from "../fragments/footer";
 
+import {Link} from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -206,6 +207,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
       {isLoading3 ? <p>Cargando..</p> 
       
       : 
+      
       <AliceCarousel 
       autoPlay 
       autoPlayInterval={1000} 
@@ -219,7 +221,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 actorMovieList.filter(actor=>actor.profile_path).map(actor => 
  
     
-
+<Link key={actor.id}to={'/actor/' + actor.id}>
   <>
     <div key={actor.id} className="contenedor-actor">
     <img
@@ -232,7 +234,7 @@ actorMovieList.filter(actor=>actor.profile_path).map(actor =>
 
     </div>
     </>
-
+    </Link>
 
 
 )
@@ -244,6 +246,7 @@ actorMovieList.filter(actor=>actor.profile_path).map(actor =>
 
           }
       </AliceCarousel>
+      
         }
      
 
