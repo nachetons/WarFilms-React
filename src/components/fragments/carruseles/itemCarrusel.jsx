@@ -1,7 +1,14 @@
 //import Img from '../../images/1.jpg'
+import useOutsideClick from '../../../tools/useOutSideClick';
+import {useState, useRef} from "react";
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 export default function ItemCarrusel({movieInfo, index}){
     const {original_title,backdrop_path,release_date,vote_average,overview,title}=movieInfo;
+    const [show, setSate] = useState(false);
+    const ref=useRef();
+    useOutsideClick(ref, () => {
+        if (show) setSate(false);
+      });
     return(
 
             <div className={"movie-card carrusel"+index}>
@@ -10,9 +17,9 @@ export default function ItemCarrusel({movieInfo, index}){
                     <h4 className="movie-title">{title}</h4>
                     <h6>{release_date}</h6>
                     <div className="movie-rating">{vote_average}</div>
-                    <button className="boton-card flip">Trailer</button>
+                    <button onClick={()=>setSate(!show)} className="boton-card flip">Trailer</button>
                 </div>
-
+                
                 <div className="detras">
                     <strong>
                         {overview}

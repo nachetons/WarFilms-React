@@ -30,7 +30,15 @@ body {
 /* Header section */
 
 
-
+.iframe_index{
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  background-color: black;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
 
 .boton-card {
   text-align: center;

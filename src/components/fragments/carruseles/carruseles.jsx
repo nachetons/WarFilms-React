@@ -50,7 +50,6 @@ export default function carruseles(){
     let xs=[];
    
     if (list.length<10){
-      console.log(xs);
       return xs;
       }else{
         for (let i=0;i<10;i++){

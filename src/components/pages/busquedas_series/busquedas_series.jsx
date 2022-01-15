@@ -30,7 +30,6 @@ const busquedas_series = ({setIsAuth, isAuth}) => {
    
        setIsloading(true);
        getMoviesFromAPIBy(URL_SEARCH).then(result=>{
-         console.log(URL_SEARCH);
          if(result.length<4){
            result.map(item=>{ 
              xs.push(item);

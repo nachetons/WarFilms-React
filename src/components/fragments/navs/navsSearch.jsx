@@ -58,7 +58,6 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
         let xs=[];
 
         if (list.length<10){
-          console.log(xs);
           return xs;
           }
 
@@ -72,7 +71,6 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
               xs.push(list[i]);
 
             }
-            console.log(xs);
             return xs;
           }
         

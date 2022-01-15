@@ -22,7 +22,6 @@ export default function Header(){
     )}
 
 const getMoviesFromApi=(URL)=>{
-    console.log("prueba const getMoviesFromApi")
     return(
     fetch(URL).then(response => response.json()).then(responseConverted=>responseConverted.results)
     )

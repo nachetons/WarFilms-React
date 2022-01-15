@@ -66,14 +66,15 @@ flex-direction: column;
   .selects-filter{
     display:flex;
     margin-top: -2%;
+    margin:auto;
     width: 100%;
     margin-bottom: 1.1%;
     position: relative;
   }
 
-  .select-form-category{
+  #select-form-category{
     /*display select*/
-      
+      display:block;
       text-align: center;
       padding: 14px 10px;
       width: 10%;
@@ -86,7 +87,7 @@ flex-direction: column;
     
     
     }
-  .select-form-vote{
+  #select-form-vote{
       display:block;
       text-align: center;
       padding: 14px 10px;
@@ -96,6 +97,16 @@ flex-direction: column;
       background-color: black;
       transition: 0.25s;
   }
+  #select-form-vote_max{
+    display:block;
+    text-align: center;
+    padding: 14px 10px;
+    width: 10%;
+    outline: none;
+    color: #f1f1f1;
+    background-color: black;
+    transition: 0.25s;
+}
 
   .submit-filter{
     color: #f1f1f1;

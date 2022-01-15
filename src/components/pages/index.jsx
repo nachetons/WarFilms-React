@@ -9,18 +9,18 @@ import '../../styles/login.css'
 
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
 import Login from '../fragments/login.jsx'
 import Navs from '../fragments/navs/navs.jsx'
 import Header from '../fragments/header.jsx'
 import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 
 
 const IndexPage = ({setIsAuth, isAuth}) =>{
-  
+  const ref = useRef();
+  const [show, setSate] = useState(false);
   return (
     <>
     
@@ -31,6 +31,16 @@ const IndexPage = ({setIsAuth, isAuth}) =>{
     <Header />
     
     <Carrusel />
+
+    {
+                show?
+                <div className="container">
+                <div ref={ref} className="iframe_index"></div>
+                </div>
+                
+                :
+                null
+}
     <Footer />
     </>
 

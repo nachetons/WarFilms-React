@@ -42,7 +42,6 @@ const series = ({setIsAuth, isAuth}) => {
 
     setIsloading(true);
     getMoviesFromAPIBy(API_URL_TV_POP).then(result=>{
-      console.log(API_URL_TV_POP);
       if(result.length<19){
         result.map(item=>{
           xs.push(item);

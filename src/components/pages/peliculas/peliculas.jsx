@@ -60,14 +60,13 @@ const peliculas = ({ setIsAuth, isAuth }) => {
     })
   }
 
-  
+
 
   function filterMovieList(categoria, valoracionMin, valoracionMax) {
     const xs = [];
 
     setIsloading(true);
     getMoviesFromAPIBy(API_URL_CATEGORY + arrayMovies[categoria] + "&vote_average.gte=" + valoracionMin + "&vote_average.lte=" + valoracionMax + "&include_adult").then(result => {
-      console.log(API_URL_CATEGORY + arrayMovies[categoria] + "&vote_average.gte=" + valoracionMin + "&vote_average.lte=" + valoracionMax + "&include_adult");
       if (result.length < 19) {
         result.map(item => {
           xs.push(item);
@@ -83,12 +82,12 @@ const peliculas = ({ setIsAuth, isAuth }) => {
       setMovieList(xs);
       setIsloading(false);
     })
-  
-  
+
+
   }
 
 
-  
+
 
   //https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
 
@@ -101,22 +100,22 @@ const peliculas = ({ setIsAuth, isAuth }) => {
 
   let categorys = "action";
   function handleCategoryChange(category) {
-    categorys=category;
+    categorys = category;
     console.log(categorys);
   }
 
-let votes_min = "4";
+  let votes_min = "4";
   function handleVoteMinChange(vote) {
-    votes_min=vote;
+    votes_min = vote;
     console.log(votes_min);
   }
- 
+
   let votes_max = "8";
   function handleVoteMaxChange(vote) {
-    votes_max=vote;
+    votes_max = vote;
     console.log(votes_max);
   }
-  
+
 
 
   return (
@@ -131,37 +130,36 @@ let votes_min = "4";
         <h3 id="titulos" className="titulo">Peliculas</h3>
 
         <div className="selects-filter">
-        <select onChange={(e)=>handleCategoryChange(e.target.value)}
-              name="fullName" defaultValue={'action'} id="language-picker-select" className="select-form-category">
-          <option lang="es" value="Action">Accion</option>
-          <option lang="de" value="Adventure">Aventuras</option>
-          <option lang="en" value="Animation">Animacion</option>
-          <option lang="fr" value="Comedy">Comedia</option>
-          <option lang="it" value="Crime">Crimen</option>
-        </select>
+          <select onChange={(e) => handleCategoryChange(e.target.value)} defaultValue={'action'} id="select-form-category" className="select-forms">
+            <option lang="es" value="Action">Accion</option>
+            <option lang="de" value="Adventure">Aventuras</option>
+            <option lang="en" value="Animation">Animacion</option>
+            <option lang="fr" value="Comedy">Comedia</option>
+            <option lang="it" value="Crime">Crimen</option>
+          </select>
 
-        <select onChange={(e)=>handleVoteMinChange(e.target.value)} defaultValue={'4'} id="language-picker-select" className="select-form-vote">
-          <option lang="es" value="1">1</option>
-          <option lang="es" value="2">2</option>
-          <option lang="de" value="4">4</option>
-          <option lang="en" value="6">6</option>
-          <option lang="fr" value="8">8</option>
-          <option lang="fr" value="9">9</option>
+          <select onChange={(e) => handleVoteMinChange(e.target.value)} defaultValue={'4'} id="select-form-vote" className="select-forms">
+            <option lang="es" value="1">1</option>
+            <option lang="es" value="2">2</option>
+            <option lang="de" value="4">4</option>
+            <option lang="en" value="6">6</option>
+            <option lang="fr" value="8">8</option>
+            <option lang="fr" value="9">9</option>
 
-        </select>
+          </select>
 
 
-        <select onChange={(e)=>handleVoteMaxChange(e.target.value)} defaultValue={'8'} id="language-picker-select" className="select-form-vote">
-          <option lang="es" value="0">0</option>
-          <option lang="es" value="2">2</option>
-          <option lang="de" value="4">4</option>
-          <option lang="en" value="6">6</option>
-          <option lang="fr" value="8">8</option>
-          <option lang="fr" value="9">9</option>
+          <select onChange={(e) => handleVoteMaxChange(e.target.value)} defaultValue={'8'} id="select-form-vote_max" className="select-forms">
+            <option lang="es" value="0">0</option>
+            <option lang="es" value="2">2</option>
+            <option lang="de" value="4">4</option>
+            <option lang="en" value="6">6</option>
+            <option lang="fr" value="8">8</option>
+            <option lang="fr" value="9">9</option>
 
-        </select>
+          </select>
 
-        <button className="submit-filter" onClick={()=>filterMovieList(categorys, votes_min, votes_max)}>Enviar</button>
+          <button className="submit-filter" onClick={() => filterMovieList(categorys, votes_min, votes_max)}>Enviar</button>
         </div>
         <div className="peliculas" id="list_pelis">
 

@@ -45,7 +45,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 
   //LLAMADA A LA PELICULA
   const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsloading] = useState(true);
 
 
   const responsive = {
@@ -75,7 +75,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 
   //LLAMADA AL TRAILER
   const [trailerMovieList, settrailerMovieList] = useState([]);
-  const [isLoading2, setIsloading2] = useState(false);
+  const [isLoading2, setIsloading2] = useState(true);
 
   const getTrailersFromAPIBy = (toFetch) =>
     fetch(toFetch)
@@ -92,7 +92,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 
   //LAMADA ACTORES DE LAS PELICULAS
   const [actorMovieList, setActorMovieList] = useState([]);
-  const [isLoading3, setIsloading3] = useState(false);
+  const [isLoading3, setIsloading3] = useState(true);
 
   const getActorsFromAPIBy = (toFetch) =>
     fetch(toFetch)
@@ -118,7 +118,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
           ? (document.getElementById("mytrailer").innerHTML = `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube.com/embed/${trailer.key}" 
+            src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
             title="YouTube video player" 
             frameborder="0" 
             allow=
@@ -133,7 +133,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
           : (document.getElementById("mytrailer").innerHTML = `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube.com/embed/_s4qXyZOJSQ" 
+            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer;

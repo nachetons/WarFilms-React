@@ -23,7 +23,7 @@ import Login from '../fragments/login'
 import Navs from '../fragments/navs/navs'
 import Footer from '../fragments/footer';
 
-import { useParams } from 'react-router-dom';
+import { useParams,Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const serie = ({setIsAuth, isAuth}) => {
@@ -46,7 +46,7 @@ const serie = ({setIsAuth, isAuth}) => {
 
     //LLAMADA A LA SERIE
     const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
-    const [isLoading, setIsloading] = useState(false);
+    const [isLoading, setIsloading] = useState(true);
 
     const getMoviesFromAPIBy = (toFetch) =>
         fetch(toFetch)
@@ -58,7 +58,6 @@ const serie = ({setIsAuth, isAuth}) => {
 
         setIsloading(true);
         getMoviesFromAPIBy(URL_BUSQUEDA).then(result => {
-            console.log(URL_BUSQUEDA);
             xs.push(result[0]);
             setMostPopularMovieList(xs);
             setIsloading(false);
@@ -69,7 +68,7 @@ const serie = ({setIsAuth, isAuth}) => {
 
     //LLAMADA AL TRAILER
     const [trailerMovieList, settrailerMovieList] = useState([]);
-    const [isLoading2, setIsloading2] = useState(false);
+    const [isLoading2, setIsloading2] = useState(true);
 
     const getTrailersFromAPIBy = (toFetch) =>
         fetch(toFetch)
@@ -88,7 +87,7 @@ const serie = ({setIsAuth, isAuth}) => {
 
      //LAMADA ACTORES DE LAS SERIES
   const [actorMovieList, setActorMovieList] = useState([]);
-  const [isLoading3, setIsloading3] = useState(false);
+  const [isLoading3, setIsloading3] = useState(true);
 
   const getActorsFromAPIBy = (toFetch) =>
     fetch(toFetch)
@@ -116,7 +115,7 @@ const serie = ({setIsAuth, isAuth}) => {
             `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube.com/embed/${trailer.key}" 
+            src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
             title="YouTube video player" 
             frameborder="0" 
             allow=
@@ -135,7 +134,7 @@ const serie = ({setIsAuth, isAuth}) => {
             `<iframe 
             width="100%" 
             height="100%" 
-            src="https://www.youtube.com/embed/_s4qXyZOJSQ" 
+            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer;
@@ -253,6 +252,7 @@ actorMovieList.filter(actor=>actor.profile_path).map(actor =>
  
     
 
+<Link key={actor.id}to={'/actor/' + actor.id}>
   <>
     <div key={actor.id} className="contenedor-actor">
     <img
@@ -265,6 +265,7 @@ actorMovieList.filter(actor=>actor.profile_path).map(actor =>
 
     </div>
     </>
+    </Link>
 
 
 

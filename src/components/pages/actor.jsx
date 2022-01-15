@@ -85,7 +85,7 @@ const actor = ({ setIsAuth, isAuth }) => {
               <img
                 id="foto"
                 src={URL_IMG + actorMovieList.profile_path}
-                style={{ width: "35%" }}
+                style={{ width: "35%", height: "70%" }}
               />
               <div className="content_film" id={actorMovieList.id}>
                 <h3 className="titulo">{actorMovieList.name}</h3>
