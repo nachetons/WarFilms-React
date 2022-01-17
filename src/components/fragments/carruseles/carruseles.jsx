@@ -88,7 +88,6 @@ export default function carruseles(){
 
           //Cuando está cargado
           <>
-          <div className="container">
               <Carrusel sliderNumber={1} movieList={mostPopularMovieList} title={"Las más populares"}/>
               <br />
               <br />
@@ -98,7 +97,6 @@ export default function carruseles(){
               <br />
 
               <Carrusel sliderNumber={3} movieList={mostNewMovieList} title={"Las nuevas"}/>
-            </div>
           </>
       }
   </div>

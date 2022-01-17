@@ -1,6 +1,6 @@
 import logo from '../../images/1.jpg'
 import {useState,useEffect} from 'react';
-import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "../../diccionario/url";
+import { API_URL_POP, API_URL_UPCOMING } from "../../diccionario/url";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
@@ -49,7 +49,7 @@ function setMovies(movieIndex){
 }
 useEffect(()=>{
     setIsloading(true);
-    fetch(API_URL_POP)
+    fetch(API_URL_UPCOMING)
     .then(response => response.json())
     .then(responseConverted=>responseConverted.results)
     .then(movieResults=>{
@@ -93,7 +93,7 @@ useEffect(() => {
             <div className='slider_content'>
                 <div id="pelis_header" key={headerMovies[index].id}>
                     <div className="mySlides fade">
-                        <img id="foto" src={URL_IMG+headerMovies[index].poster_path}/>
+                        <img id="foto" src={URL_IMG+headerMovies[index].backdrop_path}/>
                         <div className="text_title">{headerMovies[index].title}</div>
                     <div className="text">{headerMovies[index].vote_average}</div>
                     </div>

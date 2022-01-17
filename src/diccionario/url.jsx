@@ -17,7 +17,9 @@ const API_URL_RATED = URL_BASE + 'discover/movie?sort_by=vote_average.desc&vote_
 const API_URL_TV_POP = URL_BASE+ 'tv/popular?'+API_KEY+'&page=1';
 
 
-
+//Peliculas por venir
+const API_URL_UPCOMING = URL_BASE + 'movie/upcoming?' + API_KEY;
+https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>&language=en-US&page=1
 //Metodo para obtener la fecha de 3 meses antes
 var d = new Date();
 d.setMonth(d.getMonth() - 3);
@@ -83,4 +85,4 @@ const arrayMovies = {
   //https://api.themoviedb.org/3/discover/movie?api_key=[MY_KEY]&language=en-US&sort_by=release_date.desc&page=1&primary_release_date.gte=2002-01-01&primary_release_date.lte=2005-12-31&vote_average.gte=8&with_genres=35
 
 
-  export {API_URL_ACTORS,API_KEY,URL_BASE,API_URL_POP,API_URL_TV_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};
+  export {API_URL_UPCOMING,API_URL_ACTORS,API_KEY,URL_BASE,API_URL_POP,API_URL_TV_POP,API_URL_RATED,API_URL_NEW,SEARCH_URL_MOVIE,SEARCH_URL_TV,URL_IMG,API_URL_CATEGORY,arrayMovies};

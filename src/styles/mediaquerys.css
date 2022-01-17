@@ -102,13 +102,8 @@
       height: 40vh;
 
     }
-    .mySlides img {
-      height: 40vh;
-    
-    }
-    .freetowatch-cards{
-      margin-left: 5rem;
-    }
+   
+  
   }
   @media (max-width: 1400px) {
     
@@ -136,13 +131,7 @@
       display: none;
     }
 
-    .mySlides img {
-      height: 45vh;
-      width:30%;
-      left:0;
-      margin-left:-0.1%;
-    
-    }
+
     .text {
       position: absolute;
       top: 50%;
@@ -159,6 +148,7 @@
       font-size: 30px;
       transform: translate(-50%, -50%);
     }
+   
 
    
     
@@ -188,6 +178,8 @@
     .toggle {
       display: block;
     }
+
+  
   }
   @media (max-width: 1100px) {
     nav ul .logo {
@@ -202,13 +194,7 @@
     }
 
 
-    .mySlides img {
-      height: 40vh;
-      width:30%;
-      left:0;
-      margin-left:-0.1%;
-    
-    }
+  
     .text {
       position: absolute;
       top: 50%;
@@ -255,13 +241,7 @@
     .options__menu {
       margin-left: 40%;
     }
-    .mySlides img {
-      height: 30vh;
-      width:30%;
-      left:0;
-      margin-left:-0.1%;
-    
-    }
+   
     .text {
       position: absolute;
       top: 50%;
@@ -278,17 +258,7 @@
       transform: translate(-50%, -50%);
     }
 
-    #foto{
-      
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 40%;
-        padding-top: 10%;
-    
-    
-    
-    }
+  
     .peliculas{
       grid-template-columns: repeat(2, 1fr);
       margin-top: 15%;
@@ -355,12 +325,7 @@ display: none;  }
   .boton-search{
 display: none;  
 }
-.mySlides img {
-  height: 52vh;
-  width:100%;
-  margin: auto;
 
-}
 
 .text {
   position: absolute;
@@ -390,11 +355,6 @@ display: none;
 
 #foto{
       
-  position: relative;
-  top: 0;
-  left: 30%;
-  height: 40%;
-  padding-top: 8%;
 
 
 
