@@ -7,43 +7,63 @@ import '../../styles/carrusel.css'
 import '../../styles/login.css'
 
 
-
+import useOutsideClick from '../../tools/useOutSideClick';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Login from '../fragments/login.jsx'
 import Navs from '../fragments/navs/navs.jsx'
 import Header from '../fragments/header.jsx'
 import Carrusel from '../fragments/carruseles/carruseles.jsx'
 import Footer from '../fragments/footer';
+import Trailer from '../fragments/trailer';
+
 import { useState, useRef } from 'react'
 
 
 
-const IndexPage = ({setIsAuth, isAuth}) =>{
+const IndexPage = ({setIsAuth, isAuth, setTrailer, isTrailer}) =>{
+  const [show,setShow] = useState(true);
   const ref = useRef();
-  const [show, setSate] = useState(false);
+  useOutsideClick(ref, () => {
+    if (show) setShow(false);
+  });
   return (
     <>
+      <div className="all_carrusel"  ref={ref}   onClick={()=>setShow(!show)} style={{position: 'relative'}}>
+
+  {show ?
+  <>
+    <div className="iframe_index" style={{position: 'absolute'}}  >
+    <div className="video" style={{backgroundColor: 'red', height: '50%', width: '50%'}}></div>
+
+
+    </div>
     
-    
-    <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
+
+
+
+    </>
+
+    :
+
+  null
+
+}
+
+
+<Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
     
 
     <Header />
     
+ 
     <Carrusel />
 
-    {
-                show?
-                <div className="container">
-                <div ref={ref} className="iframe_index"></div>
-                </div>
-                
-                :
-                null
-}
+ 
     <Footer />
-    </>
 
+
+</div>
+</>
 
 
 
