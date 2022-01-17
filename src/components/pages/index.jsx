@@ -20,19 +20,19 @@ import { useState, useRef } from 'react'
 
 
 
-const IndexPage = ({setIsAuth, isAuth, setTrailer, isTrailer}) =>{
-  const [show,setShow] = useState(true);
+const IndexPage = ({setIsAuth, isAuth}) =>{
+  const [show,setShow] = useState(false);
   const ref = useRef();
   useOutsideClick(ref, () => {
     if (show) setShow(false);
   });
   return (
     <>
-      <div className="all_carrusel"  ref={ref}   onClick={()=>setShow(!show)} style={{position: 'relative'}}>
+      <div className="all_carrusel"  ref={ref} style={{position: 'relative'}}>
 
   {show ?
   <>
-    <div className="iframe_index" style={{position: 'absolute'}}  >
+    <div className="iframe_index" onClick={()=>setShow(!show)} style={{position: 'absolute'}}  >
     <div className="video" style={{backgroundColor: 'red', height: '50%', width: '50%'}}></div>
 
 
@@ -56,7 +56,7 @@ const IndexPage = ({setIsAuth, isAuth, setTrailer, isTrailer}) =>{
     <Header />
     
  
-    <Carrusel />
+    <Carrusel handleClick={setShow}/>
 
  
     <Footer />

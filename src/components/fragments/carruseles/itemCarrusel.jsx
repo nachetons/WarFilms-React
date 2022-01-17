@@ -3,7 +3,7 @@ import useOutsideClick from '../../../tools/useOutSideClick';
 import {useState, useRef} from "react";
 import Trailer from '../trailer';
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
-export default function ItemCarrusel({movieInfo, index}){
+export default function ItemCarrusel({movieInfo, index, handleClick}){
     const {original_title,backdrop_path,release_date,vote_average,overview,title}=movieInfo;
     const [login,setTrailer]=useState(false);
     const ref=useRef();
@@ -20,7 +20,7 @@ export default function ItemCarrusel({movieInfo, index}){
                     <h4 className="movie-title">{title}</h4>
                     <h6>{release_date}</h6>
                     <div className="movie-rating">{vote_average}</div>
-                    <button onClick={()=>setTrailer(lastState=>!lastState)} className="boton-card flip">Trailer</button>
+                    <button onClick={()=>handleClick(show=>!show)} className="boton-card flip">Trailer</button>
                 </div>
                 
                 <div className="detras">
