@@ -53,7 +53,6 @@ const series = ({setIsAuth, isAuth}) => {
        
      }
       }
-      
       setMovieList(xs);
       setIsloading(false);
     })

@@ -33,9 +33,23 @@ const IndexPage = ({setIsAuth, isAuth}) =>{
   {show ?
   <>
     <div className="iframe_index" onClick={()=>setShow(!show)} style={{position: 'absolute'}}  >
-    <div className="video" style={{backgroundColor: 'red', height: '50%', width: '50%'}}></div>
-
-
+      <div className="youtube-wrappers">
+      <div className="trailers">                  
+    <iframe 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
+            title="YouTube video player" 
+            allow="accelerometer;
+            autoplay; 
+            clipboard-write; 
+            encrypted-media; 
+            gyroscope; 
+            picture-in-picture" 
+            >
+            </iframe>
+            </div>
+                </div>
     </div>
     
 

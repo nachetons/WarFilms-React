@@ -6,7 +6,6 @@ import {URL_IMG} from '../../../diccionario/url.jsx'
 
 export default function ItemBusqueda({movieInfo}){
     const {name,overview,poster_path}=movieInfo;
-  console.log(movieInfo);
     return(
         <>
         <div className="movie">

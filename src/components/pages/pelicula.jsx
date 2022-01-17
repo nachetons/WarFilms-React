@@ -102,7 +102,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   function getActorMovieList() {
     setIsloading3(true);
     getActorsFromAPIBy(URL_ACTORS).then((result) => {
-      console.log(URL_ACTORS);
 
       setActorMovieList(result);
       setIsloading3(false);

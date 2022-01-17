@@ -11,7 +11,6 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import '../../../styles/mediaquerys.css'
 
 
-
 import Login from '../../fragments/login'
 import Navs from '../../fragments/navs/navs'
 import Footer from '../../fragments/footer';
@@ -26,7 +25,7 @@ import { Link } from 'react-router-dom'
 
 const peliculas = ({ setIsAuth, isAuth }) => {
   const { categoria } = useParams();
-
+  
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsloading] = useState(false);
   const [categorias, setCategoria] = useState([categoria]);
