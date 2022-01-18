@@ -5,10 +5,8 @@ import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "../../../diccionario/ur
 import {useState,useEffect} from "react";
 //La línea sagradan NO TOCAR >:[
 
-export default function carruseles({handleClick}){
-  const [mostPopularMovieList,setMostPopularMovieList]=useState([]);
-  const [mostRatedMovieList,setMostRatedMovieList]=useState([]);
-  const [mostNewMovieList,setMostNewMovieList]=useState([]);
+export default function carruseles({handleClick,setMostPopularMovieList,setMostRatedMovieList,setMostNewMovieList,mostPopularMovieList,mostRatedMovieList,mostNewMovieList,setId_trailer} ){
+  
 
   const [isLoading,setIsloading]=useState(true);
   
@@ -89,15 +87,15 @@ export default function carruseles({handleClick}){
           //Cuando está cargado
           <>
          
-              <Carrusel handleClick={handleClick} sliderNumber={1} movieList={mostPopularMovieList} title={"Las más populares"}/>
+              <Carrusel handleClick={handleClick} sliderNumber={1} movieList={mostPopularMovieList} setId_trailer={setId_trailer} title={"Las más populares"}/>
               <br />
               <br />
 
-              <Carrusel handleClick={handleClick}sliderNumber={2} movieList={mostRatedMovieList} title={"Las más valoradas"}/>
+              <Carrusel handleClick={handleClick}sliderNumber={2} movieList={mostRatedMovieList} setId_trailer={setId_trailer} title={"Las más valoradas"}/>
               <br />
               <br />
 
-              <Carrusel handleClick={handleClick}sliderNumber={3} movieList={mostNewMovieList} title={"Las nuevas"}/>
+              <Carrusel handleClick={handleClick}sliderNumber={3} movieList={mostNewMovieList} setId_trailer={setId_trailer} title={"Las nuevas"}/>
               
           </>
       }
