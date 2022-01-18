@@ -38,6 +38,8 @@ const serie = ({ setIsAuth, isAuth }) => {
     const [actorMovieList, setActorMovieList] = useState([]);
     const [isLoading3, setIsloading3] = useState(true);
 
+    const { title, id } = useParams();
+
     useEffect(() => {
 
         getMostPopularMovieList();
@@ -47,7 +49,6 @@ const serie = ({ setIsAuth, isAuth }) => {
 
     }, [title, id]);
 
-    const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
     const URL_TRAILER = URL_BASE + 'tv/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";

@@ -35,6 +35,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     const [actorMovieList, setActorMovieList] = useState([]);
     const [isLoading3, setIsloading3] = useState(true);
 
+    const { title, id } = useParams();
 
   //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   //ejecuta la primera vez
@@ -45,7 +46,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   }, [title, id]);
 
   
-  const { title, id } = useParams();
 
   const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + "&" + API_KEY;
   const URL_TRAILER =
