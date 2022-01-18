@@ -1,39 +1,59 @@
 
 
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import { useEffect, useState } from 'react'
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
+import { Link, useParams } from 'react-router-dom'
+import { API_KEY, SEARCH_URL_TV, URL_BASE, URL_IMG } from '../../diccionario/url.jsx'
 import logo from '../../images/1.jpg'
-import { API_KEY, URL_BASE, SEARCH_URL_TV, URL_IMG } from '../../diccionario/url.jsx'
-
-
-import '../../styles/main.css'
-import '../../styles/navs.css'
-import '../../styles/footer.css'
 import '../../styles/carrusel.css'
+import '../../styles/footer.css'
 import '../../styles/login.css'
+import '../../styles/main.css'
+import '../../styles/mediaquerys.css'
+import '../../styles/navs.css'
 import '../../styles/pelicula.css'
-import '../../styles/mediaquerys.css'
-import 'react-alice-carousel/lib/alice-carousel.css';
-
-
-import AliceCarousel from 'react-alice-carousel';
-
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import '../../styles/mediaquerys.css'
-
-import Login from '../fragments/login'
+import Footer from '../fragments/footer'
 import Navs from '../fragments/navs/navs'
-import Footer from '../fragments/footer';
 
-import { useParams,Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
-const serie = ({setIsAuth, isAuth}) => {
+
+
+
+
+
+
+const serie = ({ setIsAuth, isAuth }) => {
+
+    //LLAMADA A LA SERIE
+    const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
+    const [isLoading, setIsloading] = useState(true);
+
+    //LLAMADA AL TRAILER
+    const [trailerMovieList, settrailerMovieList] = useState([]);
+    const [isLoading2, setIsloading2] = useState(true);
+
+    //LAMADA ACTORES DE LAS SERIES
+    const [actorMovieList, setActorMovieList] = useState([]);
+    const [isLoading3, setIsloading3] = useState(true);
+
+    useEffect(() => {
+
+        getMostPopularMovieList();
+        getTrailerMovieList();
+        getActorMovieList();
+
+
+    }, [title, id]);
+
     const { title, id } = useParams();
 
     const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
     const URL_TRAILER = URL_BASE + 'tv/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
     const trailers = document.getElementById("mytrailer")
     const URL_ACTORS =
-    URL_BASE + "tv/" + id + "?" + API_KEY + "&append_to_response=credits";
+        URL_BASE + "tv/" + id + "?" + API_KEY + "&append_to_response=credits";
 
 
 
@@ -44,9 +64,7 @@ const serie = ({setIsAuth, isAuth}) => {
         1024: { items: 5 },
     };
 
-    //LLAMADA A LA SERIE
-    const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
-    const [isLoading, setIsloading] = useState(true);
+
 
     const getMoviesFromAPIBy = (toFetch) =>
         fetch(toFetch)
@@ -66,9 +84,7 @@ const serie = ({setIsAuth, isAuth}) => {
 
 
 
-    //LLAMADA AL TRAILER
-    const [trailerMovieList, settrailerMovieList] = useState([]);
-    const [isLoading2, setIsloading2] = useState(true);
+
 
     const getTrailersFromAPIBy = (toFetch) =>
         fetch(toFetch)
@@ -85,34 +101,32 @@ const serie = ({setIsAuth, isAuth}) => {
     }
 
 
-     //LAMADA ACTORES DE LAS SERIES
-  const [actorMovieList, setActorMovieList] = useState([]);
-  const [isLoading3, setIsloading3] = useState(true);
-
-  const getActorsFromAPIBy = (toFetch) =>
-    fetch(toFetch)
-      .then((response) => response.json())
-      .then((responseConverted) => responseConverted.credits.cast);
-
-  function getActorMovieList() {
-    setIsloading3(true);
-    getActorsFromAPIBy(URL_ACTORS).then((result) => {
-      console.log(URL_ACTORS);
-
-      setActorMovieList(result);
-      setIsloading3(false);
-    });
-  }
 
 
-    function displayTrailers(trailer){
+    const getActorsFromAPIBy = (toFetch) =>
+        fetch(toFetch)
+            .then((response) => response.json())
+            .then((responseConverted) => responseConverted.credits.cast);
+
+    function getActorMovieList() {
+        setIsloading3(true);
+        getActorsFromAPIBy(URL_ACTORS).then((result) => {
+            console.log(URL_ACTORS);
+
+            setActorMovieList(result);
+            setIsloading3(false);
+        });
+    }
+
+
+    function displayTrailers(trailer) {
         setTimeout(() => {
             trailerMovieList.map(trailer => {
                 trailer.type == "Trailer" && trailer.site == "YouTube" ||
                     trailer.name.includes("Trailer") && trailer.site == "YouTube" ?
                     document.getElementById("mytrailer").innerHTML =
 
-            `<iframe 
+                    `<iframe 
             width="100%" 
             height="100%" 
             src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
@@ -131,7 +145,7 @@ const serie = ({setIsAuth, isAuth}) => {
                     :
 
                     document.getElementById("mytrailer").innerHTML =
-            `<iframe 
+                    `<iframe 
             width="100%" 
             height="100%" 
             src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
@@ -161,24 +175,17 @@ const serie = ({setIsAuth, isAuth}) => {
 
     //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se 
     //ejecuta la primera vez
-    useEffect(() => {
-
-        getMostPopularMovieList();
-        getTrailerMovieList();
-        getActorMovieList();
+   
 
 
-    }, [title, id]);
-
-    
 
     return (
 
         <>
 
-            <Navs setIsAuth={setIsAuth} isAuth={isAuth}/>
+            <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
-            
+
             {isLoading ?
                 <div key={1} className="container" id="listas_pelis">
                     <div className="contenedor-pelicula">
@@ -225,60 +232,60 @@ const serie = ({setIsAuth, isAuth}) => {
 
 
             {isLoading2 ?
-                <p>Cargando..</p> 
+                <p>Cargando..</p>
 
                 :
-                
+
                 displayTrailers(trailerMovieList)
 
 
             }
 
 
-{isLoading3 ? <p>Cargando..</p> 
-      
-      : 
-      <AliceCarousel 
-      autoPlay 
-      autoPlayInterval={1000} 
-      animationType="fadeout"
-      disableDotsControls
-      disableButtonsControls
-      infinite
-      responsive={responsive}
-      className="slider_content">
-          {
-actorMovieList.filter(actor=>actor.profile_path).map(actor => 
- 
-    
+            {isLoading3 ? <p>Cargando..</p>
 
-<Link key={actor.id}to={'/actor/' + actor.id}>
-  <>
-    <div key={actor.id} className="contenedor-actor">
-    <img
-        id="foto"
-        src={URL_IMG + actor.profile_path}
-        style={{ width: "50%" }}
-      />
-        <h3 className="nombre_actor">{actor.name}</h3>
-      <p className="descripcion">{actor.character}</p>              
-
-    </div>
-    </>
-    </Link>
+                :
+                <AliceCarousel
+                    autoPlay
+                    autoPlayInterval={1000}
+                    animationType="fadeout"
+                    disableDotsControls
+                    disableButtonsControls
+                    infinite
+                    responsive={responsive}
+                    className="slider_content">
+                    {
+                        actorMovieList.filter(actor => actor.profile_path).map(actor =>
 
 
 
-)
+                            <Link key={actor.id} to={'/actor/' + actor.id}>
+                                <>
+                                    <div key={actor.id} className="contenedor-actor">
+                                        <img
+                                            id="foto"
+                                            src={URL_IMG + actor.profile_path}
+                                            style={{ width: "50%" }}
+                                        />
+                                        <h3 className="nombre_actor">{actor.name}</h3>
+                                        <p className="descripcion">{actor.character}</p>
+
+                                    </div>
+                                </>
+                            </Link>
 
 
+
+                        )
 
 
 
 
-          }
-      </AliceCarousel>
-      }
+
+
+                    }
+                </AliceCarousel>
+            }
 
             <Footer />
 

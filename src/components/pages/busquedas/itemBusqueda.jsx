@@ -1,11 +1,11 @@
 
-import {URL_IMG} from '../../../diccionario/url.jsx'
+import { URL_IMG } from '../../../diccionario/url.jsx';
 
 
 
 
 export default function ItemBusqueda({movieInfo}){
-    const {title,backdrop_path,overview,vote_average,poster_path}=movieInfo;
+    const {title,overview,poster_path}=movieInfo;
 
     return(
         <>

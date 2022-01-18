@@ -1,34 +1,30 @@
 
-import logo from '../../../images/1.jpg'
-import { API_URL_CATEGORY, arrayMovies, API_URL_POP, URL_BASE, API_KEY } from '../../../diccionario/url.jsx'
-import '../../../styles/main.css'
-import '../../../styles/navs.css'
-import '../../../styles/footer.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { API_URL_CATEGORY, API_URL_POP, arrayMovies } from '../../../diccionario/url.jsx'
 import '../../../styles/carrusel.css'
-import '../../../styles/login.css'
 import '../../../styles/categorias.css'
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import '../../../styles/footer.css'
+import '../../../styles/login.css'
+import '../../../styles/main.css'
 import '../../../styles/mediaquerys.css'
-
-
-import Login from '../../fragments/login'
+import '../../../styles/navs.css'
+import Footer from '../../fragments/footer'
 import Navs from '../../fragments/navs/navs'
-import Footer from '../../fragments/footer';
-import ItemPelicula from './itemPeliculas';
+import ItemPelicula from './itemPeliculas'
 
 
 
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
+
+
 
 
 const peliculas = ({ setIsAuth, isAuth }) => {
   const { categoria } = useParams();
-  
+
   const [movieList, setMovieList] = useState([]);
   const [isLoading, setIsloading] = useState(false);
-  const [categorias, setCategoria] = useState([categoria]);
 
 
 

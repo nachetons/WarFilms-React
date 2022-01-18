@@ -1,38 +1,44 @@
-import logo from "../../images/1.jpg";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import {
   API_KEY,
-  URL_BASE,
-  SEARCH_URL_MOVIE,
-  URL_IMG,
-  API_URL_ACTORS,
+  URL_BASE, URL_IMG
 } from "../../diccionario/url.jsx";
-
-import "../../styles/main.css";
-import "../../styles/navs.css";
-import "../../styles/footer.css";
+import logo from "../../images/1.jpg";
 import "../../styles/carrusel.css";
+import "../../styles/footer.css";
 import "../../styles/login.css";
+import "../../styles/main.css";
+import "../../styles/mediaquerys.css";
+import "../../styles/navs.css";
 import "../../styles/pelicula.css";
-import "../../styles/mediaquerys.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "../../styles/mediaquerys.css";
-
-
-import Login from "../fragments/login";
-import Navs from "../fragments/navs/navs";
 import Footer from "../fragments/footer";
+import Navs from "../fragments/navs/navs";
 
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+
+
+
 
 const actor = ({ setIsAuth, isAuth }) => {
+
+  
+ //LAMADA ACTORES DE LAS PELICULAS
+ const [actorMovieList, setActorMovieList] = useState([]);
+ const [isLoading, setIsloading] = useState(true);
+
+
+   //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
+  //ejecuta la primera vez
+  useEffect(() => {
+
+    getActorMovieList();
+  }, [id]);
   const { id } = useParams();
 
-  const URL_ACTOR = URL_BASE+"person/"+id+"?"+ API_KEY +"&append_to_response=movie_credits";
+  const URL_ACTOR = URL_BASE + "person/" + id + "?" + API_KEY + "&append_to_response=movie_credits";
 
-  //LAMADA ACTORES DE LAS PELICULAS
-  const [actorMovieList, setActorMovieList] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
+ 
 
   const getActorsFromAPIBy = (toFetch) =>
     fetch(toFetch)
@@ -48,14 +54,9 @@ const actor = ({ setIsAuth, isAuth }) => {
     });
   }
 
-  
 
-  //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
-  //ejecuta la primera vez
-  useEffect(() => {
-    
-    getActorMovieList();
-  }, [id]);
+
+ 
 
   return (
     <>
@@ -79,33 +80,33 @@ const actor = ({ setIsAuth, isAuth }) => {
           </div>
         </div>
       ) : (
-        
-          <div key={actorMovieList.id} className="container" id="listas_pelis">
-            <div className="contenedor-pelicula">
-              <img
-                id="foto"
-                src={URL_IMG + actorMovieList.profile_path}
-                style={{ width: "35%", height: "70%" }}
-              />
-              <div className="content_film" id={actorMovieList.id}>
-                <h3 className="titulo">{actorMovieList.name}</h3>
-                <p className="descripcion">{actorMovieList.biography}</p>
-                <div className="youtube-wrapper">
-                  <div className="trailer">
+
+        <div key={actorMovieList.id} className="container" id="listas_pelis">
+          <div className="contenedor-pelicula">
+            <img
+              id="foto"
+              src={URL_IMG + actorMovieList.profile_path}
+              style={{ width: "35%", height: "70%" }}
+            />
+            <div className="content_film" id={actorMovieList.id}>
+              <h3 className="titulo">{actorMovieList.name}</h3>
+              <p className="descripcion">{actorMovieList.biography}</p>
+              <div className="youtube-wrapper">
+                <div className="trailer">
 
                   {actorMovieList.movie_credits.cast.map((movie) => (
-                    
-                   <div key={movie.id}className="name">{movie.title}</div>
-                 
+
+                    <div key={movie.id} className="name">{movie.title}</div>
+
 
                   ))}
-                    <strong id="mytrailer"></strong>
-                  </div>
+                  <strong id="mytrailer"></strong>
                 </div>
               </div>
             </div>
           </div>
-       
+        </div>
+
       )}
 
       <Footer />

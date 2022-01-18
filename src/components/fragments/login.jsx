@@ -1,6 +1,6 @@
 
-import { auth, provider } from '../../../config'
 import { signInWithPopup, signOut } from 'firebase/auth'
+import { auth, provider } from '../../../config'
 
 export default function login({ setLogin, login, setIsAuth, isAuth }) {
 
@@ -152,7 +152,7 @@ export default function login({ setLogin, login, setIsAuth, isAuth }) {
                 <label>
                   <b>Idioma de preferencia</b>
                 </label>
-                <select  name="language-picker-select" defaultValue={'spanish'} id="language-picker-select" className="input-form">
+                <select name="language-picker-select" defaultValue={'spanish'} id="language-picker-select" className="input-form">
                   <option className="choose_lenguage" lang="es" value="spanish">Spanish</option>
                   <option className="choose_lenguage" lang="de" value="deutsch">Deutsch</option>
                   <option className="choose_lenguage" lang="en" value="english">English</option>
