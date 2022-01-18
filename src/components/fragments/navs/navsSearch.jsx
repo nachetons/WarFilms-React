@@ -17,11 +17,7 @@ export default function NavSearch({searchValue,changeSearchValueFunction, setIsA
       if (show) setSate(false);
     });
 
-    const textoPre = document.getElementById('textoPredict');
-    const search = document.getElementById('textoPredict');
     let history = useHistory();
-
-    const titulos = [];
 
     useEffect(()=>{
         if(searchValue.length>1&&window.location.pathname!='/series'){

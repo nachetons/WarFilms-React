@@ -21,6 +21,7 @@ export default function ItemCarrusel({movieInfo, index, handleClick, setId_trail
                     <h6>{release_date}</h6>
                     <div className="movie-rating">{vote_average}</div>
                     <button onClick={()=>{
+                        console.log(id);
                         setId_trailer(id);
                         handleClick(show=>!show)}} className="boton-card flip">Trailer</button>
                 </div>
