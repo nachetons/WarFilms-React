@@ -5,17 +5,17 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import { Link, useParams } from "react-router-dom";
 import {
   API_KEY, SEARCH_URL_MOVIE, URL_BASE, URL_IMG
-} from "../../diccionario/url.jsx";
-import logo from "../../images/1.jpg";
-import "../../styles/carrusel.css";
-import "../../styles/footer.css";
-import "../../styles/login.css";
-import "../../styles/main.css";
-import "../../styles/mediaquerys.css";
-import "../../styles/navs.css";
-import "../../styles/pelicula.css";
-import Footer from "../fragments/footer";
-import Navs from "../fragments/navs/navs";
+} from "@/diccionario/url.jsx";
+import logo from "@/images/1.jpg";
+import "@/styles/carrusel.css";
+import "@/styles/footer.css";
+import "@/styles/login.css";
+import "@/styles/main.css";
+import "@/styles/mediaquerys.css";
+import "@/styles/navs.css";
+import "@/styles/pelicula.css";
+import Footer from "@/components/fragments/footer";
+import Navs from "@/components/fragments/navs/navs";
 
 
 

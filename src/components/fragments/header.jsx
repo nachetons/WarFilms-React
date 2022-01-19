@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { API_URL_UPCOMING } from "../../diccionario/url";
+import { API_URL_UPCOMING } from "@/diccionario/url";
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 
 

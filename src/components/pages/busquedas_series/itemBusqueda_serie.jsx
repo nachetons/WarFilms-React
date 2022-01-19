@@ -1,5 +1,5 @@
 
-import { URL_IMG } from '../../../diccionario/url.jsx';
+import { URL_IMG } from '@/diccionario/url.jsx';
 
 
 

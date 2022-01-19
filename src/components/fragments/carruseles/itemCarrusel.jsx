@@ -1,5 +1,5 @@
 //import Img from '../../images/1.jpg'
-import useOutsideClick from '../../../tools/useOutSideClick';
+import useOutsideClick from '@/tools/useOutSideClick';
 import { useRef } from "react";
 const URL_IMG = "https://image.tmdb.org/t/p/w500/";
 export default function ItemCarrusel({ movieInfo, index, handleClick, setId_trailer }) {

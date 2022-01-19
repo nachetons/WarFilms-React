@@ -5,17 +5,17 @@ import { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import { Link, useParams } from 'react-router-dom'
-import { API_KEY, SEARCH_URL_TV, URL_BASE, URL_IMG } from '../../diccionario/url.jsx'
-import logo from '../../images/1.jpg'
-import '../../styles/carrusel.css'
-import '../../styles/footer.css'
-import '../../styles/login.css'
-import '../../styles/main.css'
-import '../../styles/mediaquerys.css'
-import '../../styles/navs.css'
-import '../../styles/pelicula.css'
-import Footer from '../fragments/footer'
-import Navs from '../fragments/navs/navs'
+import { API_KEY, SEARCH_URL_TV, URL_BASE, URL_IMG } from '@/diccionario/url.jsx'
+import logo from '@/images/1.jpg'
+import '@/styles/carrusel.css'
+import '@/styles/footer.css'
+import '@/styles/login.css'
+import '@/styles/main.css'
+import '@/styles/mediaquerys.css'
+import '@/styles/navs.css'
+import '@/styles/pelicula.css'
+import Footer from '@/components/fragments/footer'
+import Navs from '@/components/fragments/navs/navs'
 
 
 
@@ -112,7 +112,6 @@ const serie = ({ setIsAuth, isAuth }) => {
     function getActorMovieList() {
         setIsloading3(true);
         getActorsFromAPIBy(URL_ACTORS).then((result) => {
-            console.log(URL_ACTORS);
 
             setActorMovieList(result);
             setIsloading3(false);

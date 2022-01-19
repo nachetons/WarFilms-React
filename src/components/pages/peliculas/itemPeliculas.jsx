@@ -1,4 +1,4 @@
-import { URL_IMG } from '../../../diccionario/url';
+import { URL_IMG } from '@/diccionario/url';
 
 
 

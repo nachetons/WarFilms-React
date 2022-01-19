@@ -1,12 +1,12 @@
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useHistory } from 'react-router-dom'
-import '../../styles/footer.css'
-import '../../styles/login.css'
-import '../../styles/main.css'
-import '../../styles/navs.css'
-import '../../styles/opciones.css'
-import Footer from '../fragments/footer'
-import Navs from '../fragments/navs/navs.jsx'
+import '@/styles/footer.css'
+import '@/styles/login.css'
+import '@/styles/main.css'
+import '@/styles/navs.css'
+import '@/styles/opciones.css'
+import Footer from '@/components/fragments/footer'
+import Navs from '@/components/fragments/navs/navs.jsx'
 
 
 const opciones = ({ setIsAuth, isAuth }) => {

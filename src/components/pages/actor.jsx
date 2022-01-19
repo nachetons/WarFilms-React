@@ -4,17 +4,17 @@ import { useParams } from "react-router-dom";
 import {
   API_KEY,
   URL_BASE, URL_IMG
-} from "../../diccionario/url.jsx";
-import logo from "../../images/1.jpg";
-import "../../styles/carrusel.css";
-import "../../styles/footer.css";
-import "../../styles/login.css";
-import "../../styles/main.css";
-import "../../styles/mediaquerys.css";
-import "../../styles/navs.css";
-import "../../styles/pelicula.css";
-import Footer from "../fragments/footer";
-import Navs from "../fragments/navs/navs";
+} from "@/diccionario/url.jsx";
+import logo from "@/images/1.jpg";
+import "@/styles/carrusel.css";
+import "@/styles/footer.css";
+import "@/styles/login.css";
+import "@/styles/main.css";
+import "@/styles/mediaquerys.css";
+import "@/styles/navs.css";
+import "@/styles/pelicula.css";
+import Footer from "@/components/fragments/footer";
+import Navs from "@/components/fragments/navs/navs";
 
 
 
@@ -27,6 +27,7 @@ const actor = ({ setIsAuth, isAuth }) => {
  const [actorMovieList, setActorMovieList] = useState([]);
  const [isLoading, setIsloading] = useState(true);
 
+ const { id } = useParams();
 
    //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   //ejecuta la primera vez
@@ -34,7 +35,6 @@ const actor = ({ setIsAuth, isAuth }) => {
 
     getActorMovieList();
   }, [id]);
-  const { id } = useParams();
 
   const URL_ACTOR = URL_BASE + "person/" + id + "?" + API_KEY + "&append_to_response=movie_credits";
 

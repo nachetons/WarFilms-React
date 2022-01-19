@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import {
   API_KEY,
   URL_BASE
-} from "../../diccionario/url";
-import "../../styles/carrusel.css";
-import "../../styles/footer.css";
-import "../../styles/login.css";
-import "../../styles/main.css";
-import "../../styles/navs.css";
+} from "@/diccionario/url";
+import "@/styles/carrusel.css";
+import "@/styles/footer.css";
+import "@/styles/login.css";
+import "@/styles/main.css";
+import "@/styles/navs.css";
 import useOutsideClick from "@/tools/useOutSideClick";
 import Carrusel from "@/components/fragments/carruseles/carruseles";
 import Footer from "@/components/fragments/footer";
@@ -27,7 +27,6 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
   const [mostNewMovieList, setMostNewMovieList] = useState([]);
   const [id_trailer, setId_trailer] = useState("");
 
-
   //LLAMADA AL TRAILER
   const [trailerMovieList, settrailerMovieList] = useState([]);
   const [isLoading2, setIsloading2] = useState(true);
@@ -41,8 +40,9 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
 
 
   useEffect(() => {
-    getTrailerMovieList();
-    console.log(id_trailer);
+    if(id_trailer){
+      getTrailerMovieList();
+    }
   }, [id_trailer]);
 
 
@@ -59,12 +59,18 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
   function getTrailerMovieList() {
     setIsloading2(true);
     getTrailersFromAPIBy(URL_TRAILER).then((result) => {
-      console.log(URL_TRAILER);
       
       settrailerMovieList(result);
       setIsloading2(false);
     });
   }
+
+
+  const filterVideo = trailerMovieList.find(trailer => trailer.name.includes('Tráiler')||trailer.name.includes('Official Trailer')||trailer.name.includes('TRAILER'))
+
+
+  
+  
 
 
   
@@ -86,11 +92,12 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
                   {isLoading2 ? (
                     <p>Cargando..</p>
                   ) : (
-                    trailerMovieList.filter(trailer => trailer.name.includes('Tráiler')||trailer.name.includes('Trailer')||trailer.name.includes('TRAILER')).map(trailer =>
-
-                      <div key={trailer.id}><ItemTrailer key={trailer.id} trailer={trailer} /></div>
-                    )
-        
+                    filterVideo ?
+                      <div key={filterVideo.id}><ItemTrailer key={filterVideo.id} trailer={filterVideo} /></div>
+                    :
+                    
+                    null
+                    
                    
                   )}
                 </div>

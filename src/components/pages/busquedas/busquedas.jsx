@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { API_KEY, SEARCH_URL_MOVIE } from '../../../diccionario/url.jsx';
-import '../../../styles/busquedas.css';
-import Footer from '../../fragments/footer';
-import Navs from '../../fragments/navs/navs';
+import { API_KEY, SEARCH_URL_MOVIE } from '@/diccionario/url.jsx';
+import '@/styles/busquedas.css';
+import Footer from '@/components/fragments/footer';
+import Navs from '@/components/fragments/navs/navs';
 import ItemBusqueda from './itemBusqueda';
 
 

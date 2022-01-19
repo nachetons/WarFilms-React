@@ -1,5 +1,5 @@
 import Carrusel from "./carrusel";
-import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "../../../diccionario/url";
+import { API_URL_POP, API_URL_RATED, API_URL_NEW } from "@/diccionario/url";
 
 
 import { useState, useEffect } from "react";

@@ -1,14 +1,14 @@
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import '../../styles/carrusel.css'
-import '../../styles/footer.css'
-import '../../styles/formulario.css'
-import '../../styles/login.css'
-import '../../styles/main.css'
-import '../../styles/mediaquerys.css'
-import '../../styles/navs.css'
-import Footer from '../fragments/footer'
-import Navs from '../fragments/navs/navs'
+import '@/styles/carrusel.css'
+import '@/styles/footer.css'
+import '@/styles/formulario.css'
+import '@/styles/login.css'
+import '@/styles/main.css'
+import '@/styles/mediaquerys.css'
+import '@/styles/navs.css'
+import Footer from '@/components/fragments/footer'
+import Navs from '@/components/fragments/navs/navs'
 
 
 
