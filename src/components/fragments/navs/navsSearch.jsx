@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useHistory } from 'react-router-dom';
-import { API_KEY, SEARCH_URL_MOVIE, SEARCH_URL_TV } from "../../../diccionario/url";
-import useOutsideClick from '../../../tools/useOutSideClick';
-import Login from '../login';
+import { API_KEY, SEARCH_URL_MOVIE, SEARCH_URL_TV } from "@/diccionario/url";
+import useOutsideClick from '@/tools/useOutSideClick';
+import Login from '@/components/fragments/login';
 
 
 export default function NavSearch({ searchValue, changeSearchValueFunction, setIsAuth, isAuth }) {
