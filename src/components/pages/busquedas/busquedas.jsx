@@ -13,11 +13,21 @@ import ItemBusqueda from './itemBusqueda';
 const busquedas = ({ setIsAuth, isAuth }) => {
   const { title } = useParams();
   const [movieList, setMovieList] = useState([]);
+  const [secondmovieList, setSecondmovieList] = useState([]);
   const [isLoading, setIsloading] = useState(true);
-  const URL_SEARCH = SEARCH_URL_MOVIE + title + "&" + API_KEY
+  const [page_Number, setPageNumber] = useState(1);
+  const URL_SEARCH = SEARCH_URL_MOVIE + title + "&" + API_KEY+"&page="+page_Number;
 
 
-  useEffect(getMostPopularMovieList, []);
+  useEffect( ()=>
+    {
+      getMostPopularMovieList(setMovieList);
+      getMostPopularMovieList(setSecondmovieList);
+
+    
+    },
+    
+    [page_Number]);
 
 
   const getMoviesFromAPIBy = (toFetch) =>
@@ -25,23 +35,14 @@ const busquedas = ({ setIsAuth, isAuth }) => {
       .then(response => response.json())
       .then(responseConverted => responseConverted.results);
 
-  function getMostPopularMovieList() {
+  function getMostPopularMovieList(f) {
     const xs = [];
 
     setIsloading(true);
     getMoviesFromAPIBy(URL_SEARCH).then(result => {
-      if (result.length < 6) {
-        result.map(item => {
-          xs.push(item);
-        });
-      } else {
-        for (let i = 0; i <= 6; i++) {
 
-          xs.push(result[i]);
-        }
-      }
 
-      setMovieList(xs);
+      f(result);
       setIsloading(false);
     })
   }
@@ -58,15 +59,39 @@ const busquedas = ({ setIsAuth, isAuth }) => {
           {isLoading ?
             <p>Cargando...</p>
             :
+            <>
+            {
+              movieList.length==0?
+              <p style={{width:"40px",height:"40px", margin:"100px"}}>No hay resultados</p>
+              :
+              movieList.map(movie =>
 
-            movieList.map(movie =>
+                <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie} /></div></Link>
+              )
+            }
+           
+            <div className="pagination">
+          {page_Number==1 ?
+          null
+          :
+          <a onClick={() =>setPageNumber((lastPage)=>lastPage-1)} className="btn_pagination btn_atras">Atras</a>
 
-              <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie} /></div></Link>
-            )
+        
+        }
+          <button className="btn_mas">{page_Number}</button>
+          {console.log(page_Number)}
+          
+          {secondmovieList.length==0 ?
+          null
+          :
+          <a onClick={() =>setPageNumber((lastPage)=>lastPage+1)}className="btn_pagination">Siguiente</a>
 
+        
+        }
+        </div>
+            </>
           }
 
-          <button className="btn_mas">Mostrar mas</button>
         </div>
       </div>
 
