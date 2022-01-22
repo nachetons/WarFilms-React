@@ -55,6 +55,10 @@ export default function NavSearch({ searchValue, changeSearchValueFunction, setI
     history.push("/busquedas/" + searchValue);
   }
 
+  function handleClick2() {
+    history.push("busquedas_series/" + searchValue);
+  }
+
 
 
   function takeItems(list) {
@@ -81,13 +85,12 @@ export default function NavSearch({ searchValue, changeSearchValueFunction, setI
   }
 
 
-
-
   return (
     <ul className="icons-ul">
-
-      <form className="log" id="myForm" onSubmit={handleClick}>
+      
         {window.location.pathname != "/series" ?
+        <form className="log" id="myForm" onSubmit={handleClick}>
+
           <input onClick={() => setSate(!show)}
             type="text"
             className="input-search"
@@ -100,7 +103,11 @@ export default function NavSearch({ searchValue, changeSearchValueFunction, setI
             /*name="search"*/
             autoComplete="off"
           ></input>
+                </form>
+
           :
+          <form className="log" id="myForm" onSubmit={handleClick2}>
+
           <input onClick={() => setSate(!show)}
             type="text"
             className="input-search"
@@ -112,6 +119,8 @@ export default function NavSearch({ searchValue, changeSearchValueFunction, setI
             }}
             autoComplete="off"
           ></input>
+                </form>
+
 
         }
         <button className="boton-search" type="submit"><i className="fas fa-search"></i></button>
@@ -132,7 +141,6 @@ export default function NavSearch({ searchValue, changeSearchValueFunction, setI
             null
         }
 
-      </form>
 
 
       <li><i style={{ width: "auto" }} className="fas fa-user logo_inicio" onClick={() => setLogin(lastState => !lastState)} id="btn_login_nav" title="Portafolio" /></li>

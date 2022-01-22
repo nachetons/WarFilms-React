@@ -15,6 +15,8 @@ import Footer from "@/components/fragments/footer";
 import Header from "@/components/fragments/header";
 import Navs from "@/components/fragments/navs/navs";
 import ItemTrailer from "@/components/fragments/itemTrailer";
+import fetchApi from "../fragments/fetchApi";
+import useFetch from "react-fetch-hook";
 
 
 
@@ -38,10 +40,11 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
     API_KEY +
     "&append_to_response=videos";
 
-
+  
   useEffect(() => {
     if(id_trailer){
       getTrailerMovieList();
+    
     }
   }, [id_trailer]);
 
@@ -51,6 +54,8 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
     if (show) setShow(false);
   });
 
+
+  
   const getTrailersFromAPIBy = (toFetch) =>
     fetch(toFetch)
       .then((response) => response.json())

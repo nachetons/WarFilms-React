@@ -13,6 +13,7 @@ import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import ItemSerie from './itemSeries'
+import fetchApi from '@/components/fragments/fetchApi'
 
 
 
@@ -23,42 +24,10 @@ import ItemSerie from './itemSeries'
 
 const series = ({ setIsAuth, isAuth }) => {
   const { categoria } = useParams();
-  const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
 
 
+  const {status, data} = fetchApi(API_URL_TV_POP);
 
-  const getMoviesFromAPIBy = (toFetch) =>
-    fetch(toFetch)
-      .then(response => response.json())
-      .then(responseConverted => responseConverted.results);
-
-  function getMostPopularMovieList() {
-    const xs = [];
-
-    setIsloading(true);
-    getMoviesFromAPIBy(API_URL_TV_POP).then(result => {
-      if (result.length < 19) {
-        result.map(item => {
-          xs.push(item);
-        });
-      } else {
-        for (let i = 0; i <= 19; i++) {
-
-          xs.push(result[i]);
-
-        }
-      }
-      setMovieList(xs);
-      setIsloading(false);
-    })
-  }
-
-
-
-  //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se 
-  //ejecuta la primera vez
-  useEffect(getMostPopularMovieList, [categoria]);
 
   return (
     <>
@@ -73,11 +42,11 @@ const series = ({ setIsAuth, isAuth }) => {
 
         <div className="peliculas" id="list_pelis">
 
-          {isLoading ?
+          {!status ?
             <p>Cargando...</p>
             :
 
-            movieList.map(serie =>
+            data.map(serie =>
 
               <Link key={serie.id} to={'/serie/' + serie.name + '/' + serie.id}><div key={serie.id}><ItemSerie key={serie.id} movieInfo={serie} /></div></Link>
             )
