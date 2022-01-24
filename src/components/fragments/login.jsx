@@ -1,14 +1,25 @@
 /* eslint-disable no-undef */
 
 import { signInWithPopup, signOut } from 'firebase/auth'
-import { auth, provider } from '../../../config'
+import { auth, provider, loginEmailPassword } from '../../../config'
+import Registro from './registro'
+import { useState } from 'react'
 
 export default function login ({ setLogin, login, setIsAuth, isAuth }) {
+  const [register, setRegister] = useState(false)
+
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then(result => {
       localStorage.setItem('isAuth', true)
       setIsAuth(true)
     })
+  }
+
+  async function submitHandler (e) {
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+    await loginEmailPassword(email, password)
   }
 
   const logOut = () => {
@@ -25,7 +36,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
         {console.log('autentificacion: ' + isAuth)}
         <div className='all-modal'>
           <div id='id01' className='modal login'>
-            <form className='modal-content' id='form_content' action='#'>
+            <form className='modal-content' id='form_content' onSubmit={submitHandler}>
               <div className='imgcontainer'>
                 <i className='fas fa-user fa-2x foto' title='Portafolio' />
                 <br />
@@ -43,19 +54,20 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
                   className='input-form'
                   type='email'
                   placeholder='Enter Username'
-                  name='uname'
+                  name='email'
                 />
 
                 <input
                   className='input-form'
                   type='password'
                   placeholder='Enter Password'
-                  name='psw'
+                  name='password'
                 />
                 <button className='boton-form' type='submit'>
                   Login
                 </button>
-                <input type='checkbox' /> Remember me
+                <p />
+                <label className='registerLink' onClick={() => setRegister(lastState => !lastState)}>Registrate aqui</label>
               </div>
 
               <div className='container' />
@@ -63,62 +75,11 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
             <a className='login-with-google-btn boton_sesion_google' onClick={signInWithGoogle}><i className='fab fa-google' /></a>
           </div>
 
-          <div id='id02' className='modal registro'>
-            <form className='modal-content' id='form_content2' action='#'>
-              <div className='imgcontainer'>
-                <i className='fas fa-user fa-2x foto' title='Portafolio' />
-                <br />
-                <span className='btn' id='btn_login2'>
-                  Login
-                </span>
-                <span className='btn' id='btn_registro2'>
-                  Registro
-                </span>
-              </div>
-
-              <div className='container'>
-                <label>
-                  <b>Name</b>
-                </label>
-                <input
-                  className='input-form'
-                  type='text'
-                  placeholder='Enter Name'
-                  name='uname'
-                  required
-                />
-
-                <label>
-                  <b>Email</b>
-                </label>
-                <input
-                  className='input-form'
-                  type='Email'
-                  placeholder='prueba@123.com'
-                  name='psw'
-                  required
-                />
-
-                <label>
-                  <b>Password</b>
-                </label>
-                <input
-                  className='input-form'
-                  type='password'
-                  placeholder='Enter Password'
-                  name='psw'
-                  required
-                />
-
-                <button className='boton-form' type='submit'>
-                  Registrarse
-                </button>
-              </div>
-
-              <div className='container' />
-            </form>
-          </div>
         </div>
+        {register
+          ? <Registro setRegister={setRegister} register={register} setIsAuth={setIsAuth} isAuth={isAuth} />
+
+          : null}
       </>
     )
   } else {
@@ -171,6 +132,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
           </div>
 
         </div>
+
       </>
     )
   }

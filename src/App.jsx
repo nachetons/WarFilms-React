@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useState } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import './App.css'
@@ -14,9 +15,28 @@ import Pelicula from './components/pages/pelicula'
 import Peliculas from './components/pages/peliculas/peliculas'
 import Serie from './components/pages/serie'
 import Series from './components/pages/series/series'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 function App () {
+  const auth = getAuth()
   const [isAuth, setIsAuth] = useState(false)
+
+  onAuthStateChanged(auth, (usuarioFirebase) => {
+    if (usuarioFirebase) {
+      localStorage.setItem('isAuth', true)
+      setIsAuth(true)
+    }
+  })
+
+  /*
+  const auth = getAuth(app)
+  onAuthStateChange(auth, (usuarioFirebase) => {
+    if (usuarioFirebase) {
+      setIsAuth(true)
+    } else {
+      setIsAuth(false)
+    }
+  }) */
 
   return (
     <>
