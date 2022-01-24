@@ -67,7 +67,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
                   Login
                 </button>
                 <p />
-                <label className='registerLink' onClick={() => setRegister(lastState => !lastState)}>Registrate aqui</label>
+                <label className='registerLink' onClick={() => setRegister(lastState => !lastState) + setLogin(false)}>Registrate aqui</label>
               </div>
 
               <div className='container' />

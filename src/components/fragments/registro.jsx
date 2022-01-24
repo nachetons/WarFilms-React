@@ -7,6 +7,8 @@ export default function registro ({ setRegister, register, setIsAuth, isAuth }) 
 
   return (
     <>
+      <div className='background_login' onClick={() => setRegister(false)} />
+      {console.log('autentificacion: ' + isAuth)}
       <div className='all-modal'>
         <div id='id01' className='modal login'>
           <form className='modal-content' id='form_content'>

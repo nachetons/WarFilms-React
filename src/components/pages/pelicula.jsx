@@ -181,6 +181,10 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                         src={imageNoLoad}
                         style={{ width: '35%' }}
                       />}
+                  {isAuth
+                    ? <i className='far fa-heart' />
+                    : null}
+
                   <div className='content_film' id={movie.id}>
                     <h3 className='titulo'>{movie.original_title}</h3>
                     <p className='descripcion'>{movie.overview}</p>
