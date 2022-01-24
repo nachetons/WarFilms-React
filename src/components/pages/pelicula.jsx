@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 /* eslint-disable no-undef */
+
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
@@ -19,6 +20,7 @@ import '@/styles/pelicula.css'
 import imageNoLoad from '@/images/ImageNoLoad.jpg'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
+import addMovieLike from '../functions/addMovieLike'
 
 const pelicula = ({ setIsAuth, isAuth }) => {
   // LLAMADA A LA PELICULA
@@ -103,6 +105,22 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     })
   }
 
+  function addProfile (mostPopularMovieList) {
+    // const image = URL_IMG + mostPopularMovieList.poster_path
+    const title = mostPopularMovieList.title
+    const overview = mostPopularMovieList.overview
+    const date = mostPopularMovieList.release_date
+    const id = mostPopularMovieList.id
+
+    const movielike = { title, overview, date, id }
+    try {
+      addMovieLike(movielike)
+      console.log('Se agrego a favoritos')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   // DISPLAY TRAILERS
   function displayTrailers (trailer) {
     setTimeout(() => {
@@ -182,7 +200,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                         style={{ width: '35%' }}
                       />}
                   {isAuth
-                    ? <i className='far fa-heart' />
+                    ? <i className='far fa-heart' onClick={() => addProfile(mostPopularMovieList[0])} />
                     : null}
 
                   <div className='content_film' id={movie.id}>
