@@ -4,7 +4,7 @@ import './App.css'
 import Login from './components/fragments/login'
 import Actor from './components/pages/actor'
 import Busqueda from './components/pages/busquedas/busquedas'
-import Busqueda_Series from './components/pages/busquedas_series/busquedas_series'
+import BusquedaSeries from './components/pages/busquedas_series/busquedas_series'
 import Categorias from './components/pages/categorias/categorias'
 import Formulario from './components/pages/formulario'
 import Index from './components/pages/index'
@@ -15,16 +15,11 @@ import Peliculas from './components/pages/peliculas/peliculas'
 import Serie from './components/pages/serie'
 import Series from './components/pages/series/series'
 
-
-
-function App() {
-  const [count, setCount] = useState(0)
+function App () {
   const [isAuth, setIsAuth] = useState(false)
-
 
   return (
     <>
-
 
       <BrowserRouter>
 
@@ -54,10 +49,6 @@ function App() {
             <Login setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
 
-
-
-
-
           <Route path='/categorias/:categoria'>
             <Categorias setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
@@ -75,7 +66,7 @@ function App() {
           </Route>
 
           <Route path='/busquedas_series/:title'>
-            <Busqueda_Series setIsAuth={setIsAuth} isAuth={isAuth} />
+            <BusquedaSeries setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
           <Route path='/actor/:id'>
             <Actor setIsAuth={setIsAuth} isAuth={isAuth} />
@@ -83,9 +74,6 @@ function App() {
           <Route path='/'>
             <Index setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
-
-
-
 
         </Switch>
       </BrowserRouter>

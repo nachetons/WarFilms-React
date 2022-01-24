@@ -1,82 +1,79 @@
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { API_KEY, SEARCH_URL_TV } from '@/diccionario/url.jsx';
-import '@/styles/busquedas.css';
-import Footer from '@/components/fragments/footer';
-import Navs from '@/components/fragments/navs/navs';
-import ItemBusquedaSerie from './itemBusqueda_serie';
+/* eslint-disable react/jsx-closing-tag-location */
+/* eslint-disable no-undef */
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { API_KEY, SEARCH_URL_TV } from '@/diccionario/url.jsx'
+import '@/styles/busquedas.css'
+import Footer from '@/components/fragments/footer'
+import Navs from '@/components/fragments/navs/navs'
+import ItemBusquedaSerie from './itemBusqueda_serie'
 
+const busquedasSeries = ({ setIsAuth, isAuth }) => {
+  const { title } = useParams()
+  const [movieList, setMovieList] = useState([])
+  const [isLoading, setIsloading] = useState(true)
+  const [pageNumber, setPageNumber] = useState(1)
+  const [secondmovieList, setSecondmovieList] = useState([])
+  const URL_SEARCH = SEARCH_URL_TV + title + '&' + API_KEY + '&page=' + pageNumber
 
+  useEffect(() => {
+    getMostPopularMovieList(setMovieList)
+    getMostPopularMovieList(setSecondmovieList)
+  },
 
-
-
-const busquedas_series = ({ setIsAuth, isAuth }) => {
-  const { title } = useParams();
-  const [movieList, setMovieList] = useState([]);
-  const [isLoading, setIsloading] = useState(true);
-  const URL_SEARCH = SEARCH_URL_TV + title + "&" + API_KEY
-
-  useEffect(getMostPopularMovieList, []);
+  [pageNumber])
 
   const getMoviesFromAPIBy = (toFetch) =>
     fetch(toFetch)
       .then(response => response.json())
-      .then(responseConverted => responseConverted.results);
+      .then(responseConverted => responseConverted.results)
 
-  function getMostPopularMovieList() {
-    const xs = [];
-
-    setIsloading(true);
+  function getMostPopularMovieList (f) {
+    setIsloading(true)
     getMoviesFromAPIBy(URL_SEARCH).then(result => {
-      if (result.length < 4) {
-        result.map(item => {
-          xs.push(item);
-        });
-      } else {
-        for (let i = 0; i <= 4; i++) {
-
-          xs.push(result[i]);
-        }
-      }
-
-      setMovieList(xs);
-      setIsloading(false);
+      setMovieList(result)
+      f(result)
+      setIsloading(false)
     })
   }
-
 
   return (
     <>
 
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
-      <div className="container2">
-        <div className="row" id="listas_pelis">
+      <div className='container2'>
+        <div className='row' id='listas_pelis'>
 
-          {isLoading ?
-            <p>Cargando...</p>
-            :
+          {isLoading
+            ? <p>Cargando...</p>
+            : <>
+              {
+              movieList.length === 0
+                ? <p style={{ width: '40px', height: '40px', margin: '100px' }}>No hay resultados</p>
+                : movieList.map(serie =>
 
+                  <Link key={serie.id} to={'/serie/' + serie.name + '/' + serie.id}><div key={serie.id}><ItemBusquedaSerie key={serie.id} movieInfo={serie} /></div></Link>
+                )
+}
 
-            movieList.map(serie =>
+              <div className='pagination'>
+                {pageNumber === 1
+                  ? null
+                  : <a onClick={() => setPageNumber((lastPage) => lastPage - 1)} className='btn_pagination btn_atras'>Atras</a>}
+                <button className='btn_mas'>{pageNumber}</button>
 
-              <Link key={serie.id} to={'/serie/' + serie.name + '/' + serie.id}><div key={serie.id}><ItemBusquedaSerie key={serie.id} movieInfo={serie} /></div></Link>
-            )
-
-
-          }
-
-          <button className="btn_mas">Mostrar mas</button>
+                {secondmovieList.length === 0
+                  ? null
+                  : <a onClick={() => setPageNumber((lastPage) => lastPage + 1)} className='btn_pagination'>Siguiente</a>}
+              </div>
+            </>}
         </div>
       </div>
-
-
       <Footer />
 
     </>
   )
-
-
 }
 
-export default busquedas_series;
+export default busquedasSeries

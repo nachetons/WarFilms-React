@@ -8,34 +8,27 @@ import '@/styles/opciones.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
 
-
-
-
-
-
 const marcadores = ({ setIsAuth, isAuth }) => {
-  const redirectPage = useHistory();
+  const redirectPage = useHistory()
   if (isAuth === false) {
-    redirectPage.push('/');
-
+    redirectPage.push('/')
   }
 
   return (
     <>
 
-
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
-      <div className="container">
+      <div className='container'>
 
-        <form className="modal-content" id="form_content" action="#">
-          <div className="imgcontainer">
-            <i className="fas fa-user fa-2x foto" title="Portafolio"></i>
+        <form className='modal-content' id='form_content' action='#'>
+          <div className='imgcontainer'>
+            <i className='fas fa-user fa-2x foto' title='Portafolio' />
             <br />
           </div>
 
-          <div className="container">
-            <label htmlFor="uname"><b>Peliculas favoritas: </b></label>
+          <div className='container'>
+            <label htmlFor='uname'><b>Peliculas favoritas: </b></label>
             <ul>
               <li>Pelicula1</li>
               <li>Pelicula2</li>
@@ -45,14 +38,13 @@ const marcadores = ({ setIsAuth, isAuth }) => {
             </ul>
             <br />
 
-
-            <button className="boton-form" type="submit">
+            <button className='boton-form' type='submit'>
               Guardar cambios
             </button>
-            <input type="checkbox" /> Remember me
+            <input type='checkbox' /> Remember me
           </div>
 
-          <div className="container"></div>
+          <div className='container' />
         </form>
 
       </div>
@@ -60,16 +52,7 @@ const marcadores = ({ setIsAuth, isAuth }) => {
       <Footer />
     </>
 
-
-
-
-
   )
-
-
-
 }
 
-export default marcadores;
-
-
+export default marcadores

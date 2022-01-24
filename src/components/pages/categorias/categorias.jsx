@@ -1,6 +1,5 @@
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { API_URL_CATEGORY, arrayMovies } from '@/diccionario/url.jsx'
 import '@/styles/carrusel.css'
@@ -15,57 +14,37 @@ import Navs from '@/components/fragments/navs/navs'
 import ItemCategoria from './itemCategoria'
 import fetchApi from '@/components/fragments/fetchApi'
 
-
-
 const categorias = ({ setIsAuth, isAuth }) => {
-  const { categoria } = useParams();
+  const { categoria } = useParams()
 
+  const URL_CATEGORY = API_URL_CATEGORY + arrayMovies[categoria]
 
-
-
-  const URL_CATEGORY = API_URL_CATEGORY + arrayMovies[categoria];
-
-  const {status, data} = fetchApi(URL_CATEGORY);
+  const { status, data } = fetchApi(URL_CATEGORY)
 
   return (
     <>
 
-
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
+      <div className='row' id='contenedor_main'>
 
-      <div className="row" id="contenedor_main">
+        <h3 id='titulos' className='titulo'>{categoria}</h3>
 
-        <h3 id="titulos" className="titulo">{categoria}</h3>
+        <div className='peliculas' id='list_pelis'>
 
-        <div className="peliculas" id="list_pelis">
-
-          {!status ?
-            <p>Cargando...</p>
-            :
-
-            data.map(movie =>
+          {!status
+            ? <p>Cargando...</p>
+            : data.map(movie =>
 
               <Link key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie} /></div></Link>
-            )
-
-          }
+            )}
 
         </div>
       </div>
       <Footer />
     </>
 
-
-
-
-
   )
-
-
-
 }
 
-
-export default categorias;
-
+export default categorias

@@ -1,11 +1,9 @@
 
-.row{
-    margin-top: 5%;
-    margin-left: 6%;
-}
+
 
 
   .peliculas_list {
+
       display: flex;
      
 
@@ -41,5 +39,13 @@
         background-color: red;
         margin:10px;
     }
+    .container{
+        margin-top: 4%;
+    }
+
+    
+
+
+
 
     

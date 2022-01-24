@@ -1,12 +1,11 @@
 
-
-export default function Footer() {
+export default function Footer () {
   return (
     <>
 
-      <footer className="footer">
-        <div className="maindiv">
-          <div className="footerlogo"></div>
+      <footer className='footer'>
+        <div className='maindiv'>
+          <div className='footerlogo' />
           <div>
             <h3>THE BASICS</h3>
             <ul>
@@ -47,5 +46,5 @@ export default function Footer() {
       </footer>
 
     </>
-  );
+  )
 }

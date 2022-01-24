@@ -1,4 +1,5 @@
-
+/* eslint-disable no-undef */
+/* eslint-disable react/jsx-indent */
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
@@ -17,114 +18,87 @@ import '@/styles/pelicula.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 
-
-
-
-
-
-
-
 const serie = ({ setIsAuth, isAuth }) => {
+  // LLAMADA A LA SERIE
+  const [mostPopularMovieList, setMostPopularMovieList] = useState([])
+  const [isLoading, setIsloading] = useState(true)
 
-    //LLAMADA A LA SERIE
-    const [mostPopularMovieList, setMostPopularMovieList] = useState([]);
-    const [isLoading, setIsloading] = useState(true);
+  // LLAMADA AL TRAILER
+  const [trailerMovieList, settrailerMovieList] = useState([])
+  const [isLoading2, setIsloading2] = useState(true)
 
-    //LLAMADA AL TRAILER
-    const [trailerMovieList, settrailerMovieList] = useState([]);
-    const [isLoading2, setIsloading2] = useState(true);
+  // LAMADA ACTORES DE LAS SERIES
+  const [actorMovieList, setActorMovieList] = useState([])
+  const [isLoading3, setIsloading3] = useState(true)
 
-    //LAMADA ACTORES DE LAS SERIES
-    const [actorMovieList, setActorMovieList] = useState([]);
-    const [isLoading3, setIsloading3] = useState(true);
+  const { title, id } = useParams()
 
-    const { title, id } = useParams();
+  useEffect(() => {
+    getMostPopularMovieList()
+    getTrailerMovieList()
+    getActorMovieList()
+  }, [title, id])
 
-    useEffect(() => {
+  const URL_BUSQUEDA = SEARCH_URL_TV + title + '&' + API_KEY
+  const URL_TRAILER = URL_BASE + 'tv/' + id + '?' + API_KEY + '&append_to_response=videos'
+  const URL_ACTORS =
+        URL_BASE + 'tv/' + id + '?' + API_KEY + '&append_to_response=credits'
 
-        getMostPopularMovieList();
-        getTrailerMovieList();
-        getActorMovieList();
+  const responsive = {
+    0: { items: 1 },
+    568: { items: 2 },
+    1024: { items: 5 }
+  }
 
+  const getMoviesFromAPIBy = (toFetch) =>
+    fetch(toFetch)
+      .then(response => response.json())
+      .then(responseConverted => responseConverted.results)
 
-    }, [title, id]);
+  function getMostPopularMovieList () {
+    const xs = []
 
+    setIsloading(true)
+    getMoviesFromAPIBy(URL_BUSQUEDA).then(result => {
+      xs.push(result[0])
+      setMostPopularMovieList(xs)
+      setIsloading(false)
+    })
+  }
 
-    const URL_BUSQUEDA = SEARCH_URL_TV + title + "&" + API_KEY;
-    const URL_TRAILER = URL_BASE + 'tv/' + id + "?" + API_KEY + "&append_to_response=videos&language=es-ES";
-    const trailers = document.getElementById("mytrailer")
-    const URL_ACTORS =
-        URL_BASE + "tv/" + id + "?" + API_KEY + "&append_to_response=credits";
+  const getTrailersFromAPIBy = (toFetch) =>
+    fetch(toFetch)
+      .then(response => response.json())
+      .then(responseConverted => responseConverted.videos.results)
 
+  function getTrailerMovieList () {
+    setIsloading2(true)
+    getTrailersFromAPIBy(URL_TRAILER).then(result => {
+      settrailerMovieList(result)
+      setIsloading2(false)
+    })
+  }
 
+  const getActorsFromAPIBy = (toFetch) =>
+    fetch(toFetch)
+      .then((response) => response.json())
+      .then((responseConverted) => responseConverted.credits.cast)
 
+  function getActorMovieList () {
+    setIsloading3(true)
+    getActorsFromAPIBy(URL_ACTORS).then((result) => {
+      setActorMovieList(result)
+      setIsloading3(false)
+    })
+  }
 
-    const responsive = {
-        0: { items: 1 },
-        568: { items: 2 },
-        1024: { items: 5 },
-    };
-
-
-
-    const getMoviesFromAPIBy = (toFetch) =>
-        fetch(toFetch)
-            .then(response => response.json())
-            .then(responseConverted => responseConverted.results);
-
-    function getMostPopularMovieList() {
-        const xs = [];
-
-        setIsloading(true);
-        getMoviesFromAPIBy(URL_BUSQUEDA).then(result => {
-            xs.push(result[0]);
-            setMostPopularMovieList(xs);
-            setIsloading(false);
-        });
-    }
-
-
-
-
-
-    const getTrailersFromAPIBy = (toFetch) =>
-        fetch(toFetch)
-            .then(response => response.json())
-            .then(responseConverted => responseConverted.videos.results);
-
-    function getTrailerMovieList() {
-        setIsloading2(true);
-        getTrailersFromAPIBy(URL_TRAILER).then(result => {
-            settrailerMovieList(result);
-            setIsloading2(false);
-
-        })
-    }
-
-
-
-
-    const getActorsFromAPIBy = (toFetch) =>
-        fetch(toFetch)
-            .then((response) => response.json())
-            .then((responseConverted) => responseConverted.credits.cast);
-
-    function getActorMovieList() {
-        setIsloading3(true);
-        getActorsFromAPIBy(URL_ACTORS).then((result) => {
-
-            setActorMovieList(result);
-            setIsloading3(false);
-        });
-    }
-
-
-    function displayTrailers(trailer) {
-        setTimeout(() => {
-            trailerMovieList.map(trailer => {
-                trailer.type == "Trailer" && trailer.site == "YouTube" ||
-                    trailer.name.includes("Trailer") && trailer.site == "YouTube" ?
-                    document.getElementById("mytrailer").innerHTML =
+  function displayTrailers (trailer) {
+    setTimeout(() => {
+      // eslint-disable-next-line array-callback-return
+      trailerMovieList.map(trailer => {
+        trailer.type === 'Trailer' & trailer.site === 'YouTube' ||
+                    trailer.name.includes('Trailer') & trailer.site === 'YouTube'
+          ? document.getElementById('mytrailer').innerHTML =
 
                     `<iframe 
             width="100%" 
@@ -142,9 +116,7 @@ const serie = ({ setIsAuth, isAuth }) => {
             allowfullscreen>
             </iframe>`
 
-                    :
-
-                    document.getElementById("mytrailer").innerHTML =
+          : document.getElementById('mytrailer').innerHTML =
                     `<iframe 
             width="100%" 
             height="100%" 
@@ -159,149 +131,106 @@ const serie = ({ setIsAuth, isAuth }) => {
             picture-in-picture" 
             allowfullscreen>
             </iframe>`
+      }
 
+      )
+    }, 10)
+  }
 
-            }
+  // Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
+  // ejecuta la primera vez
 
+  return (
 
-            )
+    <>
 
+      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
-        }, 10)
+      {isLoading
+        ? <div key={1} className='container' id='listas_pelis'>
+          <div className='contenedor-pelicula'>
 
-    }
+            <img id='foto' src={logo} style={{ width: '35%' }} />
+            <div className='content_film' id={1}>
+              <div className='text_Film'>
+                <h3 className='titulo'>Venom</h3>
+                <p className='descripcion'>un hombre mutante</p>
+              </div>
 
-
-
-    //Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se 
-    //ejecuta la primera vez
-   
-
-
-
-    return (
-
-        <>
-
-            <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
-
-
-            {isLoading ?
-                <div key={1} className="container" id="listas_pelis">
-                    <div className="contenedor-pelicula">
-
-                        <img id="foto" src={logo} style={{ width: '35%' }} />
-                        <div className="content_film" id={1}>
-                            <div className="text_Film">
-                                <h3 className="titulo">Venom</h3>
-                                <p className="descripcion">un hombre mutante</p>
-                            </div>
-
-                            <div className="youtube-wrapper">
-                                <div className="trailer">
-                                    <strong id="mytrailer"></strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div className='youtube-wrapper'>
+                <div className='trailer'>
+                  <strong id='mytrailer' />
                 </div>
+              </div>
+            </div>
+          </div>
+          </div>
 
-                :
+        : mostPopularMovieList.map(movie =>
 
-                mostPopularMovieList.map(movie =>
+          <div key={movie.id} className='container' id='listas_pelis'>
+            <div className='contenedor-pelicula'>
+              <img id='foto' src={URL_IMG + movie.poster_path} style={{ width: '35%' }} />
+              <div className='content_film' id={movie.id}>
+                <h3 className='titulo'>{movie.name}</h3>
+                <p className='descripcion'>{movie.overview}</p>
+                <div className='youtube-wrapper'>
+                  <div className='trailer'>
+                    <strong id='mytrailer' />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
+        )}
 
-                    <div key={movie.id} className="container" id="listas_pelis">
-                        <div className="contenedor-pelicula">
-                            <img id="foto" src={URL_IMG + movie.poster_path} style={{ width: '35%' }} />
-                            <div className="content_film" id={movie.id}>
-                                <h3 className="titulo">{movie.name}</h3>
-                                <p className="descripcion">{movie.overview}</p>
-                                <div className="youtube-wrapper">
-                                    <div className="trailer">
-                                        <strong id="mytrailer"></strong>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      {isLoading2
+        ? <p>Cargando..</p>
 
-                )
+        : displayTrailers(trailerMovieList)}
 
-            }
+      {isLoading3
+        ? <p>Cargando..</p>
 
-
-            {isLoading2 ?
-                <p>Cargando..</p>
-
-                :
-
-                displayTrailers(trailerMovieList)
-
-
-            }
-
-
-            {isLoading3 ? <p>Cargando..</p>
-
-                :
-                <AliceCarousel
-                    autoPlay
-                    autoPlayInterval={1000}
-                    animationType="fadeout"
-                    disableDotsControls
-                    disableButtonsControls
-                    infinite
-                    responsive={responsive}
-                    className="slider_content">
-                    {
+        : <AliceCarousel
+            autoPlay
+            autoPlayInterval={1000}
+            animationType='fadeout'
+            disableDotsControls
+            disableButtonsControls
+            infinite
+            responsive={responsive}
+            className='slider_content'
+          >
+          {
                         actorMovieList.filter(actor => actor.profile_path).map(actor =>
 
+                          <Link key={actor.id} to={'/actor/' + actor.id}>
+                            <>
+                              <div key={actor.id} className='contenedor-actor'>
+                                <img
+                                  id='foto'
+                                  src={URL_IMG + actor.profile_path}
+                                  style={{ width: '50%' }}
+                                />
+                                <h3 className='nombre_actor'>{actor.name}</h3>
+                                <p className='descripcion'>{actor.character}</p>
 
-
-                            <Link key={actor.id} to={'/actor/' + actor.id}>
-                                <>
-                                    <div key={actor.id} className="contenedor-actor">
-                                        <img
-                                            id="foto"
-                                            src={URL_IMG + actor.profile_path}
-                                            style={{ width: "50%" }}
-                                        />
-                                        <h3 className="nombre_actor">{actor.name}</h3>
-                                        <p className="descripcion">{actor.character}</p>
-
-                                    </div>
-                                </>
-                            </Link>
-
-
+                              </div>
+                            </>
+                          </Link>
 
                         )
 
-
-
-
-
-
                     }
-                </AliceCarousel>
-            }
+          </AliceCarousel>}
 
-            <Footer />
+      <Footer />
 
+    </>
 
-
-        </>
-
-
-
-
-
-    )
-
-
-
+  )
 }
-
 
 export default serie
