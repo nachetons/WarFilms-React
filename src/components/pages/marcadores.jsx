@@ -64,7 +64,7 @@ const marcadores = ({ setIsAuth, isAuth }) => {
                     <div className='card'>
                       <div className='card-body'>
                         <h5 className='card-title'>{movie.title}</h5>
-                        <p className='card-text'>{movie.overview}</p>
+                        <p className='card-text'>{movie.dataDate}</p>
                       </div>
                     </div>
                   </div>

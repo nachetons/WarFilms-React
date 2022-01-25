@@ -9,7 +9,8 @@ export default function addMovieLike (infoLike) {
   set(ref(db, 'likes/' + Uid + '/' + infoLike.id), {
     movieId: infoLike.id,
     userId: Uid,
-    title: infoLike.title
+    title: infoLike.title,
+    overview: infoLike.overview
   })
 
   /* const likesRef = collection(dbs, 'likes')

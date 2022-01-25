@@ -7,7 +7,7 @@ import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import { Link, useParams } from 'react-router-dom'
 import {
-  API_KEY, SEARCH_URL_MOVIE, URL_BASE, URL_IMG
+  API_KEY, URL_BASE, URL_IMG
 } from '@/diccionario/url.jsx'
 import logo from '@/images/1.jpg'
 import '@/styles/carrusel.css'
@@ -45,7 +45,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     getActorMovieList()
   }, [title, id])
 
-  const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + '&' + API_KEY
+  // const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + '&' + API_KEY
   const URL_TRAILER =
     URL_BASE +
     'movie/' +
@@ -65,14 +65,15 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   const getMoviesFromAPIBy = (toFetch) =>
     fetch(toFetch)
       .then((response) => response.json())
-      .then((responseConverted) => responseConverted.results)
+      .then((responseConverted) => responseConverted)
 
   function getMostPopularMovieList () {
     const xs = []
 
     setIsloading(true)
-    getMoviesFromAPIBy(URL_BUSQUEDA).then((result) => {
-      xs.push(result[0])
+    getMoviesFromAPIBy(URL_ACTORS).then((result) => {
+      xs.push(result)
+      console.log(URL_ACTORS)
 
       setMostPopularMovieList(xs)
       setIsloading(false)
@@ -204,7 +205,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                     : null}
 
                   <div className='content_film' id={movie.id}>
-                    <h3 className='titulo'>{movie.original_title}</h3>
+                    <h3 className='titulo'>{movie.title}</h3>
                     <p className='descripcion'>{movie.overview}</p>
                     <div className='youtube-wrapper'>
                       <div className='trailer'>

@@ -15,7 +15,8 @@ export default function itemTrailer (trailer) {
         clipboard-write;
         encrypted-media;
         gyroscope;
-        picture-in-picture'
+        picture-in-picture
+        '
       allowFullScreen
     />
 
