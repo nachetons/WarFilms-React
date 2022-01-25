@@ -8,6 +8,22 @@
 
 
 }
+.fa-heart{
+  cursor: pointer;
+}
+.content_film{
+    text-decoration: none;
+    color:white;
+    padding: 2%;
+    background: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    margin-top: 2%;
+    margin-left:-5%
+
+
+}
+
 
 .contenedor-actor{
 

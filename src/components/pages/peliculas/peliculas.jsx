@@ -110,7 +110,7 @@ const peliculas = ({ setIsAuth, isAuth }) => {
             ? <p>Cargando...</p>
             : movieList.map(movie =>
 
-              <Link key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie} /></div></Link>
+              <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie} /></div></Link>
             )}
 
         </div>

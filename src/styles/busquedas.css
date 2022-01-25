@@ -1,6 +1,16 @@
+.pagination{
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
 
 
 
+
+.titulo-secundario, .descripcion{
+  margin-left: 5%;
+}
 
   .peliculas_list {
 
@@ -16,18 +26,15 @@
   .btn_pagination{
     color: white;
   }
-
+#foto{
+  margin-top: 2%;
+}
   .content_film{
     text-decoration: none;
     color:white;
-    padding: 2%;
-    background: rgba(255, 255, 255, 0.1);
-    width: 100%;
-    border-bottom: 1px solid #ccc;
 
   }
   .content_film:hover{
-    background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     
 }
@@ -40,8 +47,12 @@
         margin:10px;
     }
     .container{
-        margin-top: 4%;
+        margin-top: 3%;
     }
+    .btn_atras{
+
+    }
+    
 
     
 

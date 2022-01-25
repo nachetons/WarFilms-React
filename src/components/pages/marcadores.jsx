@@ -12,6 +12,7 @@ import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect } from 'react'
 import { getDatabase, ref, child, get } from 'firebase/database'
 import deleteMovieLike from '../functions/deleteMovieLike'
+import swal from 'sweetalert'
 
 const marcadores = ({ setIsAuth, isAuth }) => {
   const [isLoading, setIsloading] = useState(true)
@@ -25,26 +26,54 @@ const marcadores = ({ setIsAuth, isAuth }) => {
       if (isLoading) {
         fetchMovies()
       }
-    }, [dataMovies.length !== 0])
+    }, [])
+  }
+  const Uid = auth.currentUser.uid
+  const dbRef = ref(getDatabase())
 
-    const Uid = auth.currentUser.uid
-    const dbRef = ref(getDatabase())
+  if (Uid === undefined || Uid === null) {
+    return <Redirect to='/' />
+    // redirectPage.push('/')
+  }
 
-    function fetchMovies () {
-      get(child(dbRef, 'likes/' + Uid)).then((snapshot) => {
-        if (snapshot.exists()) {
-          snapshot.forEach((childSnapshot) => {
-            dataMovies.push(childSnapshot.val())
-          })
-          setMovies(dataMovies)
-          setIsloading(false)
-        } else {
-          console.log('No data available')
-        }
-      }).catch((error) => {
-        console.error(error)
-      })
-    }
+  function fetchMovies () {
+    get(child(dbRef, 'likes/' + Uid)).then((snapshot) => {
+      if (snapshot.exists()) {
+        snapshot.forEach((childSnapshot) => {
+          dataMovies.push(childSnapshot.val())
+        })
+        setMovies(dataMovies)
+        setIsloading(false)
+      } else {
+        console.log('No data available')
+      }
+    }).catch((error) => {
+      console.error(error)
+    })
+  }
+
+  function removeLike (id) {
+    swal({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true
+    }).then((willDelete) => {
+      if (willDelete) {
+        deleteMovieLike(id)
+        fetchMovies()
+        swal('¡Eliminado!', 'Tu película ha sido eliminada.', 'success', {
+          timer: 1500,
+          showCancelButton: false,
+          showConfirmButton: false,
+          buttons: false
+
+        })
+      } else {
+        swal('¡Cancelado!', 'No se ha eliminado el like', 'error')
+      }
+    })
   }
 
   return (
@@ -66,7 +95,7 @@ const marcadores = ({ setIsAuth, isAuth }) => {
                   <div className='card-body'>
                     <h5 className='card-title'>{movie.title}</h5>
                     <p className='card-text'>{movie.date}</p>
-                    <button className='btnEliminar btn-primary' onClick={(e) => deleteMovieLike(movie.movieId)}>Eliminar</button>
+                    <button className='btnEliminar btn-primary' onClick={() => removeLike(movie.movieId)}>Eliminar</button>
                   </div>
 
                 </div>

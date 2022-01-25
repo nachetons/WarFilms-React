@@ -4,13 +4,15 @@ import { ref, set } from 'firebase/database'
 
 export default function addMovieLike (infoLike) {
   const Uid = auth.currentUser.uid
-
+  const n = new Date()
+  const newTime = n.toISOString().slice(0, 10)
   console.log('infoLike', Uid)
   set(ref(db, 'likes/' + Uid + '/' + infoLike.id), {
     movieId: infoLike.id,
     userId: Uid,
     title: infoLike.title,
-    overview: infoLike.overview
+    overview: infoLike.overview,
+    date: newTime
   })
     .then(() => {
       console.log('like added')

@@ -17,6 +17,15 @@
 .boton-card:hover {
   cursor: pointer;
 }
+.movie-title{
+text-decoration: none;
+color: white;
+}
+.movie-date{
+  text-decoration: none;
+  color: white;
+
+}
 
 .freetowatch-cards {
   display: flex;

@@ -3,14 +3,16 @@ import { signInWithPopup, signOut } from 'firebase/auth'
 import { auth, provider, loginEmailPassword } from '../../../config'
 import Registro from './registro'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 export default function login ({ setLogin, login, setIsAuth, isAuth }) {
   const [register, setRegister] = useState(false)
-
+  const redirectPage = useHistory()
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then(result => {
       localStorage.setItem('isAuth', true)
       setIsAuth(true)
+      setLogin(false)
     })
   }
 
@@ -19,10 +21,12 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
     const email = e.target.email.value
     const password = e.target.password.value
     await loginEmailPassword(email, password)
+    setLogin(false)
   }
 
   const logOut = () => {
     signOut(auth).then(result => {
+      redirectPage.push('/')
       localStorage.clear()
       setIsAuth(false)
       setLogin(false)

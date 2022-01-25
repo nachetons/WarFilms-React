@@ -52,7 +52,7 @@ const busquedas = ({ setIsAuth, isAuth }) => {
                 ? <p style={{ width: '40px', height: '40px', margin: '100px' }}>No hay resultados</p>
                 : movieList.map(movie =>
 
-                  <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie} /></div></Link>
+                  <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemBusqueda key={movie.id} movieInfo={movie} /></div></Link>
                 )
             }
 

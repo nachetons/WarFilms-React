@@ -15,6 +15,7 @@ import Pelicula from './components/pages/pelicula'
 import Peliculas from './components/pages/peliculas/peliculas'
 import Serie from './components/pages/serie'
 import Series from './components/pages/series/series'
+import ScrollToTop from './components/functions/ScrollToTop'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 function App () {
@@ -42,7 +43,7 @@ function App () {
     <>
 
       <BrowserRouter>
-
+        <ScrollToTop />
         <Switch>
 
           <Route path='/peliculas'>
@@ -73,7 +74,7 @@ function App () {
             <Categorias setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
 
-          <Route path='/pelicula/:title/:id'>
+          <Route path='/pelicula/:id'>
             <Pelicula setIsAuth={setIsAuth} isAuth={isAuth} />
           </Route>
 

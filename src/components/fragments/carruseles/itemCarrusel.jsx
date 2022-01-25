@@ -12,7 +12,7 @@ export default function ItemCarrusel ({ movieInfo, index, handleClick, setIdTrai
         <div className='delante'>
           <div className='movie-image'><img style={{ width: '100%' }} src={URL_IMG + backdrop_path} /></div>
           <h4 className='movie-title'>{title}</h4>
-          <h6>{release_date}</h6>
+          <h6 className='movie-date'>{release_date}</h6>
           <div className='movie-rating'>{vote_average}</div>
           <button
             onClick={() => {

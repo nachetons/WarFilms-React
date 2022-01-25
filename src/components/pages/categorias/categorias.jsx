@@ -36,7 +36,7 @@ const categorias = ({ setIsAuth, isAuth }) => {
             ? <p>Cargando...</p>
             : data.map(movie =>
 
-              <Link key={movie.id} to={'/pelicula/' + movie.original_title + '/' + movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie} /></div></Link>
+              <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie} /></div></Link>
             )}
 
         </div>

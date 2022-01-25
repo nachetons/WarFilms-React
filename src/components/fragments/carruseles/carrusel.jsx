@@ -1,4 +1,5 @@
 import ItemCarrusel from './itemCarrusel'
+import { Link } from 'react-router-dom'
 export default function Carrusel ({ sliderNumber, movieList, title, handleClick, setIdTrailer }) {
   return (
     <>
@@ -6,7 +7,7 @@ export default function Carrusel ({ sliderNumber, movieList, title, handleClick,
       <div className='freetowatch-cards'>
         <div className={'slider' + sliderNumber} id={'carruseles' + sliderNumber} data-pause='false'>
           {movieList.map(movie => {
-            return (<ItemCarrusel handleClick={handleClick} key={movie.id} setIdTrailer={setIdTrailer} movieInfo={movie} index={sliderNumber} />)
+            return (<Link key={movie.id} to={'/pelicula/' + movie.id}><ItemCarrusel handleClick={handleClick} key={movie.id} setIdTrailer={setIdTrailer} movieInfo={movie} index={sliderNumber} /></Link>)
           })}
         </div>
       </div>

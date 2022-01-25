@@ -9,9 +9,10 @@ export default function ItemBusqueda ({ movieInfo }) {
   return (
     <>
       <div className='movie'>
+
         {poster_path != null
-          ? <img id='foto' src={URL_IMG + poster_path} style={{ width: '8%' }} />
-          : <img id='foto' src={imageNoLoad} style={{ width: '8%' }} />}
+          ? <img id='foto' src={URL_IMG + poster_path} style={{ width: '15%' }} />
+          : <img id='foto' src={imageNoLoad} style={{ width: '15%' }} />}
         <div className='content_film'>
           <h3 className='titulo'>{title}</h3>
           <p className='titulo-secundario'>Sinopsis:</p>
