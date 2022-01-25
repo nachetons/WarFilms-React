@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-
 import { signInWithPopup, signOut } from 'firebase/auth'
 import { auth, provider, loginEmailPassword } from '../../../config'
 import Registro from './registro'
@@ -26,6 +25,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
     signOut(auth).then(result => {
       localStorage.clear()
       setIsAuth(false)
+      setLogin(false)
     })
   }
 

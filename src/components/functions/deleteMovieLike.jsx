@@ -1,19 +1,14 @@
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
 import { auth, db } from '../../../config'
-import { ref, set } from 'firebase/database'
+import { ref, remove } from 'firebase/database'
 
-export default function addMovieLike (infoLike) {
+export default function deleteMovieLike (id) {
   const Uid = auth.currentUser.uid
 
   console.log('infoLike', Uid)
-  set(ref(db, 'likes/' + Uid + '/' + infoLike.id), {
-    movieId: infoLike.id,
-    userId: Uid,
-    title: infoLike.title,
-    overview: infoLike.overview
-  })
+  remove(ref(db, 'likes/' + Uid + '/' + id))
     .then(() => {
-      console.log('like added')
+      console.log('like deleted')
     })
     .catch(error => {
       console.log('error', error)

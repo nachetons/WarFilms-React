@@ -1,0 +1,28 @@
+
+
+.peliculasMarcadores{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 1%;
+    margin-left: 7%;
+    border: 1px solid #ccc;
+}
+.card-body{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+
+
+}
+
+.btnEliminar{
+    justify-content: flex-end;
+    background-color: #ff0000;
+    color: #fff;
+    border-color: #ff0000;
+    
+}
