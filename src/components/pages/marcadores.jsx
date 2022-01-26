@@ -28,15 +28,10 @@ const marcadores = ({ setIsAuth, isAuth }) => {
       }
     }, [])
   }
-  const Uid = auth.currentUser.uid
-  const dbRef = ref(getDatabase())
-
-  if (Uid === undefined || Uid === null) {
-    return <Redirect to='/' />
-    // redirectPage.push('/')
-  }
 
   function fetchMovies () {
+    const Uid = auth.currentUser.uid
+    const dbRef = ref(getDatabase())
     get(child(dbRef, 'likes/' + Uid)).then((snapshot) => {
       if (snapshot.exists()) {
         snapshot.forEach((childSnapshot) => {
