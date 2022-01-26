@@ -10,23 +10,30 @@ import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect } from 'react'
 import { storage, auth } from '../../../config'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import { ref, getDownloadURL } from 'firebase/storage'
+import updateImage from '../functions/updateImageProfile'
+import updatePreferences from '../functions/updatePreferences'
 
 const opciones = ({ setIsAuth, isAuth }) => {
   const [selectedImage, setSelectedImage] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
-  let avatar = false
+  const [values, setValues] = useState([])
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target
+    setValues({
+      ...values,
+      [name]: value
+    })
+  }
   if (isAuth === false) {
     // return <Redirect to='/' />
   } else {
     const Uid = auth.currentUser.uid
     const imageRef = ref(storage, 'images/' + Uid + '/profileImage')
-    if (imageRef != null) {
-      avatar = true
+    if (imageRef != null && imageUrl === null) {
       getDownloadURL(imageRef).then((imageUrl) => {
         setImageUrl(imageUrl)
-
-        console.log(imageUrl)
       }).catch((error) => {
         console.log(error)
       })
@@ -35,26 +42,30 @@ const opciones = ({ setIsAuth, isAuth }) => {
 
   useEffect(() => {
     if (selectedImage) {
-      avatar = false
       setImageUrl(URL.createObjectURL(selectedImage))
     }
   }, [selectedImage])
 
   const handleUpload = () => {
-    const Uid = auth.currentUser.uid
-    const imageRef = ref(storage, 'images/' + Uid + '/profileImage')
-    uploadBytes(imageRef, selectedImage).then(() => {
-      getDownloadURL(imageRef).then((imageUrl) => {
-        setImageUrl(URL.createObjectURL((imageUrl)))
-        console.log('Image uploaded')
-      }).catch((error) => {
-        console.error(error, 'Error al obtener la url de la imagen')
-      }).catch((error) => {
-        console.error(error, 'Error al subir la imagen')
-      })
-    })
+    updateImage(selectedImage)
+    updatePref(values)
   }
-  return (
+
+  function updatePref (values) {
+    // const image = URL_IMG + mostPopularMovieList.poster_path
+    const username = values.username
+    const name = values.name
+    const surnames = values.surnames
+
+    const savePreferences = { username, name, surnames }
+    console.log(savePreferences)
+    try {
+      updatePreferences(savePreferences)
+      console.log('Se agrego a favoritos')
+    } catch (error) {
+      console.log(error.message)
+    }
+  } return (
     <>
 
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
@@ -63,29 +74,28 @@ const opciones = ({ setIsAuth, isAuth }) => {
 
         <form className='modal-content' id='form_content' action='#'>
           <div className='imgcontainer'>
-            <input
-              accept='image/*' type='file' id='select-image' style={{ display: 'none' }} onChange={e => setSelectedImage(e.target.files[0])}
-            />
-            <label htmlFor='select-image'>
-              {!imageUrl
-                ? (
-                  <i className='fas fa-user fa-2x foto' title='Portafolio' />)
-                : <>
-                  {avatar
-                    ? <>
-                      <div>Image Preview:</div>
-                      <img src={imageUrl} height='100px' />
-                    </>
-                    : null}
+            <>
+              <input
+                accept='image/*' type='file' id='select-image' style={{ display: 'none' }} onChange={e => setSelectedImage(e.target.files[0])}
+              />
+              <label htmlFor='select-image'>
+                {!imageUrl
+                  ? (
+                    <i className='fas fa-user fa-2x foto' title='Portafolio' />)
+                  : <>
+                    {!selectedImage
+                      ? <>
+                        <img src={imageUrl} height='100px' />
+                      </>
+                      : imageUrl && selectedImage && (
+                        <>
+                          <img src={imageUrl} alt={selectedImage.name} height='100px' />
+                        </>
+                      )}
 
-                </>}
-              {imageUrl && selectedImage && (
-                <>
-                  <div>Image Preview:</div>
-                  <img src={imageUrl} alt={selectedImage.name} height='100px' />
-                </>
-              )}
-            </label>
+                  </>}
+              </label>
+            </>
             <br />
           </div>
 
@@ -94,8 +104,9 @@ const opciones = ({ setIsAuth, isAuth }) => {
             <input
               className='input-form-preferences'
               type='text'
+              onChange={handleInputChange}
               placeholder='Enter Username'
-              name='uname'
+              name='username'
             />
           </div>
 
@@ -104,8 +115,9 @@ const opciones = ({ setIsAuth, isAuth }) => {
             <input
               className='input-form-preferences'
               type='text'
+              onChange={handleInputChange}
               placeholder='Enter name'
-              name='uname'
+              name='name'
             />
           </div>
 
@@ -114,8 +126,9 @@ const opciones = ({ setIsAuth, isAuth }) => {
             <input
               className='input-form-preferences'
               type='text'
+              onChange={handleInputChange}
               placeholder='Enter second name'
-              name='uname'
+              name='surnames'
             />
             <br />
             <label>
@@ -131,7 +144,6 @@ const opciones = ({ setIsAuth, isAuth }) => {
             <button className='boton-form' type='submit' onClick={handleUpload}>
               Guardar cambios
             </button>
-            <input type='checkbox' /> Remember me
           </div>
 
           <div className='container' />

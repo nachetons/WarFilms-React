@@ -2,20 +2,18 @@
 import { auth, db } from '../../../config'
 import { ref, set } from 'firebase/database'
 
-export default function updatePreferences (data) {
+export default function updatePreferences (values) {
   const Uid = auth.currentUser.uid
   const n = new Date()
   const newTime = n.toISOString().slice(0, 10)
-  console.log('infoLike', Uid)
   set(ref(db, 'users/' + Uid), {
-    movieId: data.id,
-    userId: Uid,
-    title: data.title,
-    overview: data.overview,
-    lastModify: newTime
+    username: values.username,
+    name: values.name,
+    surnames: values.surnames,
+    lastUpdate: newTime
   })
     .then(() => {
-      console.log('updated successfully')
+      console.log('like added')
     })
     .catch(error => {
       console.log('error', error)
