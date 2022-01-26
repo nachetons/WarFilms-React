@@ -14,6 +14,7 @@ export default function fetchApi (URL) {
       if (cache[URL]) {
         const data = cache[URL]
         setData(data.results)
+        console.log(data)
         setStatus('fetched')
       } else {
         // eslint-disable-next-line no-undef

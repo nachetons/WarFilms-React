@@ -9,10 +9,10 @@ import '@/styles/opciones.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect } from 'react'
-import { storage, auth } from '../../../config'
-import { ref, getDownloadURL } from 'firebase/storage'
 import updateImage from '../functions/updateImageProfile'
 import updatePreferences from '../functions/updatePreferences'
+// import getPreferences from '../functions/getPreferences'
+import getPreferencesImage from '../functions/getPreferencesImage'
 
 const opciones = ({ setIsAuth, isAuth }) => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -29,15 +29,11 @@ const opciones = ({ setIsAuth, isAuth }) => {
   if (isAuth === false) {
     // return <Redirect to='/' />
   } else {
-    const Uid = auth.currentUser.uid
-    const imageRef = ref(storage, 'images/' + Uid + '/profileImage')
-    if (imageRef != null && imageUrl === null) {
-      getDownloadURL(imageRef).then((imageUrl) => {
-        setImageUrl(imageUrl)
-      }).catch((error) => {
-        console.log(error)
-      })
+    if (imageUrl === null) {
+      getPreferencesImage(setImageUrl)
+      // getPreferences(setValues)
     }
+    // getPreferences(setValues)
   }
 
   useEffect(() => {
@@ -84,13 +80,12 @@ const opciones = ({ setIsAuth, isAuth }) => {
                     <i className='fas fa-user fa-2x foto' title='Portafolio' />)
                   : <>
                     {!selectedImage
-                      ? <>
-                        <img src={imageUrl} height='100px' />
-                      </>
+                      ? <img src={imageUrl} height='100px' />
+
                       : imageUrl && selectedImage && (
-                        <>
-                          <img src={imageUrl} alt={selectedImage.name} height='100px' />
-                        </>
+
+                        <img src={imageUrl} alt={selectedImage.name} height='100px' />
+
                       )}
 
                   </>}
