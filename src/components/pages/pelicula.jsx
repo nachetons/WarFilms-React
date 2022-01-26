@@ -21,6 +21,7 @@ import imageNoLoad from '@/images/ImageNoLoad.jpg'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import addMovieLike from '../functions/addMovieLike'
+import ItemTrailer from '@/components/fragments/itemTrailer'
 
 const pelicula = ({ setIsAuth, isAuth }) => {
   // LLAMADA A LA PELICULA
@@ -122,45 +123,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     }
   }
 
-  // DISPLAY TRAILERS
-  function displayTrailers (trailer) {
-    setTimeout(() => {
-      // eslint-disable-next-line array-callback-return
-      trailerMovieList.map((trailer) => {
-        (trailer.type === 'Trailer' && trailer.site === 'YouTube') ||
-          (trailer.name.includes('Trailer') && trailer.site === 'YouTube')
-          ? (document.getElementById('mytrailer').innerHTML = `<iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow=
-            "accelerometer;
-            autoplay; 
-            clipboard-write; 
-            encrypted-media; 
-            gyroscope; 
-            picture-in-picture" 
-            allowfullscreen>
-            </iframe>`)
-          : (document.getElementById('mytrailer').innerHTML = `<iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer;
-            autoplay; 
-            clipboard-write; 
-            encrypted-media; 
-            gyroscope; 
-            picture-in-picture" 
-            allowfullscreen>
-            </iframe>`)
-      })
-    }, 10)
-  }
+  const filterVideo = trailerMovieList.find(trailer => trailer.name.includes('Tráiler') || trailer.name.includes('Official Trailer') || trailer.name.includes('TRAILER'))
 
   return (
     <>
@@ -210,6 +173,16 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                     <div className='youtube-wrapper'>
                       <div className='trailer'>
                         <strong id='mytrailer' />
+                        {isLoading2
+                          ? (
+                            <p>Cargando..</p>
+                            )
+                          : (
+                              filterVideo
+                                ? <div key={filterVideo.id}><ItemTrailer key={filterVideo.id} trailer={filterVideo} /></div>
+                                : null
+
+                            )}
                       </div>
                     </div>
                   </div>
@@ -217,8 +190,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
               </div>
             ))
           )}
-
-      {isLoading2 ? <p>Cargando..</p> : displayTrailers(trailerMovieList)}
 
       {isLoading3
         ? <p>Cargando..</p>

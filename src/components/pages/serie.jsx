@@ -17,6 +17,7 @@ import '@/styles/navs.css'
 import '@/styles/pelicula.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
+import ItemTrailer from '@/components/fragments/itemTrailer'
 
 const serie = ({ setIsAuth, isAuth }) => {
   // LLAMADA A LA SERIE
@@ -74,6 +75,7 @@ const serie = ({ setIsAuth, isAuth }) => {
   function getTrailerMovieList () {
     setIsloading2(true)
     getTrailersFromAPIBy(URL_TRAILER).then(result => {
+      console.log(URL_TRAILER)
       settrailerMovieList(result)
       setIsloading2(false)
     })
@@ -92,50 +94,7 @@ const serie = ({ setIsAuth, isAuth }) => {
     })
   }
 
-  function displayTrailers (trailer) {
-    setTimeout(() => {
-      // eslint-disable-next-line array-callback-return
-      trailerMovieList.map(trailer => {
-        trailer.type === 'Trailer' & trailer.site === 'YouTube' ||
-                    trailer.name.includes('Trailer') & trailer.site === 'YouTube'
-          ? document.getElementById('mytrailer').innerHTML =
-
-                    `<iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube-nocookie.com/embed/${trailer.key}" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow=
-            "accelerometer;
-            autoplay; 
-            clipboard-write; 
-            encrypted-media; 
-            gyroscope; 
-            picture-in-picture" 
-            allowfullscreen>
-            </iframe>`
-
-          : document.getElementById('mytrailer').innerHTML =
-                    `<iframe 
-            width="100%" 
-            height="100%" 
-            src="https://www.youtube-nocookie.com/embed/_s4qXyZOJSQ" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer;
-            autoplay; 
-            clipboard-write; 
-            encrypted-media; 
-            gyroscope; 
-            picture-in-picture" 
-            allowfullscreen>
-            </iframe>`
-      }
-
-      )
-    }, 10)
-  }
+  const filterVideo = trailerMovieList.find(trailer => trailer.name.includes('Tráiler') || trailer.name.includes('Trailer') || trailer.name.includes('TRAILER'))
 
   // Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   // ejecuta la primera vez
@@ -177,6 +136,16 @@ const serie = ({ setIsAuth, isAuth }) => {
                 <div className='youtube-wrapper'>
                   <div className='trailer'>
                     <strong id='mytrailer' />
+                    {isLoading2
+                      ? (
+                            <p>Cargando..</p>
+                        )
+                      : (
+                          filterVideo
+                            ? <div key={filterVideo.id}><ItemTrailer key={filterVideo.id} trailer={filterVideo} /></div>
+                            : null
+
+                        )}
                   </div>
                 </div>
               </div>
@@ -184,11 +153,6 @@ const serie = ({ setIsAuth, isAuth }) => {
           </div>
 
         )}
-
-      {isLoading2
-        ? <p>Cargando..</p>
-
-        : displayTrailers(trailerMovieList)}
 
       {isLoading3
         ? <p>Cargando..</p>
