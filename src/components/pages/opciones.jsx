@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-closing-tag-location */
 import '@fortawesome/fontawesome-free/css/all.min.css'
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import '@/styles/footer.css'
 import '@/styles/login.css'
 import '@/styles/main.css'
@@ -28,17 +28,13 @@ const opciones = ({ setIsAuth, isAuth }) => {
     })
   }
   if (isAuth === false) {
-    // return <Redirect to='/' />
+    return <Redirect to='/' />
   } else {
     if (imageUrl === null) {
       getPreferencesImage(setImageUrl)
-      console.log(1)
       // getPreferences(setValues)
     }
-    if (values === null) {
-      getPreferences(setValues)
-      console.log(2)
-    }
+
     // getPreferences(setValues)
   }
 
@@ -46,7 +42,10 @@ const opciones = ({ setIsAuth, isAuth }) => {
     if (selectedImage) {
       setImageUrl(URL.createObjectURL(selectedImage))
     }
-  }, [selectedImage])
+    if (values.length === 0) {
+      getPreferences(setValues)
+    }
+  }, [selectedImage, values])
 
   const handleUpload = () => {
     if (selectedImage) {
@@ -103,6 +102,8 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter Username'
             name='username'
+            value={values}
+
           />
         </div>
 
@@ -114,6 +115,8 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter name'
             name='name'
+            value={values}
+
           />
         </div>
 
@@ -125,6 +128,8 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter second name'
             name='surnames'
+            value={values}
+
           />
           <br />
           <label>

@@ -53,7 +53,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     id +
     '?' +
     API_KEY +
-    '&append_to_response=videos&language=es-ES&us-US'
+    '&append_to_response=videos'
   const URL_ACTORS =
     URL_BASE + 'movie/' + id + '?' + API_KEY + '&append_to_response=credits'
 
