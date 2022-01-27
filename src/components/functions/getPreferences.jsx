@@ -7,10 +7,12 @@ export default function getPreferences (setMovies) {
   const dbRef = ref(getDatabase())
   get(child(dbRef, 'users/' + Uid)).then((snapshot) => {
     if (snapshot.exists()) {
+      const user = []
       snapshot.forEach((childSnapshot) => {
-        setMovies(childSnapshot.val())
+        user.push(childSnapshot.val())
         console.log('childSnapshot', childSnapshot.val())
       })
+      setMovies(user)
     } else {
       console.log('No data available')
     }

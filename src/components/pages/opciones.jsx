@@ -42,10 +42,13 @@ const opciones = ({ setIsAuth, isAuth }) => {
     if (selectedImage) {
       setImageUrl(URL.createObjectURL(selectedImage))
     }
+  }, [selectedImage])
+
+  useEffect(() => {
     if (values.length === 0) {
       getPreferences(setValues)
     }
-  }, [selectedImage, values])
+  }, [values])
 
   const handleUpload = () => {
     if (selectedImage) {
@@ -102,7 +105,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter Username'
             name='username'
-            value={values}
+            defaultValue={values[3]}
 
           />
         </div>
@@ -115,7 +118,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter name'
             name='name'
-            value={values}
+            defaultValue={values[1]}
 
           />
         </div>
@@ -128,7 +131,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             onChange={handleInputChange}
             placeholder='Enter second name'
             name='surnames'
-            value={values}
+            defaultValue={values[2]}
 
           />
           <br />
