@@ -7,13 +7,14 @@ export default function updatePreferences (values) {
   const n = new Date()
   const newTime = n.toISOString().slice(0, 10)
   set(ref(db, 'users/' + Uid), {
+
     username: values.username,
     name: values.name,
     surnames: values.surnames,
     lastUpdate: newTime
   })
     .then(() => {
-      console.log('like added')
+      console.log('updated preferences')
     })
     .catch(error => {
       console.log('error', error)

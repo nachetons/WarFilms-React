@@ -9,6 +9,7 @@ export default function getPreferences (setMovies) {
     if (snapshot.exists()) {
       snapshot.forEach((childSnapshot) => {
         setMovies(childSnapshot.val())
+        console.log('childSnapshot', childSnapshot.val())
       })
     } else {
       console.log('No data available')
