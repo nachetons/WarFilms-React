@@ -8,9 +8,9 @@ export default function updatePreferences (values) {
   const newTime = n.toISOString().slice(0, 10)
   set(ref(db, 'users/' + Uid), {
 
-    username: values.username,
-    name: values.name,
-    surnames: values.surnames,
+    username: values.username || null,
+    name: values.name || null,
+    surnames: values.surnames || null,
     lastUpdate: newTime
   })
     .then(() => {

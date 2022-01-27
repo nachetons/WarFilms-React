@@ -22,7 +22,9 @@ const opciones = ({ setIsAuth, isAuth }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
+    // declare initial values
     setValues({
+
       ...values,
       [name]: value
     })
@@ -54,6 +56,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
     if (selectedImage) {
       updateImage(selectedImage)
     }
+
     updatePref(values)
     swal('¡Listo!', 'Tus cambios se han guardado', 'success')
   }
