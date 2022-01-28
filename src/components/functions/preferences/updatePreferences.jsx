@@ -1,21 +1,20 @@
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
-import { auth, db } from '../../../config'
+import { auth, db } from '../../../../config'
 import { ref, set } from 'firebase/database'
 
-export default function addMovieLike (infoLike) {
+export default function updatePreferences (values) {
   const Uid = auth.currentUser.uid
   const n = new Date()
   const newTime = n.toISOString().slice(0, 10)
-  console.log('infoLike', Uid)
-  set(ref(db, 'likes/' + Uid + '/' + infoLike.id), {
-    movieId: infoLike.id,
-    userId: Uid,
-    title: infoLike.title,
-    overview: infoLike.overview,
-    date: newTime
+  set(ref(db, 'users/' + Uid), {
+
+    username: values.username || null,
+    name: values.name || null,
+    surnames: values.surnames || null,
+    lastUpdate: newTime
   })
     .then(() => {
-      console.log('like added')
+      console.log('updated preferences')
     })
     .catch(error => {
       console.log('error', error)

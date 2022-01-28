@@ -1,5 +1,5 @@
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
-import { auth } from '../../../config'
+import { auth } from '../../../../config'
 import { getDatabase, ref, child, get } from 'firebase/database'
 import Marcadores from '@/components/pages/marcadores'
 import React, { useState, useEffect } from 'react'

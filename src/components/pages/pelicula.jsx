@@ -20,7 +20,7 @@ import '@/styles/pelicula.css'
 import imageNoLoad from '@/images/ImageNoLoad.jpg'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
-import addMovieLike from '../functions/addMovieLike'
+import addMovieLike from '@/components/functions/marcadores/addMovieLike'
 import ItemTrailer from '@/components/fragments/itemTrailer'
 
 const pelicula = ({ setIsAuth, isAuth }) => {
@@ -112,9 +112,11 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     const title = mostPopularMovieList.title
     const overview = mostPopularMovieList.overview
     const date = mostPopularMovieList.release_date
+    const vote = mostPopularMovieList.vote_average
+    const UrlImage = mostPopularMovieList.poster_path
     const id = mostPopularMovieList.id
 
-    const movielike = { title, overview, date, id }
+    const movielike = { title, overview, date, vote, UrlImage, id }
     try {
       addMovieLike(movielike)
       console.log('Se agrego a favoritos')

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-indent */
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
-import { storage, auth } from '../../../config'
+import { storage, auth } from '../../../../config'
 import { ref, getDownloadURL } from 'firebase/storage'
 
 export default function getPreferencesImage (setImageUrl) {

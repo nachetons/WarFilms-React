@@ -10,9 +10,9 @@ import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect } from 'react'
 import updateImage from '../functions/updateImageProfile'
-import updatePreferences from '../functions/updatePreferences'
-import getPreferences from '../functions/getPreferences'
-import getPreferencesImage from '../functions/getPreferencesImage'
+import updatePreferences from '../functions/preferences/updatePreferences'
+import getPreferences from '../functions/preferences/getPreferences'
+import getPreferencesImage from '../functions/preferences/getPreferencesImage'
 import swal from 'sweetalert'
 
 const opciones = ({ setIsAuth, isAuth }) => {

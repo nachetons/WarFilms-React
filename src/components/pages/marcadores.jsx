@@ -11,7 +11,7 @@ import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect } from 'react'
 import { getDatabase, ref, child, get } from 'firebase/database'
-import deleteMovieLike from '../functions/deleteMovieLike'
+import deleteMovieLike from '../functions/marcadores/deleteMovieLike'
 import swal from 'sweetalert'
 
 const marcadores = ({ setIsAuth, isAuth }) => {
@@ -88,8 +88,11 @@ const marcadores = ({ setIsAuth, isAuth }) => {
 
                 <div key={index} className='peliculasMarcadores' id='list_pelis'>
                   <div className='card-body'>
+                    <p className='card-title'>{movie.image}</p>
                     <h5 className='card-title'>{movie.title}</h5>
                     <p className='card-text'>{movie.date}</p>
+                    <p className='card-text'>{movie.vote}</p>
+
                     <button className='btnEliminar btn-primary' onClick={() => removeLike(movie.movieId)}>Eliminar</button>
                   </div>
 

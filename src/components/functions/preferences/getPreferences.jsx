@@ -1,5 +1,5 @@
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
-import { auth } from '../../../config'
+import { auth } from '../../../../config'
 import { getDatabase, ref, child, get } from 'firebase/database'
 
 export default function getPreferences (setMovies) {

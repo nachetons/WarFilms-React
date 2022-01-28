@@ -1,5 +1,5 @@
 // import { getFirestore, collection, doc, setDoc } from 'firebase/firestore'
-import { auth, db } from '../../../config'
+import { auth, db } from '../../../../config'
 import { ref, remove } from 'firebase/database'
 
 export default function deleteMovieLike (id) {
