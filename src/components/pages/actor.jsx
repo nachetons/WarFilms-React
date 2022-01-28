@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
+
 import {
   API_KEY,
   URL_BASE, URL_IMG
@@ -13,6 +14,7 @@ import '@/styles/main.css'
 import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 import '@/styles/pelicula.css'
+import '@/styles/actor.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 
@@ -85,7 +87,7 @@ const actor = ({ setIsAuth, isAuth }) => {
 
                     {actorMovieList.movie_credits.cast.map((movie) => (
 
-                      <div key={movie.id} className='name'>{movie.title}</div>
+                      <Link key={movie.id} to={'/pelicula/' + movie.id} className='titulos_pelis'><div key={movie.id}>{movie.title}</div></Link>
 
                     ))}
                     <strong id='mytrailer' />
