@@ -10,6 +10,7 @@ import '@/styles/login.css'
 import '@/styles/main.css'
 import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
+
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import ItemPelicula from './itemPeliculas'

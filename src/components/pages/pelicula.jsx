@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, Redirect } from 'react-router-dom'
 import {
   API_KEY, URL_BASE, URL_IMG
 } from '@/diccionario/url.jsx'
@@ -22,6 +22,8 @@ import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import addMovieLike from '@/components/functions/marcadores/addMovieLike'
 import ItemTrailer from '@/components/fragments/itemTrailer'
+import getMoviesLike from '../functions/marcadores/getMoviesLike'
+import swal from 'sweetalert'
 
 const pelicula = ({ setIsAuth, isAuth }) => {
   // LLAMADA A LA PELICULA
@@ -36,14 +38,22 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   const [actorMovieList, setActorMovieList] = useState([])
   const [isLoading3, setIsloading3] = useState(true)
 
+  const [movies, setMovies] = useState([])
+  const [isLoading4, setIsloading4] = useState(true)
+
   const { title, id } = useParams()
 
   // Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   // ejecuta la primera vez
+  if (isAuth === false) {
+    return <Redirect to='/' />
+  }
   useEffect(() => {
     getMostPopularMovieList()
     getTrailerMovieList()
     getActorMovieList()
+    getMoviesLike(setMovies, setIsloading4)
+    findMovieID()
   }, [title, id])
 
   // const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + '&' + API_KEY
@@ -86,6 +96,20 @@ const pelicula = ({ setIsAuth, isAuth }) => {
       .then((response) => response.json())
       .then((responseConverted) => responseConverted.videos.results)
 
+  function findMovieID () {
+  // if movies.movie_id === id
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].movie_id === id) {
+        setIsloading4(false)
+      } else {
+        setIsloading4(true)
+      }
+      if (isLoading4) {
+        console.log('No se encontró la película')
+      }
+    }
+  }
+
   function getTrailerMovieList () {
     setIsloading2(true)
     getTrailersFromAPIBy(URL_TRAILER).then((result) => {
@@ -120,13 +144,13 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     try {
       addMovieLike(movielike)
       console.log('Se agrego a favoritos')
+      swal('Se agrego a favoritos', '', 'success')
     } catch (error) {
       console.log(error.message)
     }
   }
 
   const filterVideo = trailerMovieList.find(trailer => trailer.name.includes('Tráiler') || trailer.name.includes('Official Trailer') || trailer.name.includes('TRAILER'))
-
   return (
     <>
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
