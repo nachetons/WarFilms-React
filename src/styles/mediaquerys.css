@@ -95,7 +95,10 @@
     .nav-img {
       margin-left: 0%;
     }
-    
+    #list_pelis{
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 15%;
+    }
     
     #contenedor{
       margin-top: 17%;
@@ -166,9 +169,9 @@
       
     }
 
-    .peliculas{
+    #list_pelis{
       grid-template-columns: repeat(3, 1fr);
-      margin-right: 5%;
+      margin-top: 15%;
     }
     .titulo{
     margin-right: 5%;
@@ -259,7 +262,7 @@
     }
 
   
-    .peliculas{
+    #list_pelis{
       grid-template-columns: repeat(2, 1fr);
       margin-top: 15%;
     }
@@ -353,11 +356,9 @@ display: none;
   width: 100%;
 }
 
-#foto{
-      
-
-
-
+#list_pelis{
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 15%;
 }
 
 .contenedor-pelicula{

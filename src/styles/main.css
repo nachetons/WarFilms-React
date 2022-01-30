@@ -58,6 +58,16 @@ body {
   height: 0px;
 }
 
+/*#foto header cover image in div*/
+#fotoHeader{
+  position: absolute;
+  height: 100%;
+  width: 30%;
+  margin-left:0;
+  margin-top: 0;
+  
+  
+}
 
 
 

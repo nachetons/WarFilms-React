@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import 'react-alice-carousel/lib/alice-carousel.css'
 import { API_URL_UPCOMING } from '@/diccionario/url'
+import { Link } from 'react-router-dom'
 const URL_IMG = 'https://image.tmdb.org/t/p/w500/'
 
 export default function Header () {
@@ -55,7 +56,7 @@ export default function Header () {
           : <div className='slider_content'>
             <div id='pelis_header' key={headerMovies[index].id}>
               <div className='mySlides fade'>
-                <img id='foto' style={{ width: '38%' }} src={URL_IMG + headerMovies[index].poster_path} />
+                <Link to={'/pelicula/' + headerMovies[index].id}><img id='fotoHeader' src={URL_IMG + headerMovies[index].poster_path} /></Link>
                 <div className='text_title'>{headerMovies[index].title}</div>
                 <div className='text'>{headerMovies[index].vote_average}</div>
               </div>
