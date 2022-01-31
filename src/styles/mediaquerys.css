@@ -97,11 +97,10 @@
     }
     #list_pelis{
       grid-template-columns: repeat(4, 1fr);
-      margin-top: 15%;
     }
     
     #contenedor{
-      margin-top: 17%;
+      margin-top: 10%;
       height: 40vh;
 
     }
@@ -162,7 +161,7 @@
       width: 85%;
     
       position: relative;
-      margin-top: 22%;
+      margin-top: 13%;
       height: 45vh;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -171,7 +170,6 @@
 
     #list_pelis{
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 15%;
     }
     .titulo{
     margin-right: 5%;
@@ -264,7 +262,6 @@
   
     #list_pelis{
       grid-template-columns: repeat(2, 1fr);
-      margin-top: 15%;
     }
     .titulo{
       display:none;
@@ -358,7 +355,6 @@ display: none;
 
 #list_pelis{
   grid-template-columns: repeat(1, 1fr);
-  margin-top: 15%;
 }
 
 .contenedor-pelicula{

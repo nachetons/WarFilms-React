@@ -57,6 +57,7 @@ export default function Header () {
             <div id='pelis_header' key={headerMovies[index].id}>
               <div className='mySlides fade'>
                 <Link to={'/pelicula/' + headerMovies[index].id}><img id='fotoHeader' src={URL_IMG + headerMovies[index].poster_path} /></Link>
+                <img id='fotoHeaderBack' src={URL_IMG + headerMovies[index].backdrop_path} />
                 <div className='text_title'>{headerMovies[index].title}</div>
                 <div className='text'>{headerMovies[index].vote_average}</div>
               </div>
