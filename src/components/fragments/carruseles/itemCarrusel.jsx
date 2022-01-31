@@ -11,7 +11,7 @@ export default function ItemCarrusel ({ movieInfo, index, handleClick, setIdTrai
 
       <div className={'movie-card carrusel' + index}>
         <div className='delante'>
-          <Link key={id} to={'/pelicula/' + id}> <div className='movie-image'><img style={{ width: '100%' }} src={URL_IMG + backdrop_path} /></div></Link>
+          <Link to={'/pelicula/' + id}><img style={{ width: '100%' }} src={URL_IMG + backdrop_path} /></Link>
           <h4 className='movie-title'>{title}</h4>
           <h6 className='movie-date'>{release_date}</h6>
           <div className='movie-rating'>{vote_average}</div>
