@@ -21,12 +21,13 @@ const marcadores = ({ setIsAuth, isAuth }) => {
 
   if (isAuth === false) {
     return <Redirect to='/' />
-  } else {
-    useEffect(() => {
+  }
+  useEffect(() => {
+    if (isAuth === true) {
       getMoviesLike(setMovies, setIsloading)
       console.log('movies', movies)
-    }, [])
-  }
+    }
+  }, [])
 
   function removeLike (id) {
     swal({

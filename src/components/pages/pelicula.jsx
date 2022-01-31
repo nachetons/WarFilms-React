@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
-import { Link, useParams, Redirect } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {
   API_KEY, URL_BASE, URL_IMG
 } from '@/diccionario/url.jsx'
@@ -46,16 +46,21 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   // Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   // ejecuta la primera vez
   if (isAuth === false) {
-    return <Redirect to='/' />
+    // return <Redirect to='/' />
+    useEffect(() => {
+      getMostPopularMovieList()
+      getTrailerMovieList()
+      getActorMovieList()
+    }, [title, id])
+  } else {
+    useEffect(() => {
+      getMostPopularMovieList()
+      getTrailerMovieList()
+      getActorMovieList()
+      getMoviesLike(setMovies, setIsloading4)
+      findMovieID()
+    }, [title, id])
   }
-  useEffect(() => {
-    getMostPopularMovieList()
-    getTrailerMovieList()
-    getActorMovieList()
-    getMoviesLike(setMovies, setIsloading4)
-    findMovieID()
-  }, [title, id])
-
   // const URL_BUSQUEDA = SEARCH_URL_MOVIE + title + '&' + API_KEY
   const URL_TRAILER =
     URL_BASE +
