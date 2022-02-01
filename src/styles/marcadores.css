@@ -1,40 +1,43 @@
-
-
-.peliculasMarcadores{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 90%;
-    margin-top: 1%;
-    margin-left: 7%;
-    border: 1px solid #ccc;
+table{
+    width:80%;
+    table-layout: fixed;
+    text-align:center;
+    margin:auto;
 }
-.card-body{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-
+tr{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    color: rgb(182, 48, 48);
+    background-color: #0c0a0a;
+    text-align: center;
+    
 
 }
+.trContenido{
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: transparent;
+}
 
-.btnEliminar{
-    justify-content: flex-end;
-    height: 80%;
-    margin-right: 1%;
-    background-color: #ff0000;
-    color: #fff;
-    border-color: #ff0000;
+td{
+    padding:5px ;
     
 }
 
-.card-body1{
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    margin: 10px;
-
-
+.btnEliminar{
+    background-color: rgb(182, 48, 48);
+    color: aliceblue;
+    border: none;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
 }
+
+
+
+    

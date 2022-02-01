@@ -18,6 +18,7 @@ import swal from 'sweetalert'
 const marcadores = ({ setIsAuth, isAuth }) => {
   const [isLoading, setIsloading] = useState(true)
   const [movies, setMovies] = useState([])
+  const [order, setOrder] = useState('asc')
 
   if (isAuth === false) {
     return <Redirect to='/' />
@@ -53,42 +54,50 @@ const marcadores = ({ setIsAuth, isAuth }) => {
     })
   }
 
+  const sorting = (col) => {
+    if (order === 'asc') {
+      setOrder('desc')
+    } else {
+      setOrder('asc')
+    }
+    setMovies(movies.sort((a, b) => {
+      if (a[col] < b[col]) {
+        return -1
+      }
+      if (a[col] > b[col]) {
+        return 1
+      }
+      return 0
+    }))
+  }
+
   return (
     <>
-      <div className='row' id='contenedor_main'>
 
-        <h3 id='titulos' className='titulo'>Peliculas</h3>
-        <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
+      <h3 id='titulos' className='titulo'>Peliculas</h3>
+      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
-        <div className='peliculasMarcadores' id='list_pelis'>
-
-          <div className='card-body1'>
-            <p className='card-title1'>Foto</p>
-            <p className='card-text1'>Titulo</p>
-            <p className='card-text1'>Fecha agregado</p>
-            <p className='card-text1'>Valoracion</p>
-            <p className='card-text1' />
-
-          </div>
-        </div>
-
+      <table>
+        <tr className='trVacio'>
+          <td className='tableHeader'>Foto</td>
+          <td className='tableHeader' onClick={() => sorting('titleItem')}>Titulo</td>
+          <td className='tableHeader' onClick={() => sorting('dateItem')}>Fecha agregado</td>
+          <td className='tableHeader rating' onClick={() => sorting('voteItem')}>Valoracion</td>
+        </tr>
         {
 
         !isLoading
           ? movies && movies.map((movie, index) => {
               return (
 
-                <div key={index} className='peliculasMarcadores' id='list_pelis'>
-                  <div className='card-body'>
-                    <Link to={'/pelicula/' + movie.movieId}><img className='card-image' src={URL_IMG + movie.UrlImage} style={{ width: '4rem' }} alt='Imagen portada' /></Link>
-                    <h5 className='card-title'>{movie.title}</h5>
-                    <p className='card-text'>{movie.date}</p>
-                    <p className='card-text'>{movie.vote}</p>
+                <tr className='trContenido' key={index}>
+                  <td><Link to={'/pelicula/' + movie.movieId}><img className='fileItem' src={URL_IMG + movie.UrlImage} style={{ width: '8rem' }} alt='Imagen portada' /></Link></td>
+                  <td className='titleItem'>{movie.title}</td>
+                  <td><p className='dateItem'>{movie.date}</p></td>
+                  <td><p className='voteItem'>{movie.vote}</p></td>
+                  <td><button className='btnEliminar btn-primary tableItem' onClick={() => removeLike(movie.movieId)}>Eliminar</button></td>
+                </tr>
 
-                    <button className='btnEliminar btn-primary' onClick={() => removeLike(movie.movieId)}>Eliminar</button>
-                  </div>
-
-                </div>
               )
             })
 
@@ -106,7 +115,7 @@ const marcadores = ({ setIsAuth, isAuth }) => {
             )
 
      }
-      </div>
+      </table>
       <Footer />
     </>
 
