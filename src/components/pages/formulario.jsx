@@ -9,8 +9,37 @@ import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
+import { useState } from 'react'
 
 const formulario = ({ setIsAuth, isAuth }) => {
+  const [datos, setDatos] = useState({
+    nombre: '',
+    apellido: '',
+    email: '',
+    telefono: '',
+    mensaje: ''
+  })
+
+  const handleInputChange = (event) => {
+    // console.log(event.target.name)
+    // console.log(event.target.value)
+    setDatos({
+      ...datos,
+      [event.target.name]: event.target.value
+    })
+  }
+
+  const enviarDatos = (event) => {
+    event.preventDefault()
+
+    console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido + ' ' + datos.email)
+
+    // eslint-disable-next-line no-undef
+    const xhr = new XMLHttpRequest()
+
+    xhr.open('GET', 'https://localhost/PHPCorreos/enviar.php?sendto=' + '&name=' + datos.nombre + '&apellido=' +
+    datos.apellido + '&email=' + datos.email + '&mensaje=' + datos.mensaje, true)
+  }
   return (
     <>
 
@@ -21,16 +50,16 @@ const formulario = ({ setIsAuth, isAuth }) => {
           <h2>Formulario de contacto</h2>
           <p>Por favor, complete sus datos antes de enviar la información.</p>
 
-          <form action='#'>
+          <form action='#' onSubmit={enviarDatos}>
             <div className='row'>
               <div className='col-25'>
                 <label htmlFor='nombre'>Nombre</label>
               </div>
               <div className='col-36'>
-                <input type='text' id='nombre' name='nombre' placeholder='Nombre' />
+                <input type='text' onChange={handleInputChange} id='nombre' name='nombre' placeholder='Nombre' />
               </div>
               <div className='col-36 right'>
-                <input type='text' id='apellidos' name='apellidos' placeholder='Apellidos' />
+                <input type='text' onChange={handleInputChange} id='apellido' name='apellido' placeholder='Apellidos' />
               </div>
             </div>
             <div className='row'>
@@ -38,7 +67,7 @@ const formulario = ({ setIsAuth, isAuth }) => {
                 <label htmlFor='email'>Email</label>
               </div>
               <div className='col-75'>
-                <input type='text' id='email' name='email' placeholder='Email' />
+                <input type='text' onChange={handleInputChange} id='email' name='email' placeholder='Email' />
               </div>
             </div>
             <div className='row'>
@@ -46,7 +75,7 @@ const formulario = ({ setIsAuth, isAuth }) => {
                 <label htmlFor='telefono'>Teléfono</label>
               </div>
               <div className='col-75'>
-                <input type='text' id='telefono' name='telefono' placeholder='Teléfono' />
+                <input type='text' onChange={handleInputChange} id='telefono' name='telefono' placeholder='Teléfono' />
               </div>
             </div>
             <div className='row'>
@@ -67,7 +96,7 @@ const formulario = ({ setIsAuth, isAuth }) => {
               </div>
               <div className='col-75'>
                 <textarea
-                  id='mensaje' name='mensaje' placeholder='Escriba su mensaje...'
+                  id='mensaje' name='mensaje' onChange={handleInputChange} placeholder='Escriba su mensaje...'
                   style={{ height: '200px' }}
                 />
               </div>

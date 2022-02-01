@@ -6,6 +6,7 @@ import {
   API_KEY,
   URL_BASE, URL_IMG
 } from '@/diccionario/url.jsx'
+
 import logo from '@/images/1.jpg'
 import '@/styles/carrusel.css'
 import '@/styles/footer.css'
