@@ -10,6 +10,7 @@ import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import { useState } from 'react'
+import sendEmail from '../functions/sendEmail'
 
 const formulario = ({ setIsAuth, isAuth }) => {
   const [datos, setDatos] = useState({
@@ -32,13 +33,9 @@ const formulario = ({ setIsAuth, isAuth }) => {
   const enviarDatos = (event) => {
     event.preventDefault()
 
-    console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido + ' ' + datos.email)
-
-    // eslint-disable-next-line no-undef
-    const xhr = new XMLHttpRequest()
-
-    xhr.open('GET', 'https://localhost/PHPCorreos/enviar.php?sendto=' + '&name=' + datos.nombre + '&apellido=' +
-    datos.apellido + '&email=' + datos.email + '&mensaje=' + datos.mensaje, true)
+    // console.log('enviando datos...' + datos.nombre + ' ' + datos.apellido + ' ' + datos.email)
+    const { nombre, apellido, email, telefono, mensaje } = datos
+    sendEmail(nombre, apellido, email, telefono, mensaje)
   }
   return (
     <>
