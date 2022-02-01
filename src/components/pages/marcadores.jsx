@@ -56,19 +56,19 @@ const marcadores = ({ setIsAuth, isAuth }) => {
 
   const sorting = (col) => {
     if (order === 'asc') {
+      const sorted = (movies.sort((a, b) =>
+        (a[col] > b[col]) ? 1 : -1
+      ))
+      setMovies(sorted)
       setOrder('desc')
-    } else {
+    }
+    if (order === 'desc') {
+      const sorted = (movies.sort((a, b) =>
+        (a[col] < b[col]) ? 1 : -1
+      ))
+      setMovies(sorted)
       setOrder('asc')
     }
-    setMovies(movies.sort((a, b) => {
-      if (a[col] < b[col]) {
-        return -1
-      }
-      if (a[col] > b[col]) {
-        return 1
-      }
-      return 0
-    }))
   }
 
   return (
@@ -78,13 +78,17 @@ const marcadores = ({ setIsAuth, isAuth }) => {
       <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <table>
-        <tr className='trVacio'>
-          <td className='tableHeader'>Foto</td>
-          <td className='tableHeader' onClick={() => sorting('titleItem')}>Titulo</td>
-          <td className='tableHeader' onClick={() => sorting('dateItem')}>Fecha agregado</td>
-          <td className='tableHeader rating' onClick={() => sorting('voteItem')}>Valoracion</td>
-        </tr>
-        {
+        <tbody>
+
+          <tr className='trVacio'>
+            <td>Foto</td>
+
+            <td className='tableHeader' onClick={() => sorting('title')}>Título <i class='fas fa-exchange-alt' /></td>
+
+            <td className='tableHeader' onClick={() => sorting('date')}>Fecha agregado <i class='fas fa-exchange-alt' /></td>
+            <td className='tableHeader rating' onClick={() => sorting('vote')}>Valoracion <i class='fas fa-exchange-alt' /></td>
+          </tr>
+          {
 
         !isLoading
           ? movies && movies.map((movie, index) => {
@@ -93,8 +97,8 @@ const marcadores = ({ setIsAuth, isAuth }) => {
                 <tr className='trContenido' key={index}>
                   <td><Link to={'/pelicula/' + movie.movieId}><img className='fileItem' src={URL_IMG + movie.UrlImage} style={{ width: '8rem' }} alt='Imagen portada' /></Link></td>
                   <td className='titleItem'>{movie.title}</td>
-                  <td><p className='dateItem'>{movie.date}</p></td>
-                  <td><p className='voteItem'>{movie.vote}</p></td>
+                  <td className='dateItem'>{movie.date}</td>
+                  <td className='voteItem'>{movie.vote}</td>
                   <td><button className='btnEliminar btn-primary tableItem' onClick={() => removeLike(movie.movieId)}>Eliminar</button></td>
                 </tr>
 
@@ -102,19 +106,12 @@ const marcadores = ({ setIsAuth, isAuth }) => {
             })
 
           : (
-            <div className='container'>
-              <div className='card'>
-                <div className='card-body'>
-                  <br />
-                  <br />
-                  <h5 className='card-title'>No hay peliculas en tu lista</h5>
-                  <p className='card-text'>Agrega peliculas a tu lista de favoritos</p>
-                </div>
-              </div>
-            </div>
+              null
             )
 
      }
+        </tbody>
+
       </table>
       <Footer />
     </>
