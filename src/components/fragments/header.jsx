@@ -25,21 +25,23 @@ export default function Header () {
   useEffect(() => {
     const interval = setInterval(() => {
       setMovies(index)
-    }, 8000)
+    }, 5000)
     return () => clearInterval(interval)
   }, [index])
 
   function setMovies (movieIndex) {
-    let toSubstract = 0
-    if (movieIndex > 5) {
-      toSubstract = -7
+    if (movieIndex > 1) {
+      // toSubstract = -7
       // Esto lo pongo a -7 ya que va a llegar al if en la 6ºIteracion y
       // abajo le sumo 1 para que siga iterando en el array
+    }
+    if (movieIndex === headerMovies.length - 1) {
+      setIndex(0)
     }
     // Utilizo la variable toSubstract para que el set del estado se ejecute en
     // el mismo orden, ya que si se condiciona o no se reenderiza un componente
     // en el mismo orden va a dar error sí o sí
-    setIndex(lastIndex => lastIndex + toSubstract + 1)
+    setIndex(lastIndex => lastIndex + 1)
   }
 
   return (
