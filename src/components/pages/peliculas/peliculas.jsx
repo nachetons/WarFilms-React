@@ -14,24 +14,19 @@ import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import ItemPelicula from './itemPeliculas'
+import fetchApi from '@/components/fragments/fetchApi'
 
 const peliculas = ({ setIsAuth, isAuth }) => {
   const [movieList, setMovieList] = useState([])
   const [isLoading, setIsloading] = useState(false)
+
+  const { status, data } = fetchApi(API_URL_POP, 20)
 
   const getMoviesFromAPIBy = (toFetch) =>
     // eslint-disable-next-line no-undef
     fetch(toFetch)
       .then(response => response.json())
       .then(responseConverted => responseConverted.results)
-
-  function getMostPopularMovieList () {
-    setIsloading(true)
-    getMoviesFromAPIBy(API_URL_POP).then(result => {
-      setMovieList(result)
-      setIsloading(false)
-    })
-  }
 
   function filterMovieList (categoria, valoracionMin, valoracionMax) {
     setIsloading(true)
@@ -45,7 +40,6 @@ const peliculas = ({ setIsAuth, isAuth }) => {
 
   // Al estar vacio el array la función del useEffect es solo de montado, es decir, solo se
   // ejecuta la primera vez
-  useEffect(getMostPopularMovieList, [])
 
   let categorys = 'action'
   function handleCategoryChange (category) {
@@ -107,9 +101,9 @@ const peliculas = ({ setIsAuth, isAuth }) => {
         </div>
         <div className='peliculas' id='list_pelis'>
 
-          {isLoading
+          {!status
             ? <p>Cargando...</p>
-            : movieList.map(movie =>
+            : data.map(movie =>
 
               <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie} /></div></Link>
             )}

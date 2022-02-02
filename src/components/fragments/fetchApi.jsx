@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const cache = {}
 
-export default function fetchApi (URL) {
+export default function fetchApi (URL, limits) {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState([])
 
@@ -13,7 +13,7 @@ export default function fetchApi (URL) {
       setStatus('fetching')
       if (cache[URL]) {
         const data = cache[URL]
-        setData(takeItems(data.results))
+        setData(takeItems(data.results, limits))
         console.log(data)
         setStatus('fetched')
       } else {
@@ -22,7 +22,7 @@ export default function fetchApi (URL) {
         const data = await response.json()
         cache[URL] = data // set response in cache;
 
-        setData(takeItems(data.results))
+        setData(takeItems(data.results, limits))
         setStatus('fetched')
       }
     }
@@ -93,13 +93,13 @@ export function fetchApi3 (URL) {
   return { status3, data3 }
 };
 
-function takeItems (list) {
+function takeItems (list, x = 10) {
   const xs = []
 
-  if (list.length < 10) {
+  if (list.length < x) {
     return xs
   } else {
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < x; i++) {
       xs.push(list[i])
     }
     return xs
