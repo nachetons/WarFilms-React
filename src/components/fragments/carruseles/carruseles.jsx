@@ -2,25 +2,24 @@
 /* eslint-disable no-undef */
 import Carrusel from './carrusel'
 import { API_URL_POP, API_URL_RATED, API_URL_NEW } from '@/diccionario/url'
+import fetchApi, { fetchApi2, fetchApi3 } from '@/components/fragments/fetchApi'
 
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 // La línea sagradan NO TOCAR >:[
 
 export default function carruseles ({ handleClick, setMostPopularMovieList, setMostRatedMovieList, setMostNewMovieList, mostPopularMovieList, mostRatedMovieList, mostNewMovieList, setIdTrailer }) {
-  const [isLoading, setIsloading] = useState(true)
+  // const [isLoading, setIsloading] = useState(true)
 
-  useEffect(() => {
-    getMostPopularMovieList()
-    getMostRatedMovieList()
-    getMostNewMovieList()
-  }, [])
+  const { status, data } = fetchApi(API_URL_POP)
+  const { status2, data2 } = fetchApi2(API_URL_RATED)
+  const { status3, data3 } = fetchApi3(API_URL_NEW)
 
-  const getMoviesFromAPIBy = (toFetch) =>
+  /* const getMoviesFromAPIBy = (toFetch) =>
     fetch(toFetch)
       .then(response => response.json())
       .then(responseConverted => responseConverted.results)
 
-  function getMostPopularMovieList () {
+   function getMostPopularMovieList () {
     setIsloading(true)
     getMoviesFromAPIBy(API_URL_POP).then(result => {
       setMostPopularMovieList(takeItems(result))
@@ -56,30 +55,32 @@ export default function carruseles ({ handleClick, setMostPopularMovieList, setM
       }
       return xs
     }
-  }
+  } */
 
   return (
     <>
       <div className='container'>
         {
-          isLoading
+          !status
             // Cuando está cargando...
             ? <h3>Cargando...</h3>
 
           // Cuando está cargado
-            : <>
+            : <Carrusel handleClick={handleClick} sliderNumber={1} movieList={data} setIdTrailer={setIdTrailer} title='Las más populares' />
 
-              <Carrusel handleClick={handleClick} sliderNumber={1} movieList={mostPopularMovieList} setIdTrailer={setIdTrailer} title='Las más populares' />
-              <br />
-              <br />
+        }{
+          !status2
 
-              <Carrusel handleClick={handleClick} sliderNumber={2} movieList={mostRatedMovieList} setIdTrailer={setIdTrailer} title='Las más valoradas' />
-              <br />
-              <br />
+            ? <h3>Cargando...</h3>
+            : <Carrusel handleClick={handleClick} sliderNumber={2} movieList={data2} setIdTrailer={setIdTrailer} title='Las más valoradas' />
 
-              <Carrusel handleClick={handleClick} sliderNumber={3} movieList={mostNewMovieList} setIdTrailer={setIdTrailer} title='Las nuevas' />
+            }
+        {
+          !status3
 
-            </>
+            ? <h3>Cargando...</h3>
+            : <Carrusel handleClick={handleClick} sliderNumber={3} movieList={data3} setIdTrailer={setIdTrailer} title='Las nuevas' />
+
         }
       </div>
     </>
