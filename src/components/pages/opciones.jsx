@@ -111,9 +111,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             defaultValue={values[3]}
 
           />
-        </div>
 
-        <div className='container'>
           <label htmlFor='uname'><b>Nombre:</b></label>
           <input
             className='input-form-preferences'
@@ -124,9 +122,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             defaultValue={values[1]}
 
           />
-        </div>
 
-        <div className='container'>
           <label htmlFor='uname'><b>Apellidos:</b></label>
           <input
             className='input-form-preferences'

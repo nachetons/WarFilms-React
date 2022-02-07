@@ -15,7 +15,7 @@ tr{
 }
 .trContenido{
     color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: OCR A Std, monospace;
     background-color: transparent;
 }
 
@@ -26,6 +26,9 @@ td{
 
 .tableHeader{
     cursor: pointer;
+}
+.icon_arrows{
+transform: rotate(90deg);
 }
 
 .btnEliminar{

@@ -19,7 +19,7 @@ const categorias = ({ setIsAuth, isAuth }) => {
 
   const URL_CATEGORY = API_URL_CATEGORY + arrayMovies[categoria]
 
-  const { status, data } = fetchApi(URL_CATEGORY)
+  const { status, data } = fetchApi(URL_CATEGORY, 20)
 
   return (
     <>

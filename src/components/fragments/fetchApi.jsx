@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const cache = {}
 
-export default function fetchApi (URL, limits) {
+export default function fetchApi (URL, limits, outputName = 'results') {
   const [status, setStatus] = useState('idle')
   const [data, setData] = useState([])
 
@@ -13,8 +13,7 @@ export default function fetchApi (URL, limits) {
       setStatus('fetching')
       if (cache[URL]) {
         const data = cache[URL]
-        setData(takeItems(data.results, limits))
-        console.log(data)
+        setData(takeItems(data[outputName]), limits)
         setStatus('fetched')
       } else {
         // eslint-disable-next-line no-undef
@@ -22,7 +21,7 @@ export default function fetchApi (URL, limits) {
         const data = await response.json()
         cache[URL] = data // set response in cache;
 
-        setData(takeItems(data.results, limits))
+        setData(takeItems(data[outputName]), limits)
         setStatus('fetched')
       }
     }
@@ -33,7 +32,7 @@ export default function fetchApi (URL, limits) {
   return { status, data }
 };
 
-export function fetchApi2 (URL) {
+export function fetchApi2 (URL, limits, outputName = 'results') {
   const [status2, setStatus2] = useState('idle')
   const [data2, setData2] = useState([])
 
@@ -44,15 +43,15 @@ export function fetchApi2 (URL) {
       setStatus2('fetching')
       if (cache[URL]) {
         const data2 = cache[URL]
-        setData2(takeItems(data2.results))
-        console.log(data2)
+        setData2(data2[outputName])
         setStatus2('fetched')
       } else {
         // eslint-disable-next-line no-undef
         const response = await fetch(URL)
         const data2 = await response.json()
         cache[URL] = data2 // set response in cache;
-        setData2(takeItems(data2.results))
+        setData2(data2[outputName])
+
         setStatus2('fetched')
       }
     }
@@ -63,7 +62,7 @@ export function fetchApi2 (URL) {
   return { status2, data2 }
 };
 
-export function fetchApi3 (URL) {
+export function fetchApi3 (URL, limits, outputName = 'results') {
   const [status3, setStatus3] = useState('idle')
   const [data3, setData3] = useState([])
 
@@ -74,15 +73,14 @@ export function fetchApi3 (URL) {
       setStatus3('fetching')
       if (cache[URL]) {
         const data3 = cache[URL]
-        setData3(takeItems(data3.results))
-        console.log(data3)
+        setData3(data3[outputName])
         setStatus3('fetched')
       } else {
         // eslint-disable-next-line no-undef
         const response = await fetch(URL)
         const data3 = await response.json()
         cache[URL] = data3 // set response in cache;
-        setData3(takeItems(data3.results))
+        setData3(data3[outputName])
         setStatus3('fetched')
       }
     }
@@ -93,7 +91,7 @@ export function fetchApi3 (URL) {
   return { status3, data3 }
 };
 
-function takeItems (list, x = 10) {
+function takeItems (list, x = 20) {
   const xs = []
 
   if (list.length < x) {

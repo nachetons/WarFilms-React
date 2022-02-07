@@ -11,28 +11,35 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
   const [movieList, setMovieList] = useState([])
   const [login, setLogin] = useState(false)
   const [show, setSate] = useState(false)
+  const ref = useRef()
+  const timeout = useRef()
 
   useEffect(() => {
+    clearTimeout(timeout.current)
+
     if (searchValue.length > 1 && window.location.pathname !== '/series') {
-      setIsLoading(true)
-      fetch(SEARCH_URL_MOVIE + searchValue + '&' + API_KEY)
-        .then((res) => res.json())
-        .then(data => {
-          setMovieList(takeItems(data.results))
-          setIsLoading(false)
-        })
+      timeout.current = setTimeout(() => {
+        setIsLoading(true)
+        fetch(SEARCH_URL_MOVIE + searchValue + '&' + API_KEY)
+          .then((res) => res.json())
+          .then(data => {
+            setMovieList(takeItems(data.results))
+            setIsLoading(false)
+          })
+      }, 400)
     } else if (searchValue.length > 1) {
-      setIsLoading(true)
-      fetch(SEARCH_URL_TV + searchValue + '&' + API_KEY)
-        .then((res) => res.json())
-        .then(data => {
-          setMovieList(takeItems(data.results))
-          setIsLoading(false)
-        })
+      timeout.current = setTimeout(() => {
+        setIsLoading(true)
+        fetch(SEARCH_URL_TV + searchValue + '&' + API_KEY)
+          .then((res) => res.json())
+          .then(data => {
+            setMovieList(takeItems(data.results))
+            setIsLoading(false)
+          })
+      }, 400)
     };
   }, [searchValue])
 
-  const ref = useRef()
   useOutsideClick(ref, () => {
     if (show) setSate(false)
   })

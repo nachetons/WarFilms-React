@@ -10,9 +10,9 @@ import fetchApi, { fetchApi2, fetchApi3 } from '@/components/fragments/fetchApi'
 export default function carruseles ({ handleClick, setMostPopularMovieList, setMostRatedMovieList, setMostNewMovieList, mostPopularMovieList, mostRatedMovieList, mostNewMovieList, setIdTrailer }) {
   // const [isLoading, setIsloading] = useState(true)
 
-  const { status, data } = fetchApi(API_URL_POP)
-  const { status2, data2 } = fetchApi2(API_URL_RATED)
-  const { status3, data3 } = fetchApi3(API_URL_NEW)
+  const { status, data } = fetchApi(API_URL_POP, 10)
+  const { status2, data2 } = fetchApi2(API_URL_RATED, 10)
+  const { status3, data3 } = fetchApi3(API_URL_NEW, 10)
 
   /* const getMoviesFromAPIBy = (toFetch) =>
     fetch(toFetch)

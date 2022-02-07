@@ -83,10 +83,10 @@ const marcadores = ({ setIsAuth, isAuth }) => {
           <tr className='trVacio'>
             <td>Foto</td>
 
-            <td className='tableHeader' onClick={() => sorting('title')}>Título <i className='fas fa-exchange-alt' /></td>
+            <td className='tableHeader' onClick={() => sorting('title')}>Título <i className='fas fa-exchange-alt icon_arrows' /></td>
 
-            <td className='tableHeader' onClick={() => sorting('date')}>Fecha agregado <i className='fas fa-exchange-alt' /></td>
-            <td className='tableHeader rating' onClick={() => sorting('vote')}>Valoracion <i className='fas fa-exchange-alt' /></td>
+            <td className='tableHeader' onClick={() => sorting('date')}>Fecha agregado <i className='fas fa-exchange-alt icon_arrows' /></td>
+            <td className='tableHeader rating' onClick={() => sorting('vote')}>Valoracion <i className='fas fa-exchange-alt icon_arrows' /></td>
           </tr>
           {
 

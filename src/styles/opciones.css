@@ -11,9 +11,26 @@ margin-left: 5%;
   text-align: center;
   padding: 14px 10px;
   width: 100%;
+  margin-left: -3%;
+
   outline: none;
   color: black;
   transition: 0.25s;
 
 
+}
+
+.input-form-preferences{
+  display:block;
+  text-align: center;
+  margin-left: -3%;
+  padding: 14px 10px;
+  width: 100%;
+  outline: none;
+  color: black;
+  transition: 0.25s;
+  border-radius: 25px;
+}
+.boton-form{
+  margin-left: 41%;
 }
