@@ -201,6 +201,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                   <div className='content_film' id={movie.id}>
                     <h3 className='titulo'>{movie.title}</h3>
                     <p className='descripcion'>{movie.overview}</p>
+                    <p>Valoración de la comunidad: <strong>{movie.vote_average}</strong></p>
                     <div className='youtube-wrapper'>
                       <div className='trailer'>
                         <strong id='mytrailer' />
@@ -217,7 +218,8 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div>        
+                {console.log(mostPopularMovieList)}       
               </div>
             ))
           )}
