@@ -1,8 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-indent */
 import { useEffect, useRef, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { API_KEY, SEARCH_URL_MOVIE, SEARCH_URL_TV } from '@/diccionario/url'
+
 import useOutsideClick from '@/tools/useOutSideClick'
 import Login from '@/components/fragments/login'
 
@@ -13,11 +14,12 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
   const [show, setSate] = useState(false)
   const ref = useRef()
   const timeout = useRef()
+  const location = useLocation()
 
   useEffect(() => {
     clearTimeout(timeout.current)
 
-    if (searchValue.length > 1 && window.location.pathname !== '/series') {
+    if (searchValue.length > 1 && location.pathname !== '/series' && !location.pathname.includes('/serie/') && location.pathname.indexOf('/busquedas_series') === -1) {
       timeout.current = setTimeout(() => {
         setIsLoading(true)
         fetch(SEARCH_URL_MOVIE + searchValue + '&' + API_KEY)
@@ -73,7 +75,7 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
   return (
     <ul className='icons-ul'>
 
-      {window.location.pathname !== '/series'
+      {location.pathname !== '/series' && location.pathname.indexOf('/serie') === -1 && location.pathname.indexOf('/busquedas_series') === -1
         ? <form className='log' id='myForm' onSubmit={handleClick}>
 
           <input
@@ -111,9 +113,9 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
           searchValue.length > 1 && show
             ? isLoading
                 ? null
-                : window.location.pathname !== '/series'
+                : location.pathname !== '/series' && location.pathname.indexOf('/serie') === -1 && location.pathname.indexOf('/busquedas_series') === -1
                   ? <div ref={ref} id='textoPredict' className='textoPredict' style={{ display: 'block', border: 'thick solid red' }}>
-                    {movieList.map(movie => <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.title + '/' + movie.id}><li className='lista_predict' key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li></Link>)}
+                    {movieList.map(movie => <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/pelicula/' + movie.id}><li className='lista_predict' key={movie.id}><p>{movie.title}</p><p>{movie.release_date}</p></li></Link>)}
                     </div>
                   : <div ref={ref} id='textoPredict' className='textoPredict' style={{ display: 'block', border: 'thick solid red' }}>
                     {movieList.map(movie => <Link style={{ textDecoration: 'none' }} key={movie.id} to={'/serie/' + movie.name + '/' + movie.id}><li className='lista_predict' key={movie.id}><p>{movie.name}</p><p>{movie.first_air_date}</p></li></Link>)}
