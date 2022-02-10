@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@firebase/database": "^0.12.5",
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-regular": "^5.0.13",
@@ -19,6 +21,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@mui/material": "^5.4.1",
     "firebase": "^9.6.4",
     "font-awesome": "^4.7.0",
     "nodemailer-react": "^1.0.2",

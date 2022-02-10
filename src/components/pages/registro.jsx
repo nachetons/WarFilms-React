@@ -12,6 +12,7 @@ import Navs from '@/components/fragments/navs/navs'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 import { Redirect } from 'react-router-dom'
+import CountrySelect from '@/components/pages/selectCountry'
 
 const registro = ({ setIsAuth, isAuth }) => {
   if (isAuth !== false) {
@@ -40,9 +41,17 @@ const registro = ({ setIsAuth, isAuth }) => {
           <p>Por favor, complete sus datos antes de enviar la información.</p>
 
           <form action='#' ref={form} onSubmit={sendEmail}>
+          <div className='row'>
+              <div className='col-25'>
+                <label htmlFor='alias'>Alias:</label>
+              </div>
+              <div className='col-75'>
+                <input type='text' id='alias' name='user_alias' placeholder='Alias' />
+              </div>
+            </div>
             <div className='row'>
               <div className='col-25'>
-                <label htmlFor='nombre'>Nombre</label>
+                <label htmlFor='nombre'>Nombre:</label>
               </div>
               <div className='col-36'>
                 <input type='text' id='nombre' name='user_name' placeholder='Nombre' />
@@ -53,7 +62,7 @@ const registro = ({ setIsAuth, isAuth }) => {
             </div>
             <div className='row'>
               <div className='col-25'>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='email'>Email:</label>
               </div>
               <div className='col-75'>
                 <input type='text' id='email' name='user_email' placeholder='Email' />
@@ -61,7 +70,7 @@ const registro = ({ setIsAuth, isAuth }) => {
             </div>
             <div className='row'>
               <div className='col-25'>
-                <label htmlFor='telefono'>Teléfono</label>
+                <label htmlFor='telefono'>Teléfono:</label>
               </div>
               <div className='col-75'>
                 <input type='text' id='telefono' name='telefono' placeholder='Teléfono' />
@@ -69,25 +78,10 @@ const registro = ({ setIsAuth, isAuth }) => {
             </div>
             <div className='row'>
               <div className='col-25'>
-                <label htmlFor='asunto'>Asunto del mensaje</label>
+                <label htmlFor='alias'>Pais:</label>
               </div>
               <div className='col-75'>
-                <select id='asunto'>Asunto del mensaje
-                  <option>Quejas y reclamaciones</option>
-                  <option>Sugerencia</option>
-                  <option>Otro</option>
-                </select>
-              </div>
-            </div>
-            <div className='row'>
-              <div className='col-25'>
-                <label htmlFor='mensaje'>Mensaje</label>
-              </div>
-              <div className='col-75'>
-                <textarea
-                  id='mensaje' name='message' placeholder='Escriba su mensaje...'
-                  style={{ height: '200px' }}
-                />
+                <CountrySelect/>
               </div>
             </div>
             <br />

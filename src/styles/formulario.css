@@ -20,6 +20,7 @@ input[type=text], select, textarea {
   border: 1px solid #ccc;
   /* border-radius: 4px; */
   /* resize: vertical; */
+  border-radius: 15px;
 }
 
 label {
