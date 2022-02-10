@@ -3,7 +3,7 @@ import { signInWithPopup, signOut } from 'firebase/auth'
 import { auth, provider, loginEmailPassword } from '../../../config'
 import Registro from './registro'
 import { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 export default function login ({ setLogin, login, setIsAuth, isAuth }) {
   const [register, setRegister] = useState(false)
@@ -47,9 +47,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
                 <span className='btn' id='btn_login'>
                   Login
                 </span>
-                <span className='btn' id='btn_registro'>
-                  Registro
-                </span>
+
               </div>
 
               <div className='container'>
@@ -71,7 +69,7 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
                   Login
                 </button>
                 <p />
-                <label className='registerLink' onClick={() => setRegister(lastState => !lastState) + setLogin(false)}>Registrate aqui</label>
+                <Link to='/registro'><label className='registerLink'>Registrate aqui</label></Link>
               </div>
 
               <div className='container' />

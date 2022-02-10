@@ -218,8 +218,8 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                       </div>
                     </div>
                   </div>
-                </div>        
-                {console.log(mostPopularMovieList)}       
+                </div>
+                {console.log(mostPopularMovieList)}
               </div>
             ))
           )}
