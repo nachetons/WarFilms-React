@@ -1,6 +1,7 @@
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import translate from '../functions/translate'
 
 import {
   API_KEY,
@@ -22,7 +23,10 @@ import Navs from '@/components/fragments/navs/navs'
 const actor = ({ setIsAuth, isAuth }) => {
   // LAMADA ACTORES DE LAS PELICULAS
   const [actorMovieList, setActorMovieList] = useState([])
+  const [textTranslate, setTextTranslate] = useState([])
+
   const [isLoading, setIsloading] = useState(true)
+  const [isLoading2, setIsloading2] = useState(true)
 
   const { id } = useParams()
 
@@ -44,6 +48,10 @@ const actor = ({ setIsAuth, isAuth }) => {
     setIsloading(true)
     getActorsFromAPIBy(URL_ACTOR).then((result) => {
       setActorMovieList(result)
+      const primeraSolicitud = result.biography.substring(0, 500)
+      const segundaSolicitud = primeraSolicitud.substring(0, primeraSolicitud.lastIndexOf('.'))
+      translate(segundaSolicitud, setTextTranslate, setIsloading2)
+
       setIsloading(false)
     })
   }
@@ -82,7 +90,14 @@ const actor = ({ setIsAuth, isAuth }) => {
               />
               <div className='content_film' id={actorMovieList.id}>
                 <h3 className='titulo'>{actorMovieList.name}</h3>
-                <p className='descripcion'>{actorMovieList.biography}</p>
+                {isLoading2
+                  ? (
+                    <p className='descripcion'>{actorMovieList.biography}</p>
+                    )
+                  : (
+                    <p className='descripcion'>{textTranslate}</p>
+                    )}
+
                 <div className='youtube-wrapper'>
                   <div className='trailer'>
 

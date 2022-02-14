@@ -41,7 +41,7 @@ const registro = ({ setIsAuth, isAuth }) => {
           <p>Por favor, complete sus datos antes de enviar la información.</p>
 
           <form action='#' ref={form} onSubmit={sendEmail}>
-          <div className='row'>
+            <div className='row'>
               <div className='col-25'>
                 <label htmlFor='alias'>Alias:</label>
               </div>
@@ -81,7 +81,7 @@ const registro = ({ setIsAuth, isAuth }) => {
                 <label htmlFor='alias'>Pais:</label>
               </div>
               <div className='col-75'>
-                <CountrySelect/>
+                <CountrySelect />
               </div>
             </div>
             <br />

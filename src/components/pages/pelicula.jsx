@@ -24,6 +24,7 @@ import addMovieLike from '@/components/functions/marcadores/addMovieLike'
 import ItemTrailer from '@/components/fragments/itemTrailer'
 import getMoviesLike from '../functions/marcadores/getMoviesLike'
 import swal from 'sweetalert'
+import translate from '../functions/translate'
 
 const pelicula = ({ setIsAuth, isAuth }) => {
   // LLAMADA A LA PELICULA
@@ -40,6 +41,9 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 
   const [movies, setMovies] = useState([])
   const [isLoading4, setIsloading4] = useState(true)
+
+  const [textTranslate, setTextTranslate] = useState([])
+  const [isLoading5, setIsloading5] = useState(true)
 
   const { title, id } = useParams()
 
@@ -92,6 +96,9 @@ const pelicula = ({ setIsAuth, isAuth }) => {
       console.log(URL_ACTORS)
 
       setMostPopularMovieList(xs)
+      const primeraSolicitud = result.overview.substring(0, 500)
+      const segundaSolicitud = primeraSolicitud.substring(0, primeraSolicitud.lastIndexOf('.'))
+      translate(segundaSolicitud, setTextTranslate, setIsloading5)
       setIsloading(false)
     })
   }
@@ -132,6 +139,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
     setIsloading3(true)
     getActorsFromAPIBy(URL_ACTORS).then((result) => {
       setActorMovieList(result)
+
       setIsloading3(false)
     })
   }
@@ -200,7 +208,14 @@ const pelicula = ({ setIsAuth, isAuth }) => {
 
                   <div className='content_film' id={movie.id}>
                     <h3 className='titulo'>{movie.title}</h3>
-                    <p className='descripcion'>{movie.overview}</p>
+                    {isLoading5
+                      ? (
+                        <p className='descripcion'>{movie.overview}</p>
+
+                        )
+                      : (
+                        <p className='descripcion'>{textTranslate}</p>
+                        )}
                     <p>Valoración de la comunidad: <strong>{movie.vote_average}</strong></p>
                     <div className='youtube-wrapper'>
                       <div className='trailer'>
@@ -219,7 +234,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                     </div>
                   </div>
                 </div>
-                {console.log(mostPopularMovieList)}
               </div>
             ))
           )}
@@ -231,7 +245,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
             autoPlay
             autoPlayInterval={1000}
             animationType='fadeout'
-            disableDotsControls
             disableButtonsControls
             infinite
             responsive={responsive}
