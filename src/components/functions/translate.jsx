@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 function translate (textToTranslate, setTextTranslate, setIsLoading) {
-  console.log(textToTranslate.length)
+  // console.log(textToTranslate.length)
 
   const params = new URLSearchParams()
 

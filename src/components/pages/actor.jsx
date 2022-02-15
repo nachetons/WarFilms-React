@@ -19,6 +19,7 @@ import '@/styles/pelicula.css'
 import '@/styles/actor.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
+import parseText from '../functions/parserText'
 
 const actor = ({ setIsAuth, isAuth }) => {
   // LAMADA ACTORES DE LAS PELICULAS
@@ -48,6 +49,8 @@ const actor = ({ setIsAuth, isAuth }) => {
     setIsloading(true)
     getActorsFromAPIBy(URL_ACTOR).then((result) => {
       setActorMovieList(result)
+      // console.log(result.biography.length)
+      parseText(result.biography)
       const primeraSolicitud = result.biography.substring(0, 500)
       const segundaSolicitud = primeraSolicitud.substring(0, primeraSolicitud.lastIndexOf('.'))
       translate(segundaSolicitud, setTextTranslate, setIsloading2)
@@ -89,7 +92,7 @@ const actor = ({ setIsAuth, isAuth }) => {
                 style={{ width: '35%', height: '70%' }}
               />
               <div className='content_film' id={actorMovieList.id}>
-                <h3 className='titulo'>{actorMovieList.name}</h3>
+                <a className='titulo' href={'https://www.google.com/search?tbm=isch&q=' + actorMovieList.name}>{actorMovieList.name}</a>
                 {isLoading2
                   ? (
                     <p className='descripcion'>{actorMovieList.biography}</p>
