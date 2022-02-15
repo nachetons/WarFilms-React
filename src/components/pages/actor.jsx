@@ -92,7 +92,7 @@ const actor = ({ setIsAuth, isAuth }) => {
                 style={{ width: '35%', height: '70%' }}
               />
               <div className='content_film' id={actorMovieList.id}>
-                <a className='titulo' href={'https://www.google.com/search?tbm=isch&q=' + actorMovieList.name}>{actorMovieList.name}</a>
+                <a className='titulo' href={'https://www.google.com/search?tbm=isch&q=' + actorMovieList.name} target='_blank' rel='noreferrer noopener'>{actorMovieList.name}</a>
                 {isLoading2
                   ? (
                     <p className='descripcion'>{actorMovieList.biography}</p>
