@@ -2,11 +2,24 @@
 import { signInWithPopup, signOut } from 'firebase/auth'
 import { auth, provider, loginEmailPassword } from '../../../config'
 import Registro from './registro'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
 import { useHistory, Link } from 'react-router-dom'
+
+import getPreferences from '../functions/preferences/getPreferences'
+import getPreferencesImage from '../functions/preferences/getPreferencesImage'
 
 export default function login ({ setLogin, login, setIsAuth, isAuth }) {
   const [register, setRegister] = useState(false)
+  const [imageUrl, setImageUrl] = useState(null)
+  const [values, setValues] = useState([])
+  useEffect(() => {
+    if (auth.currentUser) {
+      getPreferences(setValues)
+      getPreferencesImage(setImageUrl)
+    }
+  }, [])
+
   const redirectPage = useHistory()
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then(result => {
@@ -15,6 +28,8 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
       setLogin(false)
     })
   }
+
+  // getPreferences(setValues)
 
   async function submitHandler (e) {
     e.preventDefault()
@@ -93,41 +108,13 @@ export default function login ({ setLogin, login, setIsAuth, isAuth }) {
           <div id='id01' className='modal login'>
             <form className='modal-content' id='form_content' action='#'>
               <div className='imgcontainer'>
-                <i className='fas fa-user fa-2x foto' title='Portafolio' />
+                {imageUrl !== null
+                  ? <img className='image-nav' src={imageUrl} alt='preferences' />
+                  : <li><i style={{ width: 'auto' }} className='fas fa-user logo_inicio' id='btn_login_nav' title='Portafolio' /></li>}
                 <br />
-                <span className='btn' id='btn_login'>
-                  Preferencias
-                </span>
-                <span className='btn' id='btn_registro'>
-                  Privacidad
-                </span>
+                <label>{values[2]}</label>
               </div>
-
-              <div className='container'>
-                <label>
-                  <b>Idioma de preferencia</b>
-                </label>
-                <select name='language-picker-select' defaultValue='spanish' id='language-picker-select' className='input-form'>
-                  <option className='choose_lenguage' lang='es' value='spanish'>Spanish</option>
-                  <option className='choose_lenguage' lang='de' value='deutsch'>Deutsch</option>
-                  <option className='choose_lenguage' lang='en' value='english'>English</option>
-                  <option className='choose_lenguage' lang='fr' value='francais'>Français</option>
-                  <option className='choose_lenguage' lang='it' value='italiano'>Italiano</option>
-                </select>
-
-                <input
-                  className='input-form'
-                  type='password'
-                  placeholder='Enter Password'
-                  name='psw'
-                />
-                <button className='boton-form' type='submit'>
-                  Login
-                </button>
-                <input type='checkbox' /> Remember me
-              </div>
-
-              <div className='container' />
+              <br />
             </form>
 
             <button className='login-with-google-btn' onClick={logOut}>Log Out</button>

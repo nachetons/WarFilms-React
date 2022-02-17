@@ -1,11 +1,14 @@
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-indent */
+import { auth } from '../../../../config'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { API_KEY, SEARCH_URL_MOVIE, SEARCH_URL_TV } from '@/diccionario/url'
 
 import useOutsideClick from '@/tools/useOutSideClick'
 import Login from '@/components/fragments/login'
+import getPreferencesImage from '../../functions/preferences/getPreferencesImage'
+// import translate from '../../functions/translate'
 
 export default function NavSearch ({ searchValue, changeSearchValueFunction, setIsAuth, isAuth }) {
   const [isLoading, setIsLoading] = useState(true)
@@ -15,13 +18,22 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
   const ref = useRef()
   const timeout = useRef()
   const location = useLocation()
+  const [imageUrl, setImageUrl] = useState(null)
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      getPreferencesImage(setImageUrl)
+    }
+  })
+
+  // getPreferences(setValues)
 
   useEffect(() => {
     clearTimeout(timeout.current)
 
     if (searchValue.length > 1 && location.pathname !== '/series' && !location.pathname.includes('/serie/') && location.pathname.indexOf('/busquedas_series') === -1) {
       timeout.current = setTimeout(() => {
-        setIsLoading(true)
+        // translate(searchValue, changeSearchValueFunction, setIsLoading, 'es', 'en')
         fetch(SEARCH_URL_MOVIE + searchValue + '&' + API_KEY)
           .then((res) => res.json())
           .then(data => {
@@ -122,8 +134,9 @@ export default function NavSearch ({ searchValue, changeSearchValueFunction, set
                     </div>
             : null
         }
-
-      <li><i style={{ width: 'auto' }} className='fas fa-user logo_inicio' onClick={() => setLogin(lastState => !lastState)} id='btn_login_nav' title='Portafolio' /></li>
+{imageUrl !== null && auth.currentUser
+  ? <img className='image-nav' src={imageUrl} alt='preferences' onClick={() => setLogin(lastState => !lastState)} />
+  : <li><i style={{ width: 'auto' }} className='fas fa-user logo_inicio' onClick={() => setLogin(lastState => !lastState)} id='btn_login_nav' title='Portafolio' /></li>}
 
       {login
         ? <Login setLogin={setLogin} login={login} setIsAuth={setIsAuth} isAuth={isAuth} />

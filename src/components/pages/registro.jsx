@@ -10,9 +10,13 @@ import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs'
 import { useRef } from 'react'
-import emailjs from '@emailjs/browser'
 import { Redirect } from 'react-router-dom'
+import { auth, loginEmailPassword } from '../../../config'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
+import updatePreferences from '../functions/preferences/updatePreferences'
+
 import CountrySelect from '@/components/pages/selectCountry'
+// import { auth, loginEmailPassword } from '../../../config'
 
 const registro = ({ setIsAuth, isAuth }) => {
   if (isAuth !== false) {
@@ -20,15 +24,29 @@ const registro = ({ setIsAuth, isAuth }) => {
   }
   const form = useRef()
 
-  const sendEmail = (e) => {
+  function submitHandler (e) {
     e.preventDefault()
+    const email = e.target.user_email.value
+    const password = e.target.user_password.value
+    const username = e.user_alias.value
+    const name = e.user_name.value
+    const lastname = e.user_lastname.value
+    const telefono = e.telefono.value
+    console.log(email, password)
+    try {
+      createUserWithEmailAndPassword(auth, email, password).then(result => {
+        loginEmailPassword(email, password).then(result => {
+          updatePreferences(username, name, lastname, telefono)
+        })
+        // eslint-disable-next-line no-undef
+        localStorage.setItem('isAuth', true)
+        setIsAuth(true)
+      }
 
-    emailjs.sendForm('service_2e60jbg', 'template_am2hmts', e.target, 'user_jQclRrG51EvbYhDQ0iRW6')
-      .then((result) => {
-        console.log(result.text)
-      }, (error) => {
-        console.log(error.text)
-      })
+      )
+    } catch (error) {
+      console.log(error)
+    }
   }
   return (
     <>
@@ -40,7 +58,7 @@ const registro = ({ setIsAuth, isAuth }) => {
           <h2>Formulario de contacto</h2>
           <p>Por favor, complete sus datos antes de enviar la información.</p>
 
-          <form action='#' ref={form} onSubmit={sendEmail}>
+          <form action='#' ref={form} onSubmit={submitHandler}>
             <div className='row'>
               <div className='col-25'>
                 <label htmlFor='alias'>Alias:</label>
@@ -57,7 +75,7 @@ const registro = ({ setIsAuth, isAuth }) => {
                 <input type='text' id='nombre' name='user_name' placeholder='Nombre' />
               </div>
               <div className='col-36 right'>
-                <input type='text' id='apellido' name='apellido' placeholder='Apellidos' />
+                <input type='text' id='apellido' name='user_lastname' placeholder='Apellidos' />
               </div>
             </div>
             <div className='row'>
@@ -66,6 +84,14 @@ const registro = ({ setIsAuth, isAuth }) => {
               </div>
               <div className='col-75'>
                 <input type='text' id='email' name='user_email' placeholder='Email' />
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-25'>
+                <label htmlFor='passsword'>Contraseña:</label>
+              </div>
+              <div className='col-75'>
+                <input type='text' id='passsword' name='user_password' placeholder='password' />
               </div>
             </div>
             <div className='row'>

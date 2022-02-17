@@ -53,7 +53,7 @@ const actor = ({ setIsAuth, isAuth }) => {
       parseText(result.biography)
       const primeraSolicitud = result.biography.substring(0, 500)
       const segundaSolicitud = primeraSolicitud.substring(0, primeraSolicitud.lastIndexOf('.'))
-      translate(segundaSolicitud, setTextTranslate, setIsloading2)
+      translate(segundaSolicitud, setTextTranslate, setIsloading2, 'en', 'es')
 
       setIsloading(false)
     })

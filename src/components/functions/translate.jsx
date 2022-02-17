@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-function translate (textToTranslate, setTextTranslate, setIsLoading) {
+function translate (textToTranslate, setTextTranslate, setIsLoading, origin, target) {
   // console.log(textToTranslate.length)
 
   const params = new URLSearchParams()
 
   params.append('q', textToTranslate)
-  params.append('source', 'en')
-  params.append('target', 'es')
+  params.append('source', origin)
+  params.append('target', target)
   params.append('api_key', 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
   axios.post('https://libretranslate.de/translate', params, {
     headers: {

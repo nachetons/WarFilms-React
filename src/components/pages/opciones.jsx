@@ -8,7 +8,8 @@ import '@/styles/navs.css'
 import '@/styles/opciones.css'
 import Footer from '@/components/fragments/footer'
 import Navs from '@/components/fragments/navs/navs.jsx'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+
 import updateImage from '../functions/updateImageProfile'
 import updatePreferences from '../functions/preferences/updatePreferences'
 import getPreferences from '../functions/preferences/getPreferences'
@@ -20,14 +21,24 @@ const opciones = ({ setIsAuth, isAuth }) => {
   const [imageUrl, setImageUrl] = useState(null)
   const [values, setValues] = useState([])
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    // declare initial values
-    setValues({
+  const form = useRef()
 
-      ...values,
-      [name]: value
-    })
+  function submitHandler (e) {
+    e.preventDefault()
+
+    const username = e.target.username.value
+    const name = e.target.name.value
+    const lastname = e.target.lastname.value
+    const telefono = e.target.telefono.value
+
+    console.log(username, name, lastname, telefono)
+    // declare initial values
+    if (selectedImage) {
+      updateImage(selectedImage)
+    }
+
+    updatePref(username, name, lastname, telefono)
+    swal('¡Listo!', 'Tus cambios se han guardado', 'success')
   }
   if (isAuth === false) {
     return <Redirect to='/' />
@@ -52,21 +63,12 @@ const opciones = ({ setIsAuth, isAuth }) => {
     }
   }, [values])
 
-  const handleUpload = () => {
-    if (selectedImage) {
-      updateImage(selectedImage)
-    }
-
-    updatePref(values)
-    swal('¡Listo!', 'Tus cambios se han guardado', 'success')
-  }
-
-  function updatePref (values) {
+  function updatePref (username, name, lastname, telefono) {
     // update values and verify if is empty
     if (values.length === 0) {
       console.log('No hay nada que actualizar')
     } else {
-      updatePreferences(values)
+      updatePreferences(username, name, lastname, telefono)
     }
   } return (
     <>
@@ -100,56 +102,64 @@ const opciones = ({ setIsAuth, isAuth }) => {
           <br />
         </div>
 
-        <div className='container'>
-          <label htmlFor='uname'><b>Cambiar nombre de usuario:</b></label>
-          <input
-            className='input-form-preferences'
-            type='text'
-            onChange={handleInputChange}
-            placeholder='Enter Username'
-            name='username'
-            defaultValue={values[3]}
+        <form action='#' ref={form} onSubmit={submitHandler}>
 
-          />
+          <div className='container'>
+            <label htmlFor='uname'><b>Cambiar nombre de usuario:</b></label>
+            <input
+              className='input-form-preferences'
+              type='text'
+            // onChange={handleInputChange}
+              placeholder='Enter Username'
+              name='username'
+              defaultValue={values[4]}
+            />
 
-          <label htmlFor='uname'><b>Nombre:</b></label>
-          <input
-            className='input-form-preferences'
-            type='text'
-            onChange={handleInputChange}
-            placeholder='Enter name'
-            name='name'
-            defaultValue={values[1]}
+            <label htmlFor='uname'><b>Nombre:</b></label>
+            <input
+              className='input-form-preferences'
+              type='text'
+            // onChange={handleInputChange}
+              placeholder='Enter name'
+              name='name'
+              defaultValue={values[2]}
+            />
 
-          />
-
-          <label htmlFor='uname'><b>Apellidos:</b></label>
-          <input
-            className='input-form-preferences'
-            type='text'
-            onChange={handleInputChange}
-            placeholder='Enter second name'
-            name='surnames'
-            defaultValue={values[2]}
-
-          />
-          <br />
-          <label>
-            <b>Idioma de preferencia: </b>
-          </label>
-          <select name='language-picker-select' defaultValue='spanish' id='language-picker-select' className='select-form-preferences'>
-            <option lang='es' value='spanish'>Spanish</option>
-            <option lang='de' value='deutsch'>Deutsch</option>
-            <option lang='en' value='english'>English</option>
-            <option lang='fr' value='francais'>Français</option>
-            <option lang='it' value='italiano'>Italiano</option>
-          </select>
-          <button className='boton-form' onClick={handleUpload}>
-            Guardar cambios
-          </button>
-        </div>
-
-        <div className='container' />
+            <label htmlFor='uname'><b>Apellidos:</b></label>
+            <input
+              className='input-form-preferences'
+              type='text'
+            // onChange={handleInputChange}
+              placeholder='Enter second name'
+              name='lastname'
+              defaultValue={values[1]}
+            />
+            <br />
+            <label htmlFor='uname'><b>Telefono:</b></label>
+            <input
+              className='input-form-preferences'
+              type='text'
+            // onChange={handleInputChange}
+              placeholder='Enter second name'
+              name='telefono'
+              defaultValue={values[3]}
+            />
+            <br />
+            <label>
+              <b>Idioma de preferencia: </b>
+            </label>
+            <select name='language-picker-select' defaultValue='spanish' id='language-picker-select' className='select-form-preferences'>
+              <option lang='es' value='spanish'>Spanish</option>
+              <option lang='de' value='deutsch'>Deutsch</option>
+              <option lang='en' value='english'>English</option>
+              <option lang='fr' value='francais'>Français</option>
+              <option lang='it' value='italiano'>Italiano</option>
+            </select>
+            <div className='row bottom'>
+              <input type='submit' value='Enviar' />
+            </div>
+          </div>
+        </form>
 
       </div>
 

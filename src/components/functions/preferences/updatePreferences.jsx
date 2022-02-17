@@ -2,15 +2,16 @@
 import { auth, db } from '../../../../config'
 import { ref, set } from 'firebase/database'
 
-export default function updatePreferences (values) {
+export default function updatePreferences (username, name, lastname, telefono) {
   const Uid = auth.currentUser.uid
   const n = new Date()
   const newTime = n.toISOString().slice(0, 10)
   set(ref(db, 'users/' + Uid), {
 
-    username: values.username || null,
-    name: values.name || null,
-    surnames: values.surnames || null,
+    username: username,
+    name: name,
+    lastname: lastname,
+    telefono: telefono,
     lastUpdate: newTime
   })
     .then(() => {

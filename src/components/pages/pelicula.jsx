@@ -98,7 +98,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
       setMostPopularMovieList(xs)
       const primeraSolicitud = result.overview.substring(0, 500)
       const segundaSolicitud = primeraSolicitud.substring(0, primeraSolicitud.lastIndexOf('.'))
-      translate(segundaSolicitud, setTextTranslate, setIsloading5)
+      translate(segundaSolicitud, setTextTranslate, setIsloading5, 'en', 'es')
       setIsloading(false)
     })
   }
