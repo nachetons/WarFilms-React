@@ -16,7 +16,7 @@ import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 import '@/styles/pelicula.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import ItemTrailer from '@/components/fragments/itemTrailer'
 
 const serie = ({ setIsAuth, isAuth }) => {
@@ -102,8 +102,6 @@ const serie = ({ setIsAuth, isAuth }) => {
   return (
 
     <>
-
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       {isLoading
         ? <div key={1} className='container' id='listas_pelis'>

@@ -19,7 +19,7 @@ import '@/styles/navs.css'
 import '@/styles/pelicula.css'
 import imageNoLoad from '@/images/ImageNoLoad.jpg'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import addMovieLike from '@/components/functions/marcadores/addMovieLike'
 import ItemTrailer from '@/components/fragments/itemTrailer'
 import getMoviesLike from '../functions/marcadores/getMoviesLike'
@@ -166,7 +166,6 @@ const pelicula = ({ setIsAuth, isAuth }) => {
   const filterVideo = trailerMovieList.find(trailer => trailer.name.includes('Tráiler') || trailer.name.includes('Official Trailer') || trailer.name.includes('TRAILER'))
   return (
     <>
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       {isLoading
         ? (

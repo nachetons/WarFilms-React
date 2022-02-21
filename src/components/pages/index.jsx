@@ -13,7 +13,7 @@ import useOutsideClick from '@/tools/useOutSideClick'
 import Carrusel from '@/components/fragments/carruseles/carruseles'
 import Footer from '@/components/fragments/footer'
 import Header from '@/components/fragments/header'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import ItemTrailer from '@/components/fragments/itemTrailer'
 // import fetchApi from '../fragments/fetchApi'
 
@@ -92,8 +92,6 @@ const IndexPage = ({ setIsAuth, isAuth }) => {
             </>
             )
           : null}
-
-        <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
         <Header />
 

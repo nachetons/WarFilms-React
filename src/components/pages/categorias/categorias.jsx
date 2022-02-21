@@ -10,7 +10,7 @@ import '@/styles/main.css'
 import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import ItemCategoria from './itemCategoria'
 import fetchApi from '@/components/fragments/fetchApi'
 
@@ -23,8 +23,6 @@ const categorias = ({ setIsAuth, isAuth }) => {
 
   return (
     <>
-
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <div className='row' id='contenedor_main'>
 

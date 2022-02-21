@@ -17,6 +17,7 @@ import Serie from './components/pages/serie'
 import Series from './components/pages/series/series'
 import Registro from './components/pages/registro'
 import ScrollToTop from './components/functions/ScrollToTop'
+import Navs from './components/fragments/navs/navs'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 function App () {
@@ -44,6 +45,8 @@ function App () {
     <>
 
       <BrowserRouter>
+        <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
+
         <ScrollToTop />
         <Switch>
 

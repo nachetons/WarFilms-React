@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom'
 import { API_KEY, SEARCH_URL_TV } from '@/diccionario/url.jsx'
 import '@/styles/busquedas.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import ItemBusquedaSerie from './itemBusqueda_serie'
 
 const busquedasSeries = ({ setIsAuth, isAuth }) => {
@@ -39,8 +39,6 @@ const busquedasSeries = ({ setIsAuth, isAuth }) => {
 
   return (
     <>
-
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <div className='container2'>
         <div className='row' id='listas_pelis'>

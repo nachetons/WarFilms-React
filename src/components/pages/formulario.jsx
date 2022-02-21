@@ -8,7 +8,7 @@ import '@/styles/main.css'
 import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
 
@@ -27,8 +27,6 @@ const formulario = ({ setIsAuth, isAuth }) => {
   }
   return (
     <>
-
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <div className='container' id='cajaPrincipal'>
         <div className='container-form'>

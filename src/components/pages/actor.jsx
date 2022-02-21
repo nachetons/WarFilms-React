@@ -18,7 +18,7 @@ import '@/styles/navs.css'
 import '@/styles/pelicula.css'
 import '@/styles/actor.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs'
+// import Navs from '@/components/fragments/navs/navs'
 import parseText from '../functions/parserText'
 
 const actor = ({ setIsAuth, isAuth }) => {
@@ -61,7 +61,6 @@ const actor = ({ setIsAuth, isAuth }) => {
 
   return (
     <>
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       {isLoading
         ? (

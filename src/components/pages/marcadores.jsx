@@ -7,7 +7,7 @@ import '@/styles/navs.css'
 import '@/styles/opciones.css'
 import '@/styles/marcadores.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs.jsx'
+// import Navs from '@/components/fragments/navs/navs.jsx'
 import { URL_IMG } from '@/diccionario/url'
 import getMoviesLike from '../functions/marcadores/getMoviesLike'
 import { useState, useEffect } from 'react'
@@ -75,7 +75,6 @@ const marcadores = ({ setIsAuth, isAuth }) => {
     <>
 
       <h3 id='titulos' className='titulo'>Peliculas</h3>
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <table>
         <tbody>

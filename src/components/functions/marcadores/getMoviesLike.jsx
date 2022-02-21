@@ -6,6 +6,7 @@ export default function getMoviesLike (setMovies, setIsloading) {
   const Uid = auth.currentUser.uid
   const dataMovies = []
   const dbRef = ref(getDatabase())
+
   get(child(dbRef, 'likes/' + Uid)).then((snapshot) => {
     if (snapshot.exists()) {
       snapshot.forEach((childSnapshot) => {

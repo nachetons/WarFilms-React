@@ -7,7 +7,7 @@ import '@/styles/main.css'
 import '@/styles/navs.css'
 import '@/styles/opciones.css'
 import Footer from '@/components/fragments/footer'
-import Navs from '@/components/fragments/navs/navs.jsx'
+// import Navs from '@/components/fragments/navs/navs.jsx'
 import { useState, useEffect, useRef } from 'react'
 
 import updateImage from '../functions/updateImageProfile'
@@ -72,8 +72,6 @@ const opciones = ({ setIsAuth, isAuth }) => {
     }
   } return (
     <>
-
-      <Navs setIsAuth={setIsAuth} isAuth={isAuth} />
 
       <div className='container'>
 
