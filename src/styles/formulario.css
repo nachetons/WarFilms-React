@@ -28,7 +28,7 @@ label {
 }
 
 input[type=submit] {
-  width: 50%;
+  width: 90%;
   background-color: #E50914;
   color: white;
   padding: 12px 20px;
@@ -37,11 +37,13 @@ input[type=submit] {
   cursor: pointer;
   /* float: right; */
   transition: 0.5s;
+  margin-left: 2%;
+  margin-top:2%;
 }
 
 input[type=submit]:hover {
   background-color: #45a049;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .container-form {
