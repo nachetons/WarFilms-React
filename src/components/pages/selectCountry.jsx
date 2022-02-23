@@ -2,15 +2,27 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Autocomplete from '@mui/material/Autocomplete'
+import { useState, useEffect } from 'react'
 
-export default function CountrySelect () {
+export default function CountrySelect ({ setCaracteres, initialValue }) {
+  const [value, setValue] = useState('')
+  console.log('defaultValue', initialValue)
+
+  useEffect(() => {
+    console.log('value', value.label)
+    setCaracteres(value.label)
+  }, [value])
   return (
     <Autocomplete
       id='country-select-demo'
       sx={{ width: 300 }}
       options={countries}
       autoHighlight
+      // value={value !== null && value !== 'undefined' ? value : initialValue}
       getOptionLabel={(option) => option.label}
+      onChange={(e, event) => {
+        setValue(event)
+      }}
       renderOption={(props, option) => (
         <Box component='li' sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
           <img
@@ -27,6 +39,7 @@ export default function CountrySelect () {
         <TextField
           {...params}
           label='Choose a country'
+          required
           inputProps={{
             ...params.inputProps,
             autoComplete: 'new-password', // disable autocomplete and autofill
@@ -39,6 +52,7 @@ export default function CountrySelect () {
               }
             }
           }}
+
         />
       )}
     />

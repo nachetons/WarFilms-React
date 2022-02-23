@@ -15,11 +15,13 @@ import updatePreferences from '../functions/preferences/updatePreferences'
 import getPreferences from '../functions/preferences/getPreferences'
 import getPreferencesImage from '../functions/preferences/getPreferencesImage'
 import swal from 'sweetalert'
+import CountrySelect from '@/components/pages/selectCountry'
 
 const opciones = ({ setIsAuth, isAuth }) => {
   const [selectedImage, setSelectedImage] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
   const [values, setValues] = useState([])
+  const [caracteres, setCaracteres] = useState('')
 
   const form = useRef()
 
@@ -30,14 +32,15 @@ const opciones = ({ setIsAuth, isAuth }) => {
     const name = e.target.name.value
     const lastname = e.target.lastname.value
     const telefono = e.target.telefono.value
+    const pais = caracteres
 
-    console.log(username, name, lastname, telefono)
+    console.log(username, name, lastname, telefono, pais)
     // declare initial values
     if (selectedImage) {
       updateImage(selectedImage)
     }
 
-    updatePref(username, name, lastname, telefono)
+    updatePref(username, name, lastname, telefono, pais)
     swal('¡Listo!', 'Tus cambios se han guardado', 'success')
   }
   if (isAuth === false) {
@@ -60,15 +63,16 @@ const opciones = ({ setIsAuth, isAuth }) => {
   useEffect(() => {
     if (values.length === 0) {
       getPreferences(setValues)
+      console.log(values[3])
     }
   }, [values])
 
-  function updatePref (username, name, lastname, telefono) {
+  function updatePref (username, name, lastname, telefono, pais) {
     // update values and verify if is empty
     if (values.length === 0) {
       console.log('No hay nada que actualizar')
     } else {
-      updatePreferences(username, name, lastname, telefono)
+      updatePreferences(username, name, lastname, telefono, pais)
     }
   } return (
     <>
@@ -110,7 +114,7 @@ const opciones = ({ setIsAuth, isAuth }) => {
             // onChange={handleInputChange}
               placeholder='Enter Username'
               name='username'
-              defaultValue={values[4]}
+              defaultValue={values[5]}
             />
 
             <label htmlFor='uname'><b>Nombre:</b></label>
@@ -140,19 +144,17 @@ const opciones = ({ setIsAuth, isAuth }) => {
             // onChange={handleInputChange}
               placeholder='Enter second name'
               name='telefono'
-              defaultValue={values[3]}
+              defaultValue={values[4]}
             />
             <br />
             <label>
               <b>Idioma de preferencia: </b>
             </label>
-            <select name='language-picker-select' defaultValue='spanish' id='language-picker-select' className='select-form-preferences'>
-              <option lang='es' value='spanish'>Spanish</option>
-              <option lang='de' value='deutsch'>Deutsch</option>
-              <option lang='en' value='english'>English</option>
-              <option lang='fr' value='francais'>Français</option>
-              <option lang='it' value='italiano'>Italiano</option>
-            </select>
+            <CountrySelect
+              setCaracteres={setCaracteres}
+              initialValue={values[3]}
+
+            />
             <div className='row bottom'>
               <input type='submit' value='Enviar' />
             </div>
