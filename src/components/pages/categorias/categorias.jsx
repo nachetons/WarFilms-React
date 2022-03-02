@@ -13,6 +13,8 @@ import Footer from '@/components/fragments/footer'
 // import Navs from '@/components/fragments/navs/navs'
 import ItemCategoria from './itemCategoria'
 import fetchApi from '@/components/fragments/fetchApi'
+import addMovieLike from '@/components/functions/marcadores/addMovieLike'
+import swal from 'sweetalert'
 
 const categorias = ({ setIsAuth, isAuth }) => {
   const { categoria } = useParams()
@@ -21,6 +23,24 @@ const categorias = ({ setIsAuth, isAuth }) => {
 
   const { status, data } = fetchApi(URL_CATEGORY, 20)
 
+  function addProfile (mostPopularMovieList) {
+    // const image = URL_IMG + mostPopularMovieList.poster_path
+    const title = mostPopularMovieList.title
+    const overview = mostPopularMovieList.overview
+    const date = mostPopularMovieList.release_date
+    const vote = mostPopularMovieList.vote_average
+    const UrlImage = mostPopularMovieList.poster_path
+    const id = mostPopularMovieList.id
+
+    const movielike = { title, overview, date, vote, UrlImage, id }
+    try {
+      addMovieLike(movielike)
+      console.log('Se agrego a favoritos')
+      swal('Se agrego a favoritos', '', 'success')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   return (
     <>
 
@@ -33,8 +53,10 @@ const categorias = ({ setIsAuth, isAuth }) => {
           {!status
             ? <p>Cargando...</p>
             : data.map(movie =>
-
-              <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie} /></div></Link>
+              <div key={movie.id}>
+                <i className='far fa-2x fa-heart corazon_peliculas' onClick={() => addProfile(movie)} />
+                <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemCategoria key={movie.id} movieInfo={movie} /></div></Link>
+              </div>
             )}
 
         </div>
