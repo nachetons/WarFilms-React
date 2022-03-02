@@ -12,6 +12,8 @@ import '@/styles/mediaquerys.css'
 import '@/styles/navs.css'
 
 import Footer from '@/components/fragments/footer'
+import addMovieLike from '@/components/functions/marcadores/addMovieLike'
+import swal from 'sweetalert'
 // import Navs from '@/components/fragments/navs/navs'
 import ItemPelicula from './itemPeliculas'
 
@@ -31,6 +33,24 @@ const peliculas = ({ setIsAuth, isAuth }) => {
       setMovieList(result)
       setIsloading(false)
     })
+  }
+  function addProfile (mostPopularMovieList) {
+    // const image = URL_IMG + mostPopularMovieList.poster_path
+    const title = mostPopularMovieList.title
+    const overview = mostPopularMovieList.overview
+    const date = mostPopularMovieList.release_date
+    const vote = mostPopularMovieList.vote_average
+    const UrlImage = mostPopularMovieList.poster_path
+    const id = mostPopularMovieList.id
+
+    const movielike = { title, overview, date, vote, UrlImage, id }
+    try {
+      addMovieLike(movielike)
+      console.log('Se agrego a favoritos')
+      swal('Se agrego a favoritos', '', 'success')
+    } catch (error) {
+      console.log(error.message)
+    }
   }
 
   function filterMovieList (categoria, valoracionMin, valoracionMax) {
@@ -108,8 +128,10 @@ const peliculas = ({ setIsAuth, isAuth }) => {
           {isLoading
             ? <p>Cargando...</p>
             : movieList.map(movie =>
-
-              <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie} /></div></Link>
+              <div key={movie.id}>
+                <i className='far fa-2x fa-heart corazon_peliculas' onClick={() => addProfile(movie)} />
+                <Link key={movie.id} to={'/pelicula/' + movie.id}><div key={movie.id}><ItemPelicula key={movie.id} movieInfo={movie} /></div></Link>
+              </div>
             )}
 
         </div>

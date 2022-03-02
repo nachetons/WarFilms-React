@@ -7,7 +7,7 @@ export default function ItemPelicula ({ movieInfo }) {
 
   return (
 
-    <div className='poster'>
+    <div className='poster poster_pelicula'>
       <img src={URL_IMG + poster_path} style={{ width: '100%' }} alt='Imagen portada' />
     </div>
 

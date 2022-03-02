@@ -202,7 +202,7 @@ const pelicula = ({ setIsAuth, isAuth }) => {
                         style={{ width: '35%' }}
                       />}
                   {isAuth
-                    ? <i className='far fa-heart' onClick={() => addProfile(mostPopularMovieList[0])} />
+                    ? <i className='far fa-2x fa-heart' onClick={() => addProfile(mostPopularMovieList[0])} />
                     : null}
 
                   <div className='content_film' id={movie.id}>
