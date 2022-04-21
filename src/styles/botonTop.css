@@ -1,0 +1,20 @@
+
+.botonTop{
+    
+    position: fixed; 
+    width: 100%;
+    left: 95%;
+    border-radius: 50%;
+    border-color: aqua;
+    margin-bottom: 2%;
+    bottom: 40px;
+    height: 20px;
+    font-size: 3rem;
+    z-index: 1;
+    cursor: pointer;
+    color: red;
+    
+}
+.icon_arrows2{
+    transform: rotate(268deg);
+}

@@ -20,7 +20,6 @@ body {
 
 
 .container {
-  max-width: 1600px;
   margin: auto;
 }
 
@@ -99,11 +98,6 @@ body {
 }
 
 .freetowatch-cards {
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow-x: scroll;
-  overflow-y: hidden;
 }
 #contenedor {
   border-color: rgb(255, 51, 0);
@@ -201,9 +195,12 @@ body {
 }
 
 .freetowatch-cards .movie-card {
-  margin-right: 1.5rem;
+  margin-left: 1.5rem;
   position: relative;
   margin-top: 2%;
+  
+
+  
 }
 
 

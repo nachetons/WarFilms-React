@@ -66,6 +66,7 @@ export default function carruseles ({ handleClick, setMostPopularMovieList, setM
             ? <h3>Cargando...</h3>
 
           // Cuando está cargado
+
             : <Carrusel handleClick={handleClick} sliderNumber={1} movieList={data} setIdTrailer={setIdTrailer} title='Las más populares' />
 
         }{

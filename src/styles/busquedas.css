@@ -25,6 +25,7 @@
   }
   .btn_pagination{
     color: white;
+    cursor: pointer;
   }
 #foto{
   margin-top: 2%;

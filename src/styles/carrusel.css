@@ -28,11 +28,10 @@ color: white;
 }
 
 .freetowatch-cards {
-  display: flex;
-  align-items: center;
-  position: relative;
-  overflow-x: scroll;
-  overflow-y: hidden;
+ 
+}
+.delante{
+  margin: 20px;;
 }
 
 .slider1 {
@@ -77,13 +76,7 @@ color: white;
   background-color: #d62929;
 }
 
-.fade {
-  opacity: 0.7;
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
+
 
 @-webkit-keyframes fade {
   from {
@@ -105,7 +98,7 @@ color: white;
 
 .slider1 {
   width: 100%;
-  animation: slider1 20s infinite backwards ease-in-out;
+  /*animation: slider1 20s infinite backwards ease-in-out;*/
 
 }
 
@@ -123,37 +116,37 @@ color: white;
   }
 
   20% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
   40% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
 
   40% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
   60% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
 
   60% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
   80% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
 
   80% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
   90% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
 }
 
 .slider2 {
   width: 100%;
-  animation: slider2 20s infinite alternate ease-in;
+  /*animation: slider2 20s infinite alternate ease-in;*/
 }
 
 .slider2:hover {
@@ -170,38 +163,38 @@ color: white;
   }
 
   20% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
   40% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
 
   40% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
   60% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
 
   60% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
   80% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
 
   80% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
   90% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
 }
 
 
 .slider3 {
   width: 100%;
-  animation: slider3 20s infinite alternate ease-out;
+  /*animation: slider3 20s infinite alternate ease-out;*/
 }
 
 .slider3:hover {
@@ -218,38 +211,37 @@ color: white;
   }
 
   20% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
   40% {
-    margin-left: -42%;
+    margin-left: -32%;
   }
 
   40% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
   60% {
-    margin-left: -64%;
+    margin-left: -65%;
   }
 
   60% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
   80% {
-    margin-left: -85%;
+    margin-left: -97%;
   }
 
   80% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
   90% {
-    margin-left: -115%;
+    margin-left: -128%;
   }
 }
 
 
 .freetowatch-cards .movie-card {
-  margin-right: 1.5rem;
-  position: relative;
+
 }
 
 /* Animacion de las cards de las peliculas */
@@ -268,16 +260,12 @@ color: white;
   backface-visibility: hidden;
 }
 
-.delante {
-  z-index: 2;
-  transform: translatey(-500px);
-  margin-top: 500px;
-}
+
 
 .detras {
-  margin-right: 1.5rem;
-  width: 292px;
-  height: 250px;
+  margin-right: 2rem;
+  width: 23rem;
+  height: 20rem;
   color: white;
   padding: 1rem;
   background: linear-gradient(

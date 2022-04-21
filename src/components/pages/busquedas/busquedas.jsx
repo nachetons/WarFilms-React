@@ -4,6 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import { API_KEY, SEARCH_URL_MOVIE } from '@/diccionario/url.jsx'
 import '@/styles/busquedas.css'
 import Footer from '@/components/fragments/footer'
+import ScrollButton from '@/components/fragments/ScrollButton'
+
 // import Navs from '@/components/fragments/navs/navs'
 import ItemBusqueda from './itemBusqueda'
 
@@ -68,6 +70,7 @@ const busquedas = ({ setIsAuth, isAuth }) => {
 
         </div>
       </div>
+      <ScrollButton />
 
       <Footer />
 
